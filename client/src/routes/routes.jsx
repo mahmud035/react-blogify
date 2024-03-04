@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 import BlogDetailsPage from '../pages/BlogDetailsPage';
+import CreateBlogPage from '../pages/CreateBlogPage';
 import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/blogs/:blogId',
         element: <BlogDetailsPage />,
+      },
+      {
+        path: '/create-blog',
+        element: <CreateBlogPage />,
       },
       {
         path: '/login',

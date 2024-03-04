@@ -48,7 +48,7 @@
   }
 
   .blog-thumb {
-    @apply aspect-video object-cover rounded-md max-h-48;
+    @apply aspect-video object-cover rounded-md;
   }
 
   /* Sidebar */
