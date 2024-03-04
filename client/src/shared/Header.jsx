@@ -1,11 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import searchIcon from '../assets/icons/search.svg';
 import lwsLogo from '../assets/logo.svg';
 import SearchModal from '../components/search/SearchModal';
+import useAuth from '../hooks/useAuth';
 import useSearch from '../hooks/useSearch';
 
 const Header = () => {
+  const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();
+  const navigate = useNavigate();
+  console.log(isLoggedIn);
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    setIsLoggedIn(false);
+    setAuth({});
+    navigate('/login');
+  };
 
   return (
     <header>
@@ -21,44 +32,61 @@ const Header = () => {
             <li>
               <Link
                 to="/create-blog"
-                className="bg-indigo-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
+                className="px-6 py-2 text-white transition-all duration-200 bg-indigo-600 rounded-md md:py-3 hover:bg-indigo-700"
               >
                 Write
               </Link>
             </li>
             {/* Close SearchModal and clear search field */}
-            <li
-              onClick={() => {
-                setShowSearchModal(true);
-                setSearchText('');
-              }}
-              className="flex items-center gap-2 cursor-pointer"
-            >
-              {/* A Search Modal will Open */}
-              <img src={searchIcon} alt="Search" />
-              <span>Search</span>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                className="text-white hover:text-white/80 transition-all duration-200"
+            {isLoggedIn && (
+              <li
+                onClick={() => {
+                  setShowSearchModal(true);
+                  setSearchText('');
+                }}
+                className="flex items-center gap-2 cursor-pointer"
               >
-                Login
-              </Link>
-            </li>
-            <li className="flex items-center">
-              <Link to="/profile">
-                <div className="avater-img bg-orange-600 text-white hover:text-white/80">
-                  <span className="">S</span>
-                </div>
-              </Link>
+                {/* A Search Modal will Open */}
+                <img src={searchIcon} alt="Search" />
+                <span>Search</span>
+              </li>
+            )}
 
-              <Link to="/profile">
-                <span className="text-white ml-2 hover:text-white/80">
-                  Saad Hasan
-                </span>
-              </Link>
-            </li>
+            {isLoggedIn ? (
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="text-white transition-all duration-200 hover:text-white/80"
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/login"
+                  className="text-white transition-all duration-200 hover:text-white/80"
+                >
+                  Login
+                </Link>
+              </li>
+            )}
+
+            {isLoggedIn && (
+              <li className="flex items-center">
+                <Link to="/profile">
+                  <span className="mr-2 text-white hover:text-white/80">
+                    Saad Hasan
+                  </span>
+                </Link>
+
+                <Link to="/profile">
+                  <div className="text-white bg-orange-600 avater-img hover:text-white/80">
+                    <span className="">S</span>
+                  </div>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
