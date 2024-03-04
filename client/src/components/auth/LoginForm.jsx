@@ -34,6 +34,7 @@ const LoginForm = () => {
           const accessToken = token.accessToken;
           const refreshToken = token.refreshToken;
           localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('refreshToken', refreshToken);
           setIsLoggedIn(true);
           setAuth({ user, accessToken, refreshToken });
           navigate('/');

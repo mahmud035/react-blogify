@@ -1,8 +1,13 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import BlogList from '../components/blogs/BlogList';
+import useAuth from '../hooks/useAuth';
 
 const HomePage = () => {
+  const { auth, isLoggedIn } = useAuth();
+  // console.log('auth =>', auth);
+  // console.log('isLoggedIn =>', isLoggedIn);
+
   const blogs = 'blogs will come from useBlog Hook';
 
   useEffect(() => {

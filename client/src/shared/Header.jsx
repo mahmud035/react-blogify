@@ -9,7 +9,6 @@ const Header = () => {
   const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();
   const navigate = useNavigate();
-  console.log(isLoggedIn);
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
