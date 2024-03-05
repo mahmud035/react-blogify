@@ -1,24 +1,82 @@
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { actions } from '../../actions';
+import checkIcon from '../../assets/icons/check.svg';
 import editIcon from '../../assets/icons/edit.svg';
+import useAxios from '../../hooks/useAxios';
+import useProfile from '../../hooks/useProfile';
 
 const Bio = () => {
+  const { profile, profileDispatch } = useProfile();
+  const { api } = useAxios();
+  const [bio, setBio] = useState(profile?.user?.bio);
+  const [editMode, setEditMode] = useState(false);
+
+  const handleBioEdit = async () => {
+    if (bio.length === 0) {
+      return toast.warn('Please write something about yourself.');
+    }
+
+    profileDispatch({ type: actions.profile.DATA_FETCHING });
+
+    try {
+      const response = await api.patch(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/profile`,
+        { bio }
+      );
+
+      if (response.status === 200) {
+        profileDispatch({
+          type: actions.profile.USER_DATA_EDITED,
+          data: response.data?.user,
+        });
+        toast.success('Profile Updated Successfully!');
+      }
+    } catch (error) {
+      profileDispatch({
+        type: actions.profile.DATA_FETCH_ERROR,
+        error: error.message,
+      });
+    }
+  };
+
   return (
     <>
-      <div className="mt-4 flex items-start gap-2 lg:mt-6">
+      <div className="flex items-start gap-2 mt-4 lg:mt-6">
         <div className="flex-1">
-          <p className="leading-[188%] text-gray-400 lg:text-lg">
-            Sumit is an entrepreneurial visionary known for his exceptional
-            performance and passion for technology and business. He established
-            Analyzen in 2008 while he was a student at Bangladesh University of
-            Engineering & Technology (BUET). Analyzen has since become a
-            top-tier Web and Mobile Application Development firm and the first
-            Digital and Social Media Marketing Agency in Bangladesh.
-          </p>
+          {!editMode ? (
+            <p className="leading-[188%] text-gray-400 lg:text-lg">
+              {bio ? bio : 'No Bio Information Found!'}
+            </p>
+          ) : (
+            <textarea
+              onChange={(e) => setBio(e.target.value)}
+              value={bio}
+              className={`p-2 leading-[188%] text-gray-400 lg:text-lg rounded ${
+                bio.length === 0 && 'outline outline-red-500 outline-offset-0'
+              }`}
+              cols="55"
+              rows="4"
+            />
+          )}
         </div>
 
         {/* Edit Bio button. The Above bio will be editable when clicking on the button  */}
-        <button className="flex-center h-7 w-7 rounded-full">
-          <img src={editIcon} alt="Edit" />
-        </button>
+        {!editMode ? (
+          <button
+            onClick={() => setEditMode(true)}
+            className="rounded-full flex-center h-7 w-7"
+          >
+            <img src={editIcon} alt="Edit" />
+          </button>
+        ) : (
+          <button
+            onClick={handleBioEdit}
+            className="rounded-full flex-center h-7 w-7"
+          >
+            <img src={checkIcon} alt="Check" />
+          </button>
+        )}
       </div>
       <div className="w-3/4 border-b border-[#3F3F3F] py-6 lg:py-8"></div>
     </>

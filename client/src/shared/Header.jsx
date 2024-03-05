@@ -12,6 +12,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('userId');
     setIsLoggedIn(false);
     setAuth({});
     navigate('/login');

@@ -6,7 +6,7 @@ import deleteIcon from '../../assets/icons/delete.svg';
 import editIcon from '../../assets/icons/edit.svg';
 import useSearch from '../../hooks/useSearch';
 
-const BlogCard = () => {
+const BlogCard = ({ blog }) => {
   const [showAction, setShowAction] = useState(false);
   const { searchText, setSearchText, setShowSearchModal } = useSearch();
   const navigate = useNavigate();
@@ -47,11 +47,11 @@ const BlogCard = () => {
         src={blogImage}
         alt=""
       />
-      <div className="mt-2 relative">
-        <h3 className="text-slate-300 text-xl lg:text-2xl">
+      <div className="relative mt-2">
+        <h3 className="text-xl text-slate-300 lg:text-2xl">
           React Roadmap in 2024
         </h3>
-        <p className="mb-6 text-base text-slate-500 mt-1">
+        <p className="mt-1 mb-6 text-base text-slate-500">
           Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor
           pretium donec dictum. Vici consequat justo enim. Venenatis eget
           adipiscing luctus lorem.
@@ -59,15 +59,15 @@ const BlogCard = () => {
 
         {/* If searchText is empty, then show userInfo  */}
         {!searchText && (
-          <div className="flex justify-between items-center">
-            <div className="flex items-center capitalize space-x-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2 capitalize">
               <div
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   navigate('/profile');
                 }}
-                className="avater-img bg-indigo-600 text-white"
+                className="text-white bg-indigo-600 avater-img"
               >
                 <span className="">S</span>
               </div>
@@ -78,7 +78,7 @@ const BlogCard = () => {
                     e.stopPropagation();
                     navigate('/profile');
                   }}
-                  className="text-slate-500 text-sm"
+                  className="text-sm text-slate-500"
                 >
                   {/* <Link to="/profile">Saad Hasan</Link> */}
                   Saad Hasan
@@ -89,7 +89,7 @@ const BlogCard = () => {
               </div>
             </div>
 
-            <div className="text-sm px-2 py-1 text-slate-700">
+            <div className="px-2 py-1 text-sm text-slate-700">
               <span>100 Likes</span>
             </div>
           </div>
@@ -99,7 +99,7 @@ const BlogCard = () => {
 
         {/* TODO: Show 3dots Icons only if the blog is posted by the loggedIn user */}
         {/* action dot  */}
-        <div className="absolute right-0 top-0">
+        <div className="absolute top-0 right-0">
           <button
             onClick={(e) => {
               handleShowAction(e);

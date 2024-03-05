@@ -1,7 +1,9 @@
+import useProfile from '../../hooks/useProfile';
 import BlogList from '../blogs/BlogList';
 
 const MyBlogs = () => {
-  const blogs = 'blogs will come from useProfile Hook';
+  const { profile } = useProfile();
+  const { blogs } = profile || {};
 
   return (
     <>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import InputField from '../ui/InputField';
 
@@ -18,6 +18,9 @@ const LoginForm = () => {
   });
   const { setAuth, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogin = async (formData) => {
     //* API call will return (accessToken, refreshToken and Logged in User Information)
@@ -35,9 +38,10 @@ const LoginForm = () => {
           const refreshToken = token.refreshToken;
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refreshToken', refreshToken);
+          localStorage.setItem('userId', user.id);
           setIsLoggedIn(true);
           setAuth({ user, accessToken, refreshToken });
-          navigate('/');
+          navigate(from, { replace: true });
         }
       }
     } catch (error) {

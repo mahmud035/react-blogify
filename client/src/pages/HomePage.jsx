@@ -8,7 +8,7 @@ const HomePage = () => {
   // console.log('auth =>', auth);
   // console.log('isLoggedIn =>', isLoggedIn);
 
-  const blogs = 'blogs will come from useBlog Hook';
+  const blogs = [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
