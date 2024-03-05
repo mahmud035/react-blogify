@@ -19,9 +19,6 @@ const Header = () => {
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
 
-  console.log('user?.avatar =>', user?.avatar);
-  console.log('userAvatar =>', userAvatar);
-
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('userId');

@@ -18,11 +18,6 @@ const ProfileImage = () => {
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
 
-  console.log('user?.avatar =>', user?.avatar);
-  console.log('userAvatar =>', userAvatar);
-
-  // http://localhost:3000/uploads/avatar/avatar-1708589704280-90672434.jpeg
-
   const handleFileUpload = (e) => {
     e.preventDefault();
     fileUploadRef.current.addEventListener('change', updateUserAvatar);
@@ -33,7 +28,6 @@ const ProfileImage = () => {
     try {
       const formData = new FormData();
       for (const file of fileUploadRef.current.files) {
-        console.log(file);
         formData.append('avatar', file);
       }
 
@@ -49,7 +43,6 @@ const ProfileImage = () => {
         });
       }
     } catch (error) {
-      console.log(error);
       profileDispatch({
         type: actions.profile.DATA_FETCH_ERROR,
         error: error.message,

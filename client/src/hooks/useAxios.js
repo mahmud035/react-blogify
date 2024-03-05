@@ -6,15 +6,12 @@ import useAuth from './useAuth';
 const useAxios = () => {
   const { auth, setAuth, setIsLoggedIn } = useAuth();
 
+  const accessToken = localStorage.getItem('accessToken') || auth?.accessToken;
+
   useEffect(() => {
     //* Add a request interceptor
     const requestIntercept = api.interceptors.request.use(
       (config) => {
-        //! where should I take accessToken? auth.accessToken or localStorage?
-        const accessToken = localStorage.getItem('accessToken');
-
-        console.log('accessToken from localStorage =>', accessToken);
-
         if (accessToken) {
           config.headers.Authorization = `Bearer ${accessToken}`;
         }
@@ -29,11 +26,10 @@ const useAxios = () => {
       async (error) => {
         const originalRequest = error.config;
 
-        // IMPORTANT: If the error status is 401 and there is no originalRequest._retry flag, it means the token has expired and we need to refresh it.
-        if (error.response.status === 401 && !originalRequest._retry) {
+        // IMPORTANT: If the error status is 403 and there is no originalRequest._retry flag, it means the token has expired and we need to refresh it.
+        if (error.response.status === 403 && !originalRequest._retry) {
           originalRequest._retry = true;
 
-          // const refreshToken = auth?.refreshToken;
           const refreshToken = localStorage.getItem('refreshToken');
           const response = await axios.post(
             `${import.meta.env.VITE_SERVER_BASE_URL}/auth/refresh-token`,
@@ -41,13 +37,10 @@ const useAxios = () => {
           );
 
           if (response.status === 200) {
-            const { accessToken, refreshToken } = response.data;
+            const { accessToken } = response.data;
             localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('refreshToken', refreshToken);
-            setIsLoggedIn(true); // is this line necessary?
-            setAuth({ ...auth, accessToken, refreshToken });
-
-            console.log(`New accessToken: ${accessToken}`);
+            setIsLoggedIn(true);
+            setAuth({ ...auth, accessToken });
 
             // Retry the original request with the new accessToken
             originalRequest.headers.Authorization = `Bearer ${accessToken}`;
@@ -63,7 +56,7 @@ const useAxios = () => {
       api.interceptors.request.eject(requestIntercept);
       api.interceptors.response.eject(responseIntercept);
     };
-  }, []);
+  }, [accessToken]);
 
   return { api };
 };
