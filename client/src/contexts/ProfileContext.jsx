@@ -12,7 +12,6 @@ const ProfileProvider = ({ children }) => {
   const profileInfo = {
     profile: state,
     profileDispatch: dispatch,
-    hello: 'hello',
   };
 
   return (

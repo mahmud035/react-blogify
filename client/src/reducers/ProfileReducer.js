@@ -48,7 +48,7 @@ const profileReducer = (state, action) => {
       };
     }
     // Image Updated
-    case actions.profile.DATA_EDITED: {
+    case actions.profile.IMAGE_UPDATED: {
       return {
         ...state,
         loading: false,
@@ -58,7 +58,6 @@ const profileReducer = (state, action) => {
         },
       };
     }
-
     default: {
       return state;
     }

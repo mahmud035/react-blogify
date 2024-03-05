@@ -3,12 +3,21 @@ import searchIcon from '../assets/icons/search.svg';
 import lwsLogo from '../assets/logo.svg';
 import SearchModal from '../components/search/SearchModal';
 import useAuth from '../hooks/useAuth';
+import useGetUser from '../hooks/useGetUser';
 import useSearch from '../hooks/useSearch';
 
 const Header = () => {
-  const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();
+  const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const user = useGetUser();
+
+  // Show dummy avatar if user's avatar is not found
+  const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
+  const userAvatar =
+    user?.avatar !== null
+      ? `${import.meta.env.VITE_SERVER_BASE_URL}/${user?.avatar}`
+      : userNameFirstChar;
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -76,13 +85,13 @@ const Header = () => {
               <li className="flex items-center">
                 <Link to="/profile">
                   <span className="mr-2 text-white hover:text-white/80">
-                    Saad Hasan
+                    {user?.firstName} {user?.lastName}
                   </span>
                 </Link>
 
                 <Link to="/profile">
                   <div className="text-white bg-orange-600 avater-img hover:text-white/80">
-                    <span className="">S</span>
+                    <span className="">{userAvatar}</span>
                   </div>
                 </Link>
               </li>

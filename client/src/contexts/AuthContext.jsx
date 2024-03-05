@@ -7,8 +7,10 @@ const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    const userId = localStorage.getItem('userId');
     const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
+
+    if (userId && accessToken) {
       setIsLoggedIn(true);
     }
   }, []);
