@@ -10,7 +10,7 @@ const BlogList = ({ blogs }) => {
           ?.sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
           ?.map((blog) => <BlogCard key={blog?.id} blog={blog} />)
       ) : (
-        <p className="pt-4 text-2xl text-center">No Blog Found!</p>
+        <p className="pt-4 text-2xl text-center">No Blog Data Found!</p>
       )}
     </div>
   );

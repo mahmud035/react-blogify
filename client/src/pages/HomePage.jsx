@@ -1,14 +1,41 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { actions } from '../actions';
 import BlogList from '../components/blogs/BlogList';
-import useAuth from '../hooks/useAuth';
+import useBlog from '../hooks/useBlog';
 
 const HomePage = () => {
-  const { auth, isLoggedIn } = useAuth();
-  // console.log('auth =>', auth);
-  // console.log('isLoggedIn =>', isLoggedIn);
+  const { blogState, blogDispatch } = useBlog();
+  const { blogs } = blogState || {};
 
-  const blogs = [];
+  //* Fetch All Blogs Data
+  useEffect(() => {
+    blogDispatch({ type: actions.blog.DATA_FETCHING });
+
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs?page=1`
+        );
+
+        if (response.status === 200) {
+          blogDispatch({
+            type: actions.blog.DATA_FETCHED,
+            data: response.data.blogs,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        blogDispatch({
+          type: actions.blog.DATA_FETCH_ERROR,
+          error: error.message,
+        });
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
