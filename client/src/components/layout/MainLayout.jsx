@@ -46,8 +46,6 @@ const MainLayout = () => {
     fetchProfile();
   }, [userId]);
 
-  console.log('error=>', error);
-
   return (
     <div>
       {loading ? (

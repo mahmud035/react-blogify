@@ -16,8 +16,11 @@ const Header = () => {
   const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
   const userAvatar =
     user?.avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/${user?.avatar}`
-      : userNameFirstChar;
+      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
+      : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
+
+  console.log('user?.avatar =>', user?.avatar);
+  console.log('userAvatar =>', userAvatar);
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -90,9 +93,12 @@ const Header = () => {
                 </Link>
 
                 <Link to="/profile">
-                  <div className="text-white bg-orange-600 avater-img hover:text-white/80">
-                    <span className="">{userAvatar}</span>
-                  </div>
+                  {/* <span className="">{userAvatar}</span> */}
+                  <img
+                    className="font-bold text-white avater-img hover:text-white/80"
+                    src={userAvatar}
+                    alt="Profile Image"
+                  />
                 </Link>
               </li>
             )}
