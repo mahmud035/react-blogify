@@ -18,7 +18,7 @@ const BlogCard = ({ blog }) => {
     title,
     content,
     thumbnail,
-    author: { id: authorId, firstName, lastName, avatar } = {},
+    author: { id: profileId, firstName, lastName, avatar } = {},
     likes,
   } = blog || {};
 
@@ -64,29 +64,6 @@ const BlogCard = ({ blog }) => {
     // delete blog task
   };
 
-  // const fetchBlogAuthorData = async (authorId) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${authorId}`
-  //     );
-
-  //     if (response.status === 200) {
-  //       profileDispatch({
-  //         type: actions.profile.BLOG_AUTHOR_DATA_FETCHED,
-  //         data: response.data,
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     profileDispatch({
-  //       type: actions.profile.DATA_FETCH_ERROR,
-  //       error: error.message,
-  //     });
-  //   } finally {
-  //     navigate(`/profile/${authorId}`);
-  //   }
-  // };
-
   return (
     <div onClick={(e) => handleNavigate(e)} className="blog-card">
       <img
@@ -112,8 +89,7 @@ const BlogCard = ({ blog }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  fetchBlogAuthorData(authorId);
-                  // navigate(`/profile/${authorId}`);
+                  fetchBlogAuthorData(profileId);
                 }}
                 className="text-white"
               >
@@ -128,12 +104,10 @@ const BlogCard = ({ blog }) => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    fetchBlogAuthorData(authorId);
-                    // navigate(`/profile/${authorId}`);
+                    fetchBlogAuthorData(profileId);
                   }}
                   className="text-sm text-slate-500"
                 >
-                  {/* <Link to="/profile">Saad Hasan</Link> */}
                   {firstName} {lastName}
                 </h5>
                 <div className="flex items-center text-xs text-slate-700">

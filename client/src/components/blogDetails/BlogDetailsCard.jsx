@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
 import useBlog from '../../hooks/useBlog';
+import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
 import Tags from './Tags';
 
 const BlogDetailsCard = () => {
   const { blogState } = useBlog();
+  const { fetchBlogAuthorData } = useFetchBlogAuthorData();
   const { singleBlog } = blogState || {};
   const {
     title,
     content,
     thumbnail,
-    author: { id: authorId, firstName, lastName, avatar } = {},
+    author: { id: profileId, firstName, lastName, avatar } = {},
     tags,
     likes,
     createdAt,
@@ -31,18 +32,25 @@ const BlogDetailsCard = () => {
       <div className="container py-8 text-center">
         <h1 className="text-3xl font-bold md:text-5xl">{title}</h1>
         <div className="flex items-center justify-center gap-4 my-4">
-          <Link to={`/profile/${authorId}`}>
-            <div className="flex items-center space-x-2 capitalize">
-              <img
-                className="font-bold text-white avater-img hover:text-white/80"
-                src={authorAvatar}
-                alt="Profile Image"
-              />
-              <h5 className="text-sm text-slate-500">
-                {firstName} {lastName}
-              </h5>
-            </div>
-          </Link>
+          <div className="flex items-center space-x-2 capitalize">
+            <img
+              onClick={() => {
+                fetchBlogAuthorData(profileId);
+              }}
+              className="font-bold text-white cursor-pointer avater-img hover:text-white/80"
+              src={authorAvatar}
+              alt="Profile Image"
+            />
+            <h5
+              onClick={() => {
+                fetchBlogAuthorData(profileId);
+              }}
+              className="text-sm cursor-pointer text-slate-500"
+            >
+              {firstName} {lastName}
+            </h5>
+          </div>
+
           <span className="text-sm text-slate-700 dot">June 28, 2018</span>
           <span className="text-sm text-slate-700 dot">
             {likes?.length} Likes

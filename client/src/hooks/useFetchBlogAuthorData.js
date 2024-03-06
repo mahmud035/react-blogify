@@ -7,10 +7,10 @@ const useFetchBlogAuthorData = () => {
   const { profileDispatch } = useProfile();
   const navigate = useNavigate();
 
-  const fetchBlogAuthorData = async (authorId) => {
+  const fetchBlogAuthorData = async (profileId) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${authorId}`
+        `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
       );
 
       if (response.status === 200) {
@@ -26,7 +26,7 @@ const useFetchBlogAuthorData = () => {
         error: error.message,
       });
     } finally {
-      navigate(`/profile/${authorId}`);
+      navigate(`/profile/${profileId}`);
     }
   };
 

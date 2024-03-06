@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { actions } from '../../actions';
 import editIcon from '../../assets/icons/edit.svg';
+import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
 import useAxios from '../../hooks/useAxios';
 import useGetUser from '../../hooks/useGetUser';
 import useProfile from '../../hooks/useProfile';
@@ -8,6 +9,7 @@ import useProfile from '../../hooks/useProfile';
 const ProfileImage = () => {
   const user = useGetUser();
   const { api } = useAxios();
+  const { showLoggedInUserInfo } = useShowLoggedInUserInfo();
   const { profile, profileDispatch } = useProfile();
   const { blogAuthor } = profile || {};
   const fileUploadRef = useRef(null);
@@ -15,7 +17,7 @@ const ProfileImage = () => {
   // Show dummy avatar if avatar is not found
   let nameFirstChar;
 
-  if (blogAuthor?.id === user?.id) {
+  if (showLoggedInUserInfo) {
     nameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
   } else {
     nameFirstChar = blogAuthor?.firstName?.slice(0, 1)?.toUpperCase();
@@ -69,11 +71,11 @@ const ProfileImage = () => {
     <div className="relative mb-8 max-h-[180px] max-w-[180px] h-[120px] w-[120px] rounded-full lg:mb-11 lg:max-h-[218px] lg:max-w-[218px]">
       <img
         className="max-w-full rounded-full"
-        src={blogAuthor?.id === user?.id ? userAvatar : authorAvatar}
+        src={showLoggedInUserInfo ? userAvatar : authorAvatar}
         alt="Profile Image"
       />
 
-      {blogAuthor?.id === user?.id && (
+      {showLoggedInUserInfo && (
         <form action="">
           <button
             onClick={handleFileUpload}

@@ -3,16 +3,19 @@ import { toast } from 'react-toastify';
 import { actions } from '../../actions';
 import checkIcon from '../../assets/icons/check.svg';
 import editIcon from '../../assets/icons/edit.svg';
+import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
 import useAxios from '../../hooks/useAxios';
 import useGetUser from '../../hooks/useGetUser';
 import useProfile from '../../hooks/useProfile';
 
 const Bio = () => {
-  const { profileDispatch } = useProfile();
+  const { profile, profileDispatch } = useProfile();
   const { api } = useAxios();
   const user = useGetUser();
+  const { showLoggedInUserInfo } = useShowLoggedInUserInfo();
   const [bio, setBio] = useState(user?.bio);
   const [editMode, setEditMode] = useState(false);
+  const { blogAuthor } = profile || {};
 
   const handleBioEdit = async () => {
     if (bio.length === 0) {
@@ -48,7 +51,13 @@ const Bio = () => {
         <div className="flex-1">
           {!editMode ? (
             <p className="leading-[188%] text-gray-400 lg:text-lg">
-              {bio ? bio : 'No Bio Information Found!'}
+              {bio?.length
+                ? showLoggedInUserInfo
+                  ? bio
+                  : blogAuthor?.bio
+                : 'No Bio Information Found!'}
+
+              {/* {bio ? bio : 'No Bio Information Found!'} */}
             </p>
           ) : (
             <textarea
@@ -64,21 +73,23 @@ const Bio = () => {
         </div>
 
         {/* Edit Bio button. The Above bio will be editable when clicking on the button  */}
-        {!editMode ? (
-          <button
-            onClick={() => setEditMode(true)}
-            className="rounded-full flex-center h-7 w-7"
-          >
-            <img src={editIcon} alt="Edit" />
-          </button>
-        ) : (
-          <button
-            onClick={handleBioEdit}
-            className="rounded-full flex-center h-7 w-7"
-          >
-            <img src={checkIcon} alt="Check" />
-          </button>
-        )}
+        {showLoggedInUserInfo ? (
+          !editMode ? (
+            <button
+              onClick={() => setEditMode(true)}
+              className="rounded-full flex-center h-7 w-7"
+            >
+              <img src={editIcon} alt="Edit" />
+            </button>
+          ) : (
+            <button
+              onClick={handleBioEdit}
+              className="rounded-full flex-center h-7 w-7"
+            >
+              <img src={checkIcon} alt="Check" />
+            </button>
+          )
+        ) : null}
       </div>
       <div className="w-3/4 border-b border-[#3F3F3F] py-6 lg:py-8"></div>
     </>
