@@ -13,11 +13,14 @@ const MainLayout = () => {
   const { loading } = profile || {};
   const { auth } = useAuth();
 
-  // get userId from localStorage
+  // Retrieve the user ID and currently viewed author's profile ID from localStorage
   const userId =
     JSON.parse(localStorage.getItem('authInfo'))?.userId || auth?.user?.id;
 
-  //* NOTE: Fetch login user information when user successfully loggedIn and set that information into ProfileContext, finally provide the userInformation across the Application using ProvideProvider. Also re-fetching the userInformation when page reloads.
+  const profileId =
+    localStorage.getItem('profileId') || profile?.blogAuthor?.id;
+
+  //* NOTE: Fetch the logged-in user's information upon successful login and store it in the ProfileContext. Then, provide this user information across the application using the ProvideProvider. Additionally, ensure that the user information is re-fetched when the page is reloaded.
 
   useEffect(() => {
     if (!userId) {
@@ -27,7 +30,7 @@ const MainLayout = () => {
     let ignore = false;
     profileDispatch({ type: actions.profile.DATA_FETCHING });
 
-    const fetchProfile = async () => {
+    const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`
@@ -38,7 +41,6 @@ const MainLayout = () => {
             type: actions.profile.DATA_FETCHED,
             data: response.data,
           });
-          // profileDispatch({})
         }
       } catch (error) {
         console.log(error);
@@ -49,13 +51,51 @@ const MainLayout = () => {
       }
     };
 
-    fetchProfile();
+    fetchUserProfile();
 
     // cleanup
     return () => {
       ignore = true;
     };
   }, [userId]);
+
+  // Re-fetch the profile data of the currently viewed author when page reloads
+  useEffect(() => {
+    if (!profileId) {
+      return;
+    }
+
+    let ignore = false;
+    profileDispatch({ type: actions.profile.DATA_FETCHING });
+
+    const fetchBlogAuthorProfile = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
+        );
+
+        if (response.status === 200 && !ignore) {
+          profileDispatch({
+            type: actions.profile.BLOG_AUTHOR_DATA_FETCHED,
+            data: response.data,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        profileDispatch({
+          type: actions.profile.DATA_FETCH_ERROR,
+          error: error.message,
+        });
+      }
+    };
+
+    fetchBlogAuthorProfile();
+
+    // cleanup
+    return () => {
+      ignore = true;
+    };
+  }, [profileId]);
 
   return (
     <div>

@@ -8,6 +8,8 @@ const useFetchBlogAuthorData = () => {
   const navigate = useNavigate();
 
   const fetchBlogAuthorData = async (profileId) => {
+    localStorage.setItem('profileId', profileId);
+
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
