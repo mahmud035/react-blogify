@@ -20,10 +20,16 @@ const blogReducer = (state, action) => {
     }
     // Data Fetched
     case actions.blog.DATA_FETCHED: {
+      const existingBlogIds = new Set(state.blogs.map((blog) => blog?.id));
+
+      const newBlogs = action.data.filter(
+        (blog) => !existingBlogIds.has(blog?.id)
+      );
+
       return {
         ...state,
         loading: false,
-        blogs: action.data,
+        blogs: [...state.blogs, ...newBlogs],
       };
     }
     // Data Fetch Error

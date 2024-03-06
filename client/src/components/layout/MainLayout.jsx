@@ -10,7 +10,7 @@ import LargeLoader from '../ui/LargeLoader';
 
 const MainLayout = () => {
   const { profile, profileDispatch } = useProfile();
-  const { loading, error } = profile || {};
+  const { loading } = profile || {};
   const { auth } = useAuth();
   const userId = localStorage.getItem('userId') || auth?.user?.id;
 
@@ -20,6 +20,7 @@ const MainLayout = () => {
       return;
     }
 
+    let ignore = false;
     profileDispatch({ type: actions.profile.DATA_FETCHING });
 
     const fetchProfile = async () => {
@@ -28,7 +29,7 @@ const MainLayout = () => {
           `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`
         );
 
-        if (response.status === 200) {
+        if (response.status === 200 && !ignore) {
           profileDispatch({
             type: actions.profile.DATA_FETCHED,
             data: response.data,
@@ -44,6 +45,11 @@ const MainLayout = () => {
     };
 
     fetchProfile();
+
+    // cleanup
+    return () => {
+      ignore = true;
+    };
   }, [userId]);
 
   return (

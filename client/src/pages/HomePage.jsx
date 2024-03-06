@@ -1,29 +1,43 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { actions } from '../actions';
 import BlogList from '../components/blogs/BlogList';
+import Error from '../components/ui/Error';
 import useBlog from '../hooks/useBlog';
+
+const limit = 4;
 
 const HomePage = () => {
   const { blogState, blogDispatch } = useBlog();
-  const { blogs } = blogState || {};
+  const { blogs, error } = blogState || {};
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const loaderRef = useRef(null);
+  const [showMessage, setShowMessage] = useState(false);
 
-  //* Fetch All Blogs Data
+  //* Fetch Blogs Data
   useEffect(() => {
+    let ignore = false;
     blogDispatch({ type: actions.blog.DATA_FETCHING });
 
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs?page=1`
+          `${
+            import.meta.env.VITE_SERVER_BASE_URL
+          }/blogs?page=${page}&limit=${limit}`
         );
 
-        if (response.status === 200) {
+        if (response.data?.blogs?.length === 0) {
+          setHasMore(false);
+          setShowMessage(true);
+        } else if (response.data?.blogs?.length > 0 && !ignore) {
           blogDispatch({
             type: actions.blog.DATA_FETCHED,
             data: response.data.blogs,
           });
+          setPage((prevPage) => prevPage + 1);
         }
       } catch (error) {
         console.log(error);
@@ -34,8 +48,39 @@ const HomePage = () => {
       }
     };
 
-    fetchBlogs();
-  }, []);
+    // IntersectionObserver for infinity scrolling
+    const onIntersection = (items) => {
+      const loaderItem = items[0];
+
+      if (loaderItem.isIntersecting && hasMore) {
+        fetchBlogs();
+      }
+    };
+
+    const observer = new IntersectionObserver(onIntersection);
+
+    if (observer && loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    // cleanup
+    return () => {
+      ignore = true;
+      if (observer) observer.disconnect();
+    };
+  }, [hasMore, page]);
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (showMessage) {
+      timeoutId = setTimeout(() => {
+        setShowMessage(false);
+      }, 1500);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [showMessage]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,7 +94,22 @@ const HomePage = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-7">
             {/* Blog Contents  */}
             <div className="space-y-3 md:col-span-5">
-              <BlogList blogs={blogs} />
+              {!error ? <BlogList blogs={blogs} /> : <Error error={error} />}
+
+              {hasMore && !error && (
+                <div
+                  ref={loaderRef}
+                  className="text-2xl text-center text-white"
+                >
+                  Loading more blogs...
+                </div>
+              )}
+
+              {showMessage && (
+                <div className="text-2xl text-center text-white">
+                  All products are fetched
+                </div>
+              )}
             </div>
 
             {/* Sidebar  */}
