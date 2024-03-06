@@ -5,7 +5,7 @@ const useGetUser = () => {
   const { auth } = useAuth();
   const { profile } = useProfile();
 
-  //* Decide where to get the user
+  //* get loggedIn user from profileContext or AuthContext
   const user = profile?.user ?? auth?.user;
 
   return user;

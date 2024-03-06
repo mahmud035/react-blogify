@@ -3,20 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import threeDotsIcon from '../../assets/icons/3dots.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import editIcon from '../../assets/icons/edit.svg';
+import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
+import useGetUser from '../../hooks/useGetUser';
 import useSearch from '../../hooks/useSearch';
 
 const BlogCard = ({ blog }) => {
   const [showAction, setShowAction] = useState(false);
   const { searchText, setSearchText, setShowSearchModal } = useSearch();
   const navigate = useNavigate();
+  const user = useGetUser();
+  const { fetchBlogAuthorData } = useFetchBlogAuthorData();
   const {
     id,
     title,
     content,
     thumbnail,
-    author: { firstName, lastName, avatar } = {},
+    author: { id: authorId, firstName, lastName, avatar } = {},
     likes,
   } = blog || {};
+
+  const isBlogPostedByUser = blog?.author?.id === user?.id;
 
   // Show dummy avatar if avatar is not found
   const nameFirstChar = firstName?.slice(0, 1)?.toUpperCase();
@@ -58,6 +64,29 @@ const BlogCard = ({ blog }) => {
     // delete blog task
   };
 
+  // const fetchBlogAuthorData = async (authorId) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${authorId}`
+  //     );
+
+  //     if (response.status === 200) {
+  //       profileDispatch({
+  //         type: actions.profile.BLOG_AUTHOR_DATA_FETCHED,
+  //         data: response.data,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     profileDispatch({
+  //       type: actions.profile.DATA_FETCH_ERROR,
+  //       error: error.message,
+  //     });
+  //   } finally {
+  //     navigate(`/profile/${authorId}`);
+  //   }
+  // };
+
   return (
     <div onClick={(e) => handleNavigate(e)} className="blog-card">
       <img
@@ -83,7 +112,8 @@ const BlogCard = ({ blog }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  navigate('/profile');
+                  fetchBlogAuthorData(authorId);
+                  // navigate(`/profile/${authorId}`);
                 }}
                 className="text-white"
               >
@@ -98,7 +128,8 @@ const BlogCard = ({ blog }) => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    navigate('/profile');
+                    fetchBlogAuthorData(authorId);
+                    // navigate(`/profile/${authorId}`);
                   }}
                   className="text-sm text-slate-500"
                 >
@@ -122,13 +153,15 @@ const BlogCard = ({ blog }) => {
         {/* TODO: Show 3dots Icons only if the blog is posted by the loggedIn user */}
         {/* action dot  */}
         <div className="absolute top-0 right-0">
-          <button
-            onClick={(e) => {
-              handleShowAction(e);
-            }}
-          >
-            <img src={threeDotsIcon} alt="3dots of Action" />
-          </button>
+          {isBlogPostedByUser && (
+            <button
+              onClick={(e) => {
+                handleShowAction(e);
+              }}
+            >
+              <img src={threeDotsIcon} alt="3dots of Action" />
+            </button>
+          )}
 
           {/* Action Menus Popup  */}
           {showAction && (

@@ -4,12 +4,14 @@ import { actions } from '../../actions';
 import checkIcon from '../../assets/icons/check.svg';
 import editIcon from '../../assets/icons/edit.svg';
 import useAxios from '../../hooks/useAxios';
+import useGetUser from '../../hooks/useGetUser';
 import useProfile from '../../hooks/useProfile';
 
 const Bio = () => {
-  const { profile, profileDispatch } = useProfile();
+  const { profileDispatch } = useProfile();
   const { api } = useAxios();
-  const [bio, setBio] = useState(profile?.user?.bio);
+  const user = useGetUser();
+  const [bio, setBio] = useState(user?.bio);
   const [editMode, setEditMode] = useState(false);
 
   const handleBioEdit = async () => {
@@ -53,7 +55,7 @@ const Bio = () => {
               onChange={(e) => setBio(e.target.value)}
               value={bio}
               className={`p-2 leading-[188%] text-gray-400 lg:text-lg rounded ${
-                bio.length === 0 && 'outline outline-red-500 outline-offset-0'
+                bio?.length === 0 && 'outline outline-red-500 outline-offset-0'
               }`}
               cols="55"
               rows="4"

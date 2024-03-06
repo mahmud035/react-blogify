@@ -4,9 +4,12 @@ import { api } from '../api';
 import useAuth from './useAuth';
 
 const useAxios = () => {
-  const { auth, setAuth, setIsLoggedIn } = useAuth();
+  const { auth, setAuth } = useAuth();
 
-  const accessToken = localStorage.getItem('accessToken') || auth?.accessToken;
+  // get accessToken
+  const accessToken =
+    JSON.parse(localStorage.getItem('authInfo'))?.accessToken ||
+    auth?.accessToken;
 
   useEffect(() => {
     //* Add a request interceptor
@@ -39,7 +42,6 @@ const useAxios = () => {
           if (response.status === 200) {
             const { accessToken } = response.data;
             localStorage.setItem('accessToken', accessToken);
-            setIsLoggedIn(true);
             setAuth({ ...auth, accessToken });
 
             // Retry the original request with the new accessToken

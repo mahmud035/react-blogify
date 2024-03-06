@@ -10,8 +10,8 @@ import useSearch from '../hooks/useSearch';
 
 const Header = () => {
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();
-  const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
   const { profileDispatch } = useProfile();
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
   const user = useGetUser();
 
@@ -23,11 +23,9 @@ const Header = () => {
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
 
   const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('userId');
-    setIsLoggedIn(false);
-    profileDispatch({ type: actions.profile.USER_LOGOUT });
+    localStorage.removeItem('authInfo');
     setAuth({});
+    profileDispatch({ type: actions.profile.USER_LOGOUT });
     navigate('/login');
   };
 
@@ -51,7 +49,7 @@ const Header = () => {
               </Link>
             </li>
             {/* Close SearchModal and clear search field */}
-            {isLoggedIn && (
+            {user && (
               <li
                 onClick={() => {
                   setShowSearchModal(true);
@@ -65,7 +63,7 @@ const Header = () => {
               </li>
             )}
 
-            {isLoggedIn ? (
+            {user ? (
               <li>
                 <button
                   onClick={handleLogout}
@@ -85,15 +83,15 @@ const Header = () => {
               </li>
             )}
 
-            {isLoggedIn && (
+            {user && (
               <li className="flex items-center">
-                <Link to="/profile">
+                <Link to={`/profile/${user?.id}`}>
                   <span className="mr-2 text-white hover:text-white/80">
                     {user?.firstName} {user?.lastName}
                   </span>
                 </Link>
 
-                <Link to="/profile">
+                <Link to={`/profile/${user?.id}`}>
                   <img
                     className="font-bold text-white avater-img hover:text-white/80"
                     src={userAvatar}

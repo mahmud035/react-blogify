@@ -16,9 +16,9 @@ const LoginForm = () => {
       password: '',
     },
   });
-  const { setAuth, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const { setAuth } = useAuth();
 
   const from = location.state?.from?.pathname || '/';
 
@@ -36,10 +36,13 @@ const LoginForm = () => {
         if (token) {
           const accessToken = token.accessToken;
           const refreshToken = token.refreshToken;
-          localStorage.setItem('accessToken', accessToken);
+
+          // set refreshToken, accessToken and userId into localStorage (for persisting the userInfo)
           localStorage.setItem('refreshToken', refreshToken);
-          localStorage.setItem('userId', user.id);
-          setIsLoggedIn(true);
+          const authInfo = { accessToken, userId: user.id };
+          localStorage.setItem('authInfo', JSON.stringify(authInfo));
+
+          // set authInfo into AuthContext (for in-memory auth management)
           setAuth({ user, accessToken, refreshToken });
           navigate(from, { replace: true });
         }

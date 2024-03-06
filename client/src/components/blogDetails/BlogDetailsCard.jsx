@@ -9,7 +9,7 @@ const BlogDetailsCard = () => {
     title,
     content,
     thumbnail,
-    author: { firstName, lastName, avatar } = {},
+    author: { id: authorId, firstName, lastName, avatar } = {},
     tags,
     likes,
     createdAt,
@@ -31,7 +31,7 @@ const BlogDetailsCard = () => {
       <div className="container py-8 text-center">
         <h1 className="text-3xl font-bold md:text-5xl">{title}</h1>
         <div className="flex items-center justify-center gap-4 my-4">
-          <Link to="/profile">
+          <Link to={`/profile/${authorId}`}>
             <div className="flex items-center space-x-2 capitalize">
               <img
                 className="font-bold text-white avater-img hover:text-white/80"

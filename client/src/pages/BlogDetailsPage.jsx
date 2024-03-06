@@ -18,7 +18,6 @@ const BlogDetailsPage = () => {
 
     const fetchSingleBlog = async () => {
       try {
-        // TODO: Confirm should I need use api or axios here ?
         const response = await axios.get(
           `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}`
         );

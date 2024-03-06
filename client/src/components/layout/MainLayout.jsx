@@ -12,9 +12,13 @@ const MainLayout = () => {
   const { profile, profileDispatch } = useProfile();
   const { loading } = profile || {};
   const { auth } = useAuth();
-  const userId = localStorage.getItem('userId') || auth?.user?.id;
 
-  //* Fetch Login User Info
+  // get userId from localStorage
+  const userId =
+    JSON.parse(localStorage.getItem('authInfo'))?.userId || auth?.user?.id;
+
+  //* NOTE: Fetch login user information when user successfully loggedIn and set that information into ProfileContext, finally provide the userInformation across the Application using ProvideProvider. Also re-fetching the userInformation when page reloads.
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -34,6 +38,7 @@ const MainLayout = () => {
             type: actions.profile.DATA_FETCHED,
             data: response.data,
           });
+          // profileDispatch({})
         }
       } catch (error) {
         console.log(error);

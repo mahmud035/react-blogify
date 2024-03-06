@@ -4,13 +4,14 @@ const profileInitialState = {
   user: null,
   blogs: [],
   favourites: [],
+  blogAuthor: null,
   loading: false,
   error: null,
 };
 
 const profileReducer = (state, action) => {
   // console.log('profileState =>', state);
-  // console.log('profileAction =>', action);
+  console.log('profileAction =>', action);
 
   switch (action.type) {
     // Data Fetching
@@ -29,6 +30,14 @@ const profileReducer = (state, action) => {
         //! re-think if this two needed or not
         blogs: action.data.blogs,
         favourites: action.data.favourites,
+      };
+    }
+    // Blog Author's Data Fetched
+    case actions.profile.BLOG_AUTHOR_DATA_FETCHED: {
+      return {
+        ...state,
+        loading: false,
+        blogAuthor: action.data,
       };
     }
     // Data Fetch Error

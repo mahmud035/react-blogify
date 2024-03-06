@@ -8,15 +8,30 @@ import useProfile from '../../hooks/useProfile';
 const ProfileImage = () => {
   const user = useGetUser();
   const { api } = useAxios();
-  const { profileDispatch } = useProfile();
+  const { profile, profileDispatch } = useProfile();
+  const { blogAuthor } = profile || {};
   const fileUploadRef = useRef(null);
 
-  // Show dummy avatar if user's avatar is not found
-  const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
+  // Show dummy avatar if avatar is not found
+  let nameFirstChar;
+
+  if (blogAuthor?.id === user?.id) {
+    nameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
+  } else {
+    nameFirstChar = blogAuthor?.firstName?.slice(0, 1)?.toUpperCase();
+  }
+
   const userAvatar =
     user?.avatar !== null
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
+      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
+
+  const authorAvatar =
+    blogAuthor?.avatar !== null
+      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
+          blogAuthor?.avatar
+        }`
+      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
 
   const handleFileUpload = (e) => {
     e.preventDefault();
@@ -52,30 +67,29 @@ const ProfileImage = () => {
 
   return (
     <div className="relative mb-8 max-h-[180px] max-w-[180px] h-[120px] w-[120px] rounded-full lg:mb-11 lg:max-h-[218px] lg:max-w-[218px]">
-      {/* <div className="grid w-full h-full text-5xl text-white bg-orange-600 rounded-full place-items-center">
-        <span className="">{userAvatar}</span>
-      </div> */}
       <img
         className="max-w-full rounded-full"
-        src={userAvatar}
+        src={blogAuthor?.id === user?.id ? userAvatar : authorAvatar}
         alt="Profile Image"
       />
 
-      <form action="">
-        <button
-          onClick={handleFileUpload}
-          className="absolute bottom-0 right-0 grid rounded-full place-items-center h-7 w-7 bg-slate-700 hover:bg-slate-700/80"
-        >
-          <img src={editIcon} alt="Edit" />
-        </button>
-        <input
-          type="file"
-          id="file"
-          accept="image/*"
-          ref={fileUploadRef}
-          className="hidden"
-        />
-      </form>
+      {blogAuthor?.id === user?.id && (
+        <form action="">
+          <button
+            onClick={handleFileUpload}
+            className="absolute bottom-0 right-0 grid rounded-full place-items-center h-7 w-7 bg-slate-700 hover:bg-slate-700/80"
+          >
+            <img src={editIcon} alt="Edit" />
+          </button>
+          <input
+            type="file"
+            id="file"
+            accept="image/*"
+            ref={fileUploadRef}
+            className="hidden"
+          />
+        </form>
+      )}
     </div>
   );
 };
