@@ -1,15 +1,14 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { actions } from '../actions';
 import BlogActions from '../components/blogDetails/BlogActions';
 import BlogComments from '../components/blogDetails/BlogComments';
 import BlogDetailsCard from '../components/blogDetails/BlogDetailsCard';
-import useAxios from '../hooks/useAxios';
 import useBlog from '../hooks/useBlog';
 
 const BlogDetailsPage = () => {
   const { blogDispatch } = useBlog();
-  const { api } = useAxios();
   const { blogId } = useParams();
 
   //* Fetch Single Blog Data
@@ -20,7 +19,7 @@ const BlogDetailsPage = () => {
     const fetchSingleBlog = async () => {
       try {
         // TODO: Confirm should I need use api or axios here ?
-        const response = await api.get(
+        const response = await axios.get(
           `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}`
         );
 
