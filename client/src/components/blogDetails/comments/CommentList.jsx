@@ -1,13 +1,20 @@
+import useBlog from '../../../hooks/useBlog';
 import Comment from './Comment';
 
-const CommentList = ({ comments }) => {
-  // TODO: comments will be mapped here and handle case when no comments data found
+const CommentList = () => {
+  const { blogState } = useBlog();
+  const { singleBlog } = blogState || {};
+  const { comments } = singleBlog;
 
   return (
     <>
-      <Comment />
-      <Comment />
-      <Comment />
+      {comments?.length > 0 ? (
+        comments
+          ?.sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
+          ?.map((comment) => <Comment key={comment?.id} comment={comment} />)
+      ) : (
+        <p className="pt-4 text-2xl text-center">No Comments Found!</p>
+      )}
     </>
   );
 };

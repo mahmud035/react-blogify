@@ -1,14 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { actions } from '../actions';
 import searchIcon from '../assets/icons/search.svg';
 import lwsLogo from '../assets/logo.svg';
 import SearchModal from '../components/search/SearchModal';
 import useAuth from '../hooks/useAuth';
 import useGetUser from '../hooks/useGetUser';
+import useProfile from '../hooks/useProfile';
 import useSearch from '../hooks/useSearch';
 
 const Header = () => {
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();
   const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
+  const { profileDispatch } = useProfile();
   const navigate = useNavigate();
   const user = useGetUser();
 
@@ -23,6 +26,7 @@ const Header = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('userId');
     setIsLoggedIn(false);
+    profileDispatch({ type: actions.profile.USER_LOGOUT });
     setAuth({});
     navigate('/login');
   };
@@ -90,7 +94,6 @@ const Header = () => {
                 </Link>
 
                 <Link to="/profile">
-                  {/* <span className="">{userAvatar}</span> */}
                   <img
                     className="font-bold text-white avater-img hover:text-white/80"
                     src={userAvatar}

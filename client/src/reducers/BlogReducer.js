@@ -3,6 +3,8 @@ import { actions } from '../actions';
 const blogInitialState = {
   blogs: [],
   popularBlogs: [],
+  favoritesBlogs: [],
+  singleBlog: {},
   loading: false,
   error: null,
 };
@@ -47,6 +49,14 @@ const blogReducer = (state, action) => {
         ...state,
         loading: false,
         popularBlogs: action.data,
+      };
+    }
+    // Single Blog Data Fetched
+    case actions.blog.SINGLE_BLOG_DATA_FETCHED: {
+      return {
+        ...state,
+        loading: false,
+        singleBlog: action.data,
       };
     }
     default: {

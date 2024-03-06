@@ -98,16 +98,13 @@ const HomePage = () => {
               {!error ? <BlogList blogs={blogs} /> : <Error error={error} />}
 
               {hasMore && !error && (
-                <div
-                  ref={loaderRef}
-                  className="text-2xl text-center text-white"
-                >
+                <div ref={loaderRef} className="text-xl text-center text-white">
                   Loading more blogs...
                 </div>
               )}
 
               {showMessage && (
-                <div className="text-2xl text-center text-white">
+                <div className="text-xl text-center text-white">
                   All products are fetched
                 </div>
               )}

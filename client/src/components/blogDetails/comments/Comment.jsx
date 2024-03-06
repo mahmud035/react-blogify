@@ -1,22 +1,26 @@
-const Comment = () => {
+const Comment = ({ comment }) => {
+  const { content, author: { firstName, lastName, avatar } = {} } =
+    comment || {};
+
+  // Show dummy avatar if avatar is not found
+  const nameFirstChar = firstName?.slice(0, 1)?.toUpperCase();
+  const authorAvatar =
+    avatar !== null
+      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${avatar}`
+      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
+
   return (
-    <div className="flex items-start space-x-4 my-8">
-      <div className="avater-img bg-orange-600 text-white">
-        <span className="">S</span>
-      </div>
+    <div className="flex items-start my-8 space-x-4">
+      <img
+        className="font-bold text-white avater-img hover:text-white/80"
+        src={authorAvatar}
+        alt="Profile Image"
+      />
       <div className="w-full">
-        <h5 className="text-slate -500 font-bold">Saad Hasan</h5>
-        <p className="text-slate-300">
-          Today I was mob programming with Square`s Mobile & Performance
-          Reliability team and we toyed with an interesting idea. Our codebase
-          has classes that represent screens a user can navigate to. These
-          classes are defined in modules, and these modules have an owner team
-          defined. When navigating to a screen, we wanted to have the owner team
-          information available, at runtime. We created a build tool that looks
-          at about 1000 Screen classes, determines the owner team, and generates
-          a class to do the lookup at runtime. The generated code looked like
-          this:
-        </p>
+        <h5 className="font-bold text-slate -500">
+          {firstName} {lastName}
+        </h5>
+        <p className="text-slate-300">{content}</p>
       </div>
     </div>
   );

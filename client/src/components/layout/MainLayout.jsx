@@ -55,7 +55,7 @@ const MainLayout = () => {
   return (
     <div>
       {loading ? (
-        <LargeLoader message="Fetching profile data..." />
+        <LargeLoader message="Loading" />
       ) : (
         <>
           <Header />

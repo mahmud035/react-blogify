@@ -58,6 +58,10 @@ const profileReducer = (state, action) => {
         },
       };
     }
+    // User Logout
+    case actions.profile.USER_LOGOUT: {
+      return {};
+    }
     default: {
       return state;
     }

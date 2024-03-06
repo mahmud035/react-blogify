@@ -10,6 +10,7 @@ const BlogCard = ({ blog }) => {
   const { searchText, setSearchText, setShowSearchModal } = useSearch();
   const navigate = useNavigate();
   const {
+    id,
     title,
     content,
     thumbnail,
@@ -39,7 +40,7 @@ const BlogCard = ({ blog }) => {
     e.stopPropagation();
     setShowSearchModal(false);
     //  TODO: Change with this: /blogs/:blogId
-    navigate(`/blogs/:1`);
+    navigate(`/blogs/${id}`);
     setSearchText('');
   };
 

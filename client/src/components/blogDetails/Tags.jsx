@@ -1,10 +1,9 @@
-const Tags = () => {
+const Tags = ({ tags }) => {
   return (
     <ul className="tags">
-      <li>JavaScript</li>
-      <li>Node</li>
-      <li>React</li>
-      <li>Next</li>
+      {tags?.split(',')?.map((tag, index) => (
+        <li key={index}>{tag}</li>
+      ))}
     </ul>
   );
 };
