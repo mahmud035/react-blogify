@@ -4,29 +4,27 @@ import commentIcon from '../../assets/icons/comment.svg';
 import heartFilledIcon from '../../assets/icons/heart-filled.svg';
 import heartIcon from '../../assets/icons/heart.svg';
 import likeIcon from '../../assets/icons/like.svg';
+import likedFilledIcon from '../../assets/icons/likeFilled.svg';
 import useAxios from '../../hooks/useAxios';
 import useBlog from '../../hooks/useBlog';
 import useGetUser from '../../hooks/useGetUser';
 import useProfile from '../../hooks/useProfile';
 
 const BlogActions = () => {
-  const { profile, profileDispatch } = useProfile();
-  const { user: loggedInUser } = profile || {};
+  const { profileDispatch } = useProfile();
   const { api } = useAxios();
   const user = useGetUser();
-  const { blogState } = useBlog();
+  const { blogState, blogDispatch } = useBlog();
   const { singleBlog } = blogState || {};
-  const { id } = singleBlog;
+  const { id, likes } = singleBlog;
 
   // Check if the id is included in user's favorites
-  const isFavorite = loggedInUser?.favourites?.some(
-    (favorite) => favorite.id === id
-  );
+  const isFavorite = user?.favourites?.some((favorite) => favorite.id === id);
+  const isLiked = likes?.some((like) => like?.id === user?.id);
 
+  //* Toggle Favorite
   const handleToggleFavorite = async (blogId) => {
     if (!user) return toast.error(`Please login to add the blog to favorites.`);
-
-    // profileDispatch({ type: actions.profile.DATA_FETCHING });
 
     try {
       const response = await api.patch(
@@ -47,17 +45,42 @@ const BlogActions = () => {
     }
   };
 
+  //* Toggle Like
+  const handleToggleLike = async (blogId) => {
+    if (!user) return toast.error(`Please login to like the blog.`);
+
+    try {
+      const response = await api.post(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/like`
+      );
+
+      if (response.status === 200) {
+        blogDispatch({
+          type: actions.blog.TOGGLE_LIKE,
+          data: response.data.likes,
+        });
+      }
+    } catch (error) {
+      blogDispatch({
+        type: actions.profile.DATA_FETCH_ERROR,
+        error: error.message,
+      });
+    }
+  };
+
   return (
     <div className="floating-action">
       <ul className="floating-action-menus">
         <li>
-          <img src={likeIcon} alt="like" />
-          <span>10</span>
+          <img
+            onClick={() => handleToggleLike(id)}
+            src={isLiked ? likedFilledIcon : likeIcon}
+            alt="like"
+          />
+          <span>{likes?.length}</span>
         </li>
 
         <li onClick={() => handleToggleFavorite(id)}>
-          {/* There is heart-filled.svg in the icons folder  */}
-
           <img src={isFavorite ? heartFilledIcon : heartIcon} alt="Favorite" />
         </li>
         <a href="#comments">

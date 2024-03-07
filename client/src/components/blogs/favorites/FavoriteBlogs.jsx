@@ -10,9 +10,6 @@ const FavoriteBlogs = () => {
 
   const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
 
-  // console.log('Render FavoriteBlogs Component');
-
-  // FIXME: this effect causes multiple re-renders. but why?
   //* Fetch Favorite Blogs
   useEffect(() => {
     if (userId) {

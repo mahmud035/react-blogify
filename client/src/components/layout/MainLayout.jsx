@@ -20,18 +20,14 @@ const MainLayout = () => {
   const profileId =
     localStorage.getItem('profileId') || profile?.blogAuthor?.id;
 
-  // console.log('Render MainLayout Component');
+  //* NOTE: Fetch / Re-fetch the logged-in user's information upon successful login and store it in the ProfileContext. Then, provide this user information across the application using the ProvideProvider. Additionally, ensure that the user information is re-fetched when the page is reloaded.
 
-  //* NOTE: Fetch the logged-in user's information upon successful login and store it in the ProfileContext. Then, provide this user information across the application using the ProvideProvider. Additionally, ensure that the user information is re-fetched when the page is reloaded.
-
-  //* Fetch / Re-fetch LoggedIn User Profile
   useEffect(() => {
     if (userId) {
       let ignore = false;
       profileDispatch({ type: actions.profile.DATA_FETCHING });
 
       const fetchUserProfile = async () => {
-        console.log('inside fetchUserProfile');
         try {
           const response = await axios.get(
             `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`

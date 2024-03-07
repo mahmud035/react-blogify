@@ -19,8 +19,6 @@ const HomePage = () => {
 
   const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
 
-  // console.log('Render HomePage Component');
-
   //* Fetch Blogs Data
   useEffect(() => {
     let ignore = false;

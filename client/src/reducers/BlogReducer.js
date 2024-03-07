@@ -58,6 +58,17 @@ const blogReducer = (state, action) => {
         singleBlog: action.data,
       };
     }
+    // Toggle Like Blog
+    case actions.blog.TOGGLE_LIKE: {
+      return {
+        ...state,
+        loading: false,
+        singleBlog: {
+          ...state.singleBlog,
+          likes: action.data,
+        },
+      };
+    }
     default: {
       return state;
     }

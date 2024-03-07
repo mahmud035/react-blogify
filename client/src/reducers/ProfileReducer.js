@@ -8,8 +8,8 @@ const profileInitialState = {
 };
 
 const profileReducer = (state, action) => {
-  console.log('profileState =>', state);
-  console.log('profileAction =>', action);
+  // console.log('profileState =>', state);
+  // console.log('profileAction =>', action);
 
   switch (action.type) {
     // Data Fetching
