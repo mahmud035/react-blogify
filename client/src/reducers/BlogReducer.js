@@ -69,6 +69,17 @@ const blogReducer = (state, action) => {
         },
       };
     }
+    // Blog Add Comment
+    case actions.blog.ADD_COMMENT: {
+      return {
+        ...state,
+        loading: false,
+        singleBlog: {
+          ...state.singleBlog,
+          comments: action.data,
+        },
+      };
+    }
     default: {
       return state;
     }

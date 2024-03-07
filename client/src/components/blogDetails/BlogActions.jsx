@@ -16,7 +16,7 @@ const BlogActions = () => {
   const user = useGetUser();
   const { blogState, blogDispatch } = useBlog();
   const { singleBlog } = blogState || {};
-  const { id, likes } = singleBlog;
+  const { id, likes, comments } = singleBlog;
 
   // Check if the id is included in user's favorites
   const isFavorite = user?.favourites?.some((favorite) => favorite.id === id);
@@ -86,7 +86,7 @@ const BlogActions = () => {
         <a href="#comments">
           <li>
             <img src={commentIcon} alt="Comments" />
-            <span>3</span>
+            <span>{comments?.length}</span>
           </li>
         </a>
       </ul>
