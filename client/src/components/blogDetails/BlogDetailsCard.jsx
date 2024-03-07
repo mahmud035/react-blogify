@@ -57,7 +57,7 @@ const BlogDetailsCard = () => {
           </span>
         </div>
         <img
-          className="object-cover w-full mx-auto md:w-8/12 h-80 md:h-96"
+          className="object-cover w-full mx-auto rounded-md md:w-8/12 h-80 md:h-96"
           src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/400x400`}
           alt=""
         />

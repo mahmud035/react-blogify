@@ -69,8 +69,19 @@ const blogReducer = (state, action) => {
         },
       };
     }
-    // Blog Add Comment
+    // Add Comment To Blog
     case actions.blog.ADD_COMMENT: {
+      return {
+        ...state,
+        loading: false,
+        singleBlog: {
+          ...state.singleBlog,
+          comments: action.data,
+        },
+      };
+    }
+    // Delete Comment From Blog
+    case actions.blog.DELETE_COMMENT: {
       return {
         ...state,
         loading: false,
