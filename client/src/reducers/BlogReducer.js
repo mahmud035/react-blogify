@@ -3,7 +3,6 @@ import { actions } from '../actions';
 const blogInitialState = {
   blogs: [],
   popularBlogs: [],
-  favoritesBlogs: [],
   singleBlog: {},
   loading: false,
   error: null,
@@ -21,6 +20,14 @@ const blogReducer = (state, action) => {
         loading: true,
       };
     }
+    // Data Fetch Error
+    case actions.blog.DATA_FETCH_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
     // Data Fetched
     case actions.blog.DATA_FETCHED: {
       const existingBlogIds = new Set(state.blogs.map((blog) => blog?.id));
@@ -33,14 +40,6 @@ const blogReducer = (state, action) => {
         ...state,
         loading: false,
         blogs: [...state.blogs, ...newBlogs],
-      };
-    }
-    // Data Fetch Error
-    case actions.blog.DATA_FETCH_ERROR: {
-      return {
-        ...state,
-        loading: false,
-        error: action.error,
       };
     }
     // Popular Blogs Data Fetched

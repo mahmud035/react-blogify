@@ -2,8 +2,6 @@ import { actions } from '../actions';
 
 const profileInitialState = {
   user: null,
-  blogs: [],
-  favourites: [],
   blogAuthor: null,
   loading: false,
   error: null,
@@ -21,15 +19,20 @@ const profileReducer = (state, action) => {
         loading: true,
       };
     }
+    // Data Fetch Error
+    case actions.profile.DATA_FETCH_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
     // Data Fetched
     case actions.profile.DATA_FETCHED: {
       return {
         ...state,
         loading: false,
         user: action.data,
-        //! re-think if this two needed or not
-        blogs: action.data.blogs,
-        favourites: action.data.favourites,
       };
     }
     // Blog Author's Data Fetched
@@ -38,14 +41,6 @@ const profileReducer = (state, action) => {
         ...state,
         loading: false,
         blogAuthor: action.data,
-      };
-    }
-    // Data Fetch Error
-    case actions.profile.DATA_FETCH_ERROR: {
-      return {
-        ...state,
-        loading: false,
-        error: action.error,
       };
     }
     // User Data Edited

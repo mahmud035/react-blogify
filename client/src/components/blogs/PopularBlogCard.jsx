@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
+import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
 
 const PopularBlogCard = ({ blog }) => {
-  const { id, title, author: { firstName, lastName } = {}, likes } = blog;
+  const { fetchBlogAuthorData } = useFetchBlogAuthorData();
+  const {
+    id,
+    title,
+    author: { id: profileId, firstName, lastName } = {},
+    likes,
+  } = blog;
 
   return (
     <li>
@@ -13,9 +20,14 @@ const PopularBlogCard = ({ blog }) => {
       </Link>
       <p className="text-sm text-slate-600">
         by{' '}
-        <Link to="/profile">
+        <span
+          onClick={() => {
+            fetchBlogAuthorData(profileId);
+          }}
+          className="cursor-pointer"
+        >
           {firstName} {lastName}
-        </Link>
+        </span>
         <span>·</span> {likes?.length} Likes
       </p>
     </li>

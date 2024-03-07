@@ -13,7 +13,7 @@ const Bio = () => {
   const { api } = useAxios();
   const user = useGetUser();
   const { showLoggedInUserInfo } = useShowLoggedInUserInfo();
-  const [bio, setBio] = useState(user?.bio);
+  const [bio, setBio] = useState(user?.bio || profile?.blogAuthor?.bio);
   const [editMode, setEditMode] = useState(false);
   const { blogAuthor } = profile || {};
 
@@ -53,11 +53,9 @@ const Bio = () => {
             <p className="leading-[188%] text-gray-400 lg:text-lg">
               {bio?.length
                 ? showLoggedInUserInfo
-                  ? bio
+                  ? user?.bio
                   : blogAuthor?.bio
                 : 'No Bio Information Found!'}
-
-              {/* {bio ? bio : 'No Bio Information Found!'} */}
             </p>
           ) : (
             <textarea
