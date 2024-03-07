@@ -1,14 +1,14 @@
-import useBlog from '../../../hooks/useBlog';
+import useProfile from '../../../hooks/useProfile';
 import FavoriteBlogCard from './FavoriteBlogCard';
 
 const FavoriteBlogList = () => {
-  const { blogState } = useBlog();
-  const { favoritesBlogs } = blogState || {};
+  const { profile } = useProfile();
+  const { user } = profile || {};
 
   return (
     <ul className="my-5 space-y-5">
-      {favoritesBlogs?.length > 0 ? (
-        favoritesBlogs
+      {user?.favourites?.length > 0 ? (
+        user?.favourites
           ?.sort((a, b) => new Date(b?.createAt) - new Date(a?.createAt))
           ?.map((blog) => <FavoriteBlogCard key={blog?.id} blog={blog} />)
       ) : (

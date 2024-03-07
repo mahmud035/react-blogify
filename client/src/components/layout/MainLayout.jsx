@@ -20,90 +20,89 @@ const MainLayout = () => {
   const profileId =
     localStorage.getItem('profileId') || profile?.blogAuthor?.id;
 
+  // console.log('Render MainLayout Component');
+
   //* NOTE: Fetch the logged-in user's information upon successful login and store it in the ProfileContext. Then, provide this user information across the application using the ProvideProvider. Additionally, ensure that the user information is re-fetched when the page is reloaded.
 
+  //* Fetch / Re-fetch LoggedIn User Profile
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
+    if (userId) {
+      let ignore = false;
+      profileDispatch({ type: actions.profile.DATA_FETCHING });
 
-    let ignore = false;
-    profileDispatch({ type: actions.profile.DATA_FETCHING });
+      const fetchUserProfile = async () => {
+        console.log('inside fetchUserProfile');
+        try {
+          const response = await axios.get(
+            `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`
+          );
 
-    const fetchUserProfile = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`
-        );
-
-        if (response.status === 200 && !ignore) {
+          if (response.status === 200 && !ignore) {
+            profileDispatch({
+              type: actions.profile.DATA_FETCHED,
+              data: response.data,
+            });
+          }
+        } catch (error) {
+          console.log(error);
           profileDispatch({
-            type: actions.profile.DATA_FETCHED,
-            data: response.data,
+            type: actions.profile.DATA_FETCH_ERROR,
+            error: error?.response?.data?.error,
           });
         }
-      } catch (error) {
-        console.log(error);
-        profileDispatch({
-          type: actions.profile.DATA_FETCH_ERROR,
-          error: error?.response?.data?.error,
-        });
-      }
-    };
+      };
+      fetchUserProfile();
 
-    fetchUserProfile();
-
-    // cleanup
-    return () => {
-      ignore = true;
-    };
+      // cleanup
+      return () => {
+        ignore = true;
+      };
+    }
   }, [userId]);
 
-  // Re-fetch the profile data of the currently viewed author when page reloads
+  //* Re-fetch the profile data of the currently viewed author when page reloads
   useEffect(() => {
-    if (!profileId) {
-      return;
-    }
+    if (profileId) {
+      let ignore = false;
+      profileDispatch({ type: actions.profile.DATA_FETCHING });
 
-    let ignore = false;
-    profileDispatch({ type: actions.profile.DATA_FETCHING });
+      const fetchBlogAuthorProfile = async () => {
+        try {
+          const response = await axios.get(
+            `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
+          );
 
-    const fetchBlogAuthorProfile = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
-        );
-
-        if (response.status === 200 && !ignore) {
+          if (response.status === 200 && !ignore) {
+            profileDispatch({
+              type: actions.profile.BLOG_AUTHOR_DATA_FETCHED,
+              data: response.data,
+            });
+          }
+        } catch (error) {
+          console.log(error);
           profileDispatch({
-            type: actions.profile.BLOG_AUTHOR_DATA_FETCHED,
-            data: response.data,
+            type: actions.profile.DATA_FETCH_ERROR,
+            error: error.message,
           });
         }
-      } catch (error) {
-        console.log(error);
-        profileDispatch({
-          type: actions.profile.DATA_FETCH_ERROR,
-          error: error.message,
-        });
-      }
-    };
+      };
+      fetchBlogAuthorProfile();
 
-    fetchBlogAuthorProfile();
-
-    // cleanup
-    return () => {
-      ignore = true;
-    };
+      // cleanup
+      return () => {
+        ignore = true;
+      };
+    }
   }, [profileId]);
 
   return (
     <div>
+      <Header />
+
       {loading ? (
         <LargeLoader message="Loading" />
       ) : (
         <>
-          <Header />
           <Outlet />
           <Footer />
         </>

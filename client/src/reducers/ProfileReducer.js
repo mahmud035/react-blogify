@@ -8,8 +8,8 @@ const profileInitialState = {
 };
 
 const profileReducer = (state, action) => {
-  // console.log('profileState =>', state);
-  // console.log('profileAction =>', action);
+  console.log('profileState =>', state);
+  console.log('profileAction =>', action);
 
   switch (action.type) {
     // Data Fetching
@@ -61,6 +61,55 @@ const profileReducer = (state, action) => {
           avatar: action.data.avatar,
         },
       };
+    }
+    // Favorite Blog's Data Fetched
+    case actions.profile.FAVORITE_BLOG_DATA_FETCHED: {
+      return {
+        ...state,
+        loading: false,
+        user: {
+          ...state.user,
+          favourites: action.data,
+        },
+      };
+    }
+    // Toggle Favorite Blog
+    case actions.profile.TOGGLE_FAVORITE: {
+      const newData = action.data;
+      const favorites = state.user?.favourites || [];
+
+      // Check if newData already exists in favorites
+      const existingIndex = favorites.findIndex(
+        (item) => item.id === newData.id
+      );
+
+      if (existingIndex === -1) {
+        // newData does not exist in favorites
+        const updatedFavorites = [...favorites, newData];
+
+        return {
+          ...state,
+          loading: false,
+          user: {
+            ...state.user,
+            favourites: updatedFavorites,
+          },
+        };
+      } else {
+        // newData already exists in favorites, remove it
+        const updatedFavorites = favorites.filter(
+          (item) => item.id !== newData.id
+        );
+
+        return {
+          ...state,
+          loading: false,
+          user: {
+            ...state.user,
+            favourites: updatedFavorites,
+          },
+        };
+      }
     }
     // User Logout
     case actions.profile.USER_LOGOUT: {

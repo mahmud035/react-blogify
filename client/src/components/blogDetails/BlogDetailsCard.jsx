@@ -3,8 +3,8 @@ import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
 import Tags from './Tags';
 
 const BlogDetailsCard = () => {
-  const { blogState } = useBlog();
   const { fetchBlogAuthorData } = useFetchBlogAuthorData();
+  const { blogState } = useBlog();
   const { singleBlog } = blogState || {};
   const {
     title,

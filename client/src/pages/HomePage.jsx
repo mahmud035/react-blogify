@@ -6,18 +6,20 @@ import PopularBlogs from '../components/blogs/PopularBlogs';
 import FavoriteBlogs from '../components/blogs/favorites/FavoriteBlogs';
 import Error from '../components/ui/Error';
 import useBlog from '../hooks/useBlog';
-import useGetUser from '../hooks/useGetUser';
 
-const limit = 4;
+const blogPerPage = 10;
 
 const HomePage = () => {
-  const user = useGetUser();
   const { blogState, blogDispatch } = useBlog();
   const { blogs, error } = blogState || {};
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
   const [showMessage, setShowMessage] = useState(false);
+
+  const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
+
+  // console.log('Render HomePage Component');
 
   //* Fetch Blogs Data
   useEffect(() => {
@@ -29,7 +31,7 @@ const HomePage = () => {
         const response = await axios.get(
           `${
             import.meta.env.VITE_SERVER_BASE_URL
-          }/blogs?page=${page}&limit=${limit}`
+          }/blogs?page=${page}&limit=${blogPerPage}`
         );
 
         if (response.data?.blogs?.length === 0) {
@@ -117,7 +119,7 @@ const HomePage = () => {
               <PopularBlogs />
 
               {/* Render FavoriteBlogs if user is loggedIn */}
-              {user && <FavoriteBlogs />}
+              {userId && <FavoriteBlogs />}
             </div>
           </div>
         </div>

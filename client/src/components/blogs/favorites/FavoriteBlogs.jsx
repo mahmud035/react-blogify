@@ -1,45 +1,50 @@
 import { useEffect } from 'react';
 import { actions } from '../../../actions';
 import useAxios from '../../../hooks/useAxios';
-import useBlog from '../../../hooks/useBlog';
+import useProfile from '../../../hooks/useProfile';
 import FavoriteBlogList from './FavoriteBlogList';
 
 const FavoriteBlogs = () => {
-  const { blogDispatch } = useBlog();
+  const { profileDispatch } = useProfile();
   const { api } = useAxios();
 
+  const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
+
+  // console.log('Render FavoriteBlogs Component');
+
+  // FIXME: this effect causes multiple re-renders. but why?
   //* Fetch Favorite Blogs
   useEffect(() => {
-    let ignore = false;
-    blogDispatch({ type: actions.blog.DATA_FETCHING });
+    if (userId) {
+      let ignore = false;
 
-    const fetchFavoriteBlogs = async () => {
-      try {
-        const response = await api.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/favourites`
-        );
+      const fetchFavoriteBlogs = async () => {
+        try {
+          const response = await api.get(
+            `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/favourites`
+          );
 
-        if (response.status === 200 && !ignore) {
-          blogDispatch({
-            type: actions.blog.FAVORITE_BLOG_DATA_FETCHED,
-            data: response.data.blogs,
+          if (response.status === 200 && !ignore) {
+            profileDispatch({
+              type: actions.profile.FAVORITE_BLOG_DATA_FETCHED,
+              data: response.data.blogs,
+            });
+          }
+        } catch (error) {
+          console.log(error);
+          profileDispatch({
+            type: actions.profile.DATA_FETCH_ERROR,
+            error: error.message,
           });
         }
-      } catch (error) {
-        console.log(error);
-        blogDispatch({
-          type: actions.blog.DATA_FETCH_ERROR,
-          error: error.message,
-        });
-      }
-    };
+      };
+      fetchFavoriteBlogs();
 
-    fetchFavoriteBlogs();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
+      return () => {
+        ignore = true;
+      };
+    }
+  }, [userId]);
 
   return (
     <div className="sidebar-card">
