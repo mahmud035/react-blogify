@@ -13,7 +13,6 @@ const MainLayout = () => {
   const { loading } = profile || {};
   const { auth } = useAuth();
 
-  // Retrieve the user ID and currently viewed author's profile ID from localStorage
   const userId =
     JSON.parse(localStorage.getItem('authInfo'))?.userId || auth?.user?.id;
 
@@ -26,8 +25,6 @@ const MainLayout = () => {
     if (userId) {
       let ignore = false;
       profileDispatch({ type: actions.profile.DATA_FETCHING });
-
-      console.log('Re-fetching user Information');
 
       const fetchUserProfile = async () => {
         try {

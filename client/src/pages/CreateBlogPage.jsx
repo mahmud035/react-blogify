@@ -19,12 +19,9 @@ const CreateBlogPage = () => {
   //* Create New Blog
   const handleCreateBlog = async (data) => {
     const formData = new FormData();
-
-    // append thumbnail
     const file = data?.thumbnail[0];
-    formData.append('thumbnail', file);
 
-    // append others info
+    formData.append('thumbnail', file);
     formData.append('title', data.title);
     formData.append('content', data.content);
     formData.append('tags', data.tags);

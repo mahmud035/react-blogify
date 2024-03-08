@@ -49,7 +49,6 @@ const EditBlogPage = () => {
       formData.append('thumbnail', data?.thumbnail[0] || thumbnail);
     }
 
-    // append others info
     formData.append('title', data.title);
     formData.append('content', data.content);
     formData.append('tags', data.tags);
@@ -129,8 +128,6 @@ const EditBlogPage = () => {
                 </label>
               </div>
             </div>
-
-            {/*  */}
 
             {errors?.thumbnail && (
               <p role="alert" className="text-red-500 ">
