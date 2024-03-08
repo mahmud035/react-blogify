@@ -11,6 +11,7 @@ import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
 import useGetUser from '../../hooks/useGetUser';
 import useProfile from '../../hooks/useProfile';
 import useSearch from '../../hooks/useSearch';
+import { getFormattedDate } from '../../utils/date-time-utils';
 
 const BlogCard = ({ blog }) => {
   const [showAction, setShowAction] = useState(false);
@@ -145,7 +146,9 @@ const BlogCard = ({ blog }) => {
                   {firstName} {lastName}
                 </h5>
                 <div className="flex items-center text-xs text-slate-700">
-                  <span>June 28, 2018</span>
+                  <span>
+                    {blog?.createdAt && getFormattedDate(blog?.createdAt)}
+                  </span>
                 </div>
               </div>
             </div>
@@ -155,8 +158,6 @@ const BlogCard = ({ blog }) => {
             </div>
           </div>
         )}
-
-        {/* TODO: Use e.preventDefault() and e.stopPropagation() to stop the propagation of click event */}
 
         {/* Show 3dots Icons only if the blog is posted by the loggedIn user */}
         {/* action dot  */}

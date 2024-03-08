@@ -1,5 +1,6 @@
 import useBlog from '../../hooks/useBlog';
 import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
+import { getFormattedDate } from '../../utils/date-time-utils';
 import Tags from './Tags';
 
 const BlogDetailsCard = () => {
@@ -13,7 +14,6 @@ const BlogDetailsCard = () => {
     author: { id: profileId, firstName, lastName, avatar } = {},
     tags,
     likes,
-    createdAt,
   } = singleBlog;
 
   // Show dummy avatar if avatar is not found
@@ -51,7 +51,9 @@ const BlogDetailsCard = () => {
             </h5>
           </div>
 
-          <span className="text-sm text-slate-700 dot">June 28, 2018</span>
+          <span className="text-sm text-slate-700 dot">
+            {singleBlog?.createdAt && getFormattedDate(singleBlog?.createdAt)}
+          </span>
           <span className="text-sm text-slate-700 dot">
             {likes?.length} Likes
           </span>

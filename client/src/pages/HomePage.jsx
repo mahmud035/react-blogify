@@ -106,8 +106,8 @@ const HomePage = () => {
               )}
 
               {showMessage && (
-                <div className="text-xl text-center text-white">
-                  All products are fetched
+                <div className="text-xl italic text-center text-white">
+                  All blogs are fetched!
                 </div>
               )}
             </div>
