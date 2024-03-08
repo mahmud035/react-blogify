@@ -7,7 +7,7 @@ const MyBlogs = () => {
   const { profile } = useProfile();
 
   const blogs = showLoggedInUserInfo
-    ? profile?.blogs
+    ? profile?.user?.blogs
     : profile?.blogAuthor?.blogs;
 
   return (
