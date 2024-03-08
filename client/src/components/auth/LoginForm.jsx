@@ -48,12 +48,15 @@ const LoginForm = () => {
         }
       }
     } catch (error) {
+      console.log(error);
       setError('root.random', {
         type: 'random',
         message: `${error?.response?.data?.error}`,
       });
     }
   };
+
+  console.log(errors);
 
   return (
     <form action="" onSubmit={handleSubmit(handleLogin)}>
@@ -83,14 +86,6 @@ const LoginForm = () => {
         <input
           {...register('password', {
             required: 'Password is required',
-            minLength: {
-              value: 8,
-              message: 'Password should be at least 8 characters.',
-            },
-            maxLength: {
-              value: 20,
-              message: 'Password can be maximum 20 characters.',
-            },
           })}
           type="password"
           id="password"

@@ -13,12 +13,14 @@ const Bio = () => {
   const { api } = useAxios();
   const user = useGetUser();
   const { showLoggedInUserInfo } = useShowLoggedInUserInfo();
-  const [bio, setBio] = useState(user?.bio || profile?.blogAuthor?.bio);
+  const [bio, setBio] = useState(
+    showLoggedInUserInfo ? user?.bio : profile?.blogAuthor?.bio
+  );
   const [editMode, setEditMode] = useState(false);
-  const { blogAuthor } = profile || {};
 
+  //* Edit Bio
   const handleBioEdit = async () => {
-    if (bio.length === 0) {
+    if (bio?.length === 0) {
       return toast.warn('Please write something about yourself.');
     }
 
@@ -33,7 +35,7 @@ const Bio = () => {
       if (response.status === 200) {
         profileDispatch({
           type: actions.profile.USER_DATA_EDITED,
-          data: response.data?.user,
+          data: response.data?.user?.bio,
         });
         toast.success('Profile Updated Successfully!');
       }
@@ -54,7 +56,7 @@ const Bio = () => {
               {bio?.length
                 ? showLoggedInUserInfo
                   ? user?.bio
-                  : blogAuthor?.bio
+                  : profile?.blogAuthor?.bio
                 : 'No Bio Information Found!'}
             </p>
           ) : (

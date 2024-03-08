@@ -24,6 +24,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('authInfo');
+    localStorage.removeItem('profileId');
     setAuth({});
     profileDispatch({ type: actions.profile.USER_LOGOUT });
     navigate('/login');
