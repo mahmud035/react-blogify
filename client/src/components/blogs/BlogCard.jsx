@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { actions } from '../../actions';
 import threeDotsIcon from '../../assets/icons/3dots.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import editIcon from '../../assets/icons/edit.svg';
+import useAxios from '../../hooks/useAxios';
+import useBlog from '../../hooks/useBlog';
 import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
 import useGetUser from '../../hooks/useGetUser';
+import useProfile from '../../hooks/useProfile';
 import useSearch from '../../hooks/useSearch';
 
 const BlogCard = ({ blog }) => {
@@ -13,6 +18,9 @@ const BlogCard = ({ blog }) => {
   const navigate = useNavigate();
   const user = useGetUser();
   const { fetchBlogAuthorData } = useFetchBlogAuthorData();
+  const { profileDispatch } = useProfile();
+  const { blogDispatch } = useBlog();
+  const { api } = useAxios();
   const {
     id,
     title,
@@ -45,7 +53,6 @@ const BlogCard = ({ blog }) => {
     e.preventDefault();
     e.stopPropagation();
     setShowSearchModal(false);
-    //  TODO: Change with this: /blogs/:blogId
     navigate(`/blogs/${id}`);
     setSearchText('');
   };
@@ -57,11 +64,36 @@ const BlogCard = ({ blog }) => {
     // edit blog task
   };
 
-  const handleDeleteBlog = (e) => {
+  //* Delete Blog
+  const handleDeleteBlog = async (e, blogId) => {
     e.preventDefault();
     e.stopPropagation();
 
-    // delete blog task
+    const confirm = window.confirm('Are you sure you want to DELETE the blog?');
+
+    if (confirm) {
+      // delete blog task
+      try {
+        const response = await api.delete(
+          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}`
+        );
+
+        if (response.status === 200) {
+          profileDispatch({
+            type: actions.profile.DATA_DELETED,
+            data: blog?.id,
+          });
+          blogDispatch({ type: actions.blog.DATA_DELETED, data: blog?.id });
+          toast.success('Blog deleted successfully');
+          setShowAction(false);
+        }
+      } catch (error) {
+        profileDispatch({
+          type: actions.profile.DATA_FETCH_ERROR,
+          error: error.message,
+        });
+      }
+    }
   };
 
   return (
@@ -124,7 +156,7 @@ const BlogCard = ({ blog }) => {
 
         {/* TODO: Use e.preventDefault() and e.stopPropagation() to stop the propagation of click event */}
 
-        {/* TODO: Show 3dots Icons only if the blog is posted by the loggedIn user */}
+        {/* Show 3dots Icons only if the blog is posted by the loggedIn user */}
         {/* action dot  */}
         <div className="absolute top-0 right-0">
           {isBlogPostedByUser && (
@@ -149,7 +181,7 @@ const BlogCard = ({ blog }) => {
                 Edit
               </button>
               <button
-                onClick={(e) => handleDeleteBlog(e)}
+                onClick={(e) => handleDeleteBlog(e, id)}
                 className="action-menu-item hover:text-red-500"
               >
                 <img src={deleteIcon} alt="Delete" />

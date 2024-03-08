@@ -76,6 +76,22 @@ const profileReducer = (state, action) => {
         },
       };
     }
+    // Delete User's Blog
+    case actions.profile.DATA_DELETED: {
+      return {
+        ...state,
+        loading: false,
+        user: {
+          ...state.user,
+          blogs: state.user?.blogs.filter((blog) => blog?.id !== action?.data),
+
+          // BUG in backend server. No need to implement this.
+          // favourites: state.user?.favourites.filter(
+          //   (favoriteBlog) => favoriteBlog?.id !== action.data
+          // ),
+        },
+      };
+    }
     // Favorite Blog's Data Fetched
     case actions.profile.FAVORITE_BLOG_DATA_FETCHED: {
       return {

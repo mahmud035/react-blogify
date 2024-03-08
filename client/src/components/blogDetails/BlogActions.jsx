@@ -16,11 +16,12 @@ const BlogActions = () => {
   const user = useGetUser();
   const { blogState, blogDispatch } = useBlog();
   const { singleBlog } = blogState || {};
-  const { id, likes, comments } = singleBlog;
+  const { id, likes, comments, author: { id: authorId } = {} } = singleBlog;
 
   // Check if the id is included in user's favorites
   const isFavorite = user?.favourites?.some((favorite) => favorite.id === id);
   const isLiked = likes?.some((like) => like?.id === user?.id);
+  const showFavoriteIcon = authorId !== user?.id;
 
   //* Toggle Favorite
   const handleToggleFavorite = async (blogId) => {
@@ -80,9 +81,15 @@ const BlogActions = () => {
           <span>{likes?.length}</span>
         </li>
 
-        <li onClick={() => handleToggleFavorite(id)}>
-          <img src={isFavorite ? heartFilledIcon : heartIcon} alt="Favorite" />
-        </li>
+        {showFavoriteIcon && (
+          <li onClick={() => handleToggleFavorite(id)}>
+            <img
+              src={isFavorite ? heartFilledIcon : heartIcon}
+              alt="Favorite"
+            />
+          </li>
+        )}
+
         <a href="#comments">
           <li>
             <img src={commentIcon} alt="Comments" />

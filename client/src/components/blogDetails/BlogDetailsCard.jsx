@@ -59,7 +59,7 @@ const BlogDetailsCard = () => {
         <img
           className="object-cover w-full mx-auto rounded-md md:w-8/12 h-80 md:h-96"
           src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/400x400`}
-          alt=""
+          alt="Blog Thumbnail"
         />
         {/* Tags */}
         <Tags tags={tags} />

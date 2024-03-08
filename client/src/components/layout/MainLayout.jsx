@@ -27,6 +27,8 @@ const MainLayout = () => {
       let ignore = false;
       profileDispatch({ type: actions.profile.DATA_FETCHING });
 
+      console.log('Re-fetching user Information');
+
       const fetchUserProfile = async () => {
         try {
           const response = await axios.get(

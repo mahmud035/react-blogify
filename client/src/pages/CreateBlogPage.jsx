@@ -24,8 +24,6 @@ const CreateBlogPage = () => {
     const file = data?.thumbnail[0];
     formData.append('thumbnail', file);
 
-    console.log(file);
-
     // append others info
     formData.append('title', data.title);
     formData.append('content', data.content);
@@ -93,7 +91,7 @@ const CreateBlogPage = () => {
                     name="thumbnail"
                     id="thumbnail"
                     className="hidden"
-                    accept="image/*"
+                    accept="image/png, image/jpeg"
                   />
                 </label>
               </div>
