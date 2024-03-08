@@ -12,7 +12,7 @@ const InputField = ({ label, children, htmlFor, error }) => {
       )}
       {children}
       {error && (
-        <p role="alert" className="pt-1 text-red-500">
+        <p role="alert" className="pt-1 text-red-500 ">
           {error.message}
         </p>
       )}

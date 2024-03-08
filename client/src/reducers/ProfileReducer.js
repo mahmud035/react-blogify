@@ -62,6 +62,17 @@ const profileReducer = (state, action) => {
         },
       };
     }
+    // Create New Blog
+    case actions.profile.DATA_CREATED: {
+      return {
+        ...state,
+        loading: false,
+        user: {
+          ...state.user,
+          blogs: [...state.user.blogs, action.data],
+        },
+      };
+    }
     // Favorite Blog's Data Fetched
     case actions.profile.FAVORITE_BLOG_DATA_FETCHED: {
       return {
