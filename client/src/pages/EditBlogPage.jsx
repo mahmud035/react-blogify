@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -6,23 +7,47 @@ import InputField from '../components/ui/InputField';
 import useAxios from '../hooks/useAxios';
 import useProfile from '../hooks/useProfile';
 
-const CreateBlogPage = () => {
+const EditBlogPage = () => {
   const { profileDispatch } = useProfile();
   const { api } = useAxios();
   const navigate = useNavigate();
+  const blogToEdit = JSON.parse(localStorage.getItem('blogToEdit'));
+  const { id, thumbnail, title, tags, content } = blogToEdit || {};
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      title: title,
+      tags: tags,
+      content: content,
+    },
+  });
+  const [uploadedImage, setUploadedImage] = useState(null);
 
-  //* Create New Blog
-  const handleCreateBlog = async (data) => {
+  const blogThumbnail = `${
+    import.meta.env.VITE_SERVER_BASE_URL
+  }/uploads/blog/${thumbnail}`;
+
+  const handleImageChange = (e) => {
+    if (e.target.files?.length > 0) {
+      setUploadedImage(e.target.files[0]);
+      toast.success('Image uploaded successfully');
+    }
+  };
+
+  //* Edit Blog
+  const handleEditBlog = async (data) => {
     const formData = new FormData();
 
-    // append thumbnail
-    const file = data?.thumbnail[0];
-    formData.append('thumbnail', file);
+    // Append newly uploaded image if available
+    if (uploadedImage) {
+      formData.append('thumbnail', uploadedImage);
+    } else {
+      // If no new image is uploaded, append the existing thumbnail
+      formData.append('thumbnail', data?.thumbnail[0] || thumbnail);
+    }
 
     // append others info
     formData.append('title', data.title);
@@ -30,18 +55,18 @@ const CreateBlogPage = () => {
     formData.append('tags', data.tags);
 
     try {
-      const response = await api.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/`,
+      const response = await api.patch(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${id}`,
         formData
       );
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         profileDispatch({
-          type: actions.profile.DATA_CREATED,
-          data: response.data.blog,
+          type: actions.profile.DATA_EDITED,
+          data: response.data,
         });
-        toast.success('Blog created successfully.');
-        navigate(`/blogs/${response.data?.blog?.id}`);
+        toast.success('Blog updated successfully.');
+        navigate(`/blogs/${response.data?.id}`);
       }
     } catch (error) {
       profileDispatch({
@@ -57,13 +82,22 @@ const CreateBlogPage = () => {
         <div className="container pb-12">
           {/* Form Input field for creating Blog Post  */}
           <form
-            onSubmit={handleSubmit(handleCreateBlog)}
+            onSubmit={handleSubmit(handleEditBlog)}
             action="#"
             method="POST"
             className="createBlog"
           >
-            <div className="grid place-items-center  bg-slate-600/20 h-[150px] rounded-md my-4">
-              <div className="flex items-center gap-4 transition-all cursor-pointer hover:scale-110">
+            <div
+              style={{
+                backgroundImage: `url(${blogThumbnail})`,
+                filter: blur('20px'),
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+              className="grid place-items-center bg-slate-600/20 h-[150px] rounded-md my-4"
+            >
+              <div className="flex items-center gap-4 px-2 py-1 transition-all bg-[#030317] rounded-md cursor-pointer hover:scale-110">
                 <label
                   htmlFor="thumbnail"
                   className="flex gap-2 cursor-pointer"
@@ -84,9 +118,8 @@ const CreateBlogPage = () => {
                   </svg>
                   <p className="font-medium text-white">Upload Your Image</p>
                   <input
-                    {...register('thumbnail', {
-                      required: 'Blog image is required',
-                    })}
+                    {...register('thumbnail')}
+                    onChange={(e) => handleImageChange(e)}
                     type="file"
                     name="thumbnail"
                     id="thumbnail"
@@ -96,6 +129,8 @@ const CreateBlogPage = () => {
                 </label>
               </div>
             </div>
+
+            {/*  */}
 
             {errors?.thumbnail && (
               <p role="alert" className="text-red-500 ">
@@ -148,7 +183,7 @@ const CreateBlogPage = () => {
               type="submit"
               className="px-6 py-2 text-white transition-all duration-200 bg-indigo-600 rounded-md md:py-3 hover:bg-indigo-700"
             >
-              Create Blog
+              Save Changes
             </button>
           </form>
         </div>
@@ -157,4 +192,4 @@ const CreateBlogPage = () => {
   );
 };
 
-export default CreateBlogPage;
+export default EditBlogPage;

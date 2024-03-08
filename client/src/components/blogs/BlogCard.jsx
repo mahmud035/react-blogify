@@ -57,11 +57,13 @@ const BlogCard = ({ blog }) => {
     setSearchText('');
   };
 
-  const handleEditBlog = (e) => {
+  //* Navigate to Edit Blog Page
+  const handleEditBlog = (e, blog, blogId) => {
     e.preventDefault();
     e.stopPropagation();
-
-    // edit blog task
+    localStorage.setItem('blogToEdit', JSON.stringify(blog));
+    navigate(`/edit-blog/${blogId}`);
+    setShowAction(false);
   };
 
   //* Delete Blog
@@ -174,7 +176,7 @@ const BlogCard = ({ blog }) => {
             <div className="action-modal-container">
               {/* TODO: Use e.preventDefault() and e.stopPropagation() to stop the propagation of click event */}
               <button
-                onClick={(e) => handleEditBlog(e)}
+                onClick={(e) => handleEditBlog(e, blog, id)}
                 className="action-menu-item hover:text-lwsGreen"
               >
                 <img src={editIcon} alt="Edit" />

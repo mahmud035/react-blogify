@@ -56,8 +56,6 @@ const LoginForm = () => {
     }
   };
 
-  console.log(errors);
-
   return (
     <form action="" onSubmit={handleSubmit(handleLogin)}>
       {/* Email */}

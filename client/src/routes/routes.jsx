@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 import BlogDetailsPage from '../pages/BlogDetailsPage';
 import CreateBlogPage from '../pages/CreateBlogPage';
+import EditBlogPage from '../pages/EditBlogPage';
 import ErrorPage from '../pages/ErrorPage';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <CreateBlogPage />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: '/edit-blog/:blogId',
+        element: (
+          <PrivateRoutes>
+            <EditBlogPage />
           </PrivateRoutes>
         ),
       },

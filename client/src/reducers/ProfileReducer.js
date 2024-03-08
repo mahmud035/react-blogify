@@ -92,6 +92,20 @@ const profileReducer = (state, action) => {
         },
       };
     }
+    // Edit Blog Data
+    case actions.profile.DATA_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        user: {
+          ...state.user,
+          blogs: state.user?.blogs.map((blog) => {
+            if (blog.id === action.data.id) return action.data;
+            else return blog;
+          }),
+        },
+      };
+    }
     // Favorite Blog's Data Fetched
     case actions.profile.FAVORITE_BLOG_DATA_FETCHED: {
       return {
