@@ -13,7 +13,7 @@ const Comment = ({ comment }) => {
   const {
     id,
     content,
-    author: { firstName, lastName, avatar } = {},
+    author: { id: authorId, firstName, lastName, avatar } = {},
   } = comment || {};
 
   // Show dummy avatar if avatar is not found
@@ -25,7 +25,6 @@ const Comment = ({ comment }) => {
 
   //* Delete Comment
   const handleDeleteComment = async (commentId) => {
-    console.log('clicked');
     try {
       const response = await api.delete(
         `${
@@ -65,7 +64,7 @@ const Comment = ({ comment }) => {
           </div>
         </div>
       </div>
-      {user && (
+      {user && user?.id === authorId && (
         <div className="flex items-center pl-12 sm:pl-0">
           <button
             onClick={() => handleDeleteComment(id)}

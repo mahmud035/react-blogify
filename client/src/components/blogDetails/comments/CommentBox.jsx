@@ -28,8 +28,6 @@ const CommentBox = () => {
 
   //* Post Comment
   const handlePostComment = async (data) => {
-    console.log(data);
-
     try {
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/comment`,
