@@ -48,7 +48,7 @@ const SearchModal = () => {
   }, []);
 
   return (
-    <section className="absolute top-0 left-0 z-50 grid w-full h-full place-items-center bg-slate-800/50 backdrop-blur-sm">
+    <section className="absolute top-0 left-0 z-50 grid w-full h-full place-items-center bg-slate-800/80 backdrop-blur-sm">
       {/* Search Container  */}
       <div className="relative w-6/12 p-4 mx-auto border rounded-lg shadow-lg bg-slate-900 border-slate-600/50 shadow-slate-400/10">
         {/* Search  */}

@@ -6,6 +6,7 @@ import SearchModal from '../components/search/SearchModal';
 import useAuth from '../hooks/auth/useAuth';
 import useGetUser from '../hooks/auth/useGetUser';
 import useProfile from '../hooks/profile/useProfile';
+import usePortal from '../hooks/search/usePortal';
 import useSearch from '../hooks/search/useSearch';
 
 const Header = () => {
@@ -14,6 +15,7 @@ const Header = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const user = useGetUser();
+  const { renderPortal } = usePortal();
 
   // Show dummy avatar if user's avatar is not found
   const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
@@ -22,6 +24,7 @@ const Header = () => {
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
 
+  //* Logout
   const handleLogout = () => {
     localStorage.removeItem('authInfo');
     localStorage.removeItem('profileId');
@@ -106,8 +109,8 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* WARNING: SearchModal এইভাবে ব্যবহার করা যাবে না। React Portal ব্যবহার করতে হবে এবং usePortal() নামে Custom Hook বানাতে হবে।  */}
-      {showSearchModal && <SearchModal />}
+      {/* Render Modal Using Portal */}
+      {showSearchModal && renderPortal(<SearchModal />)}
     </header>
   );
 };
