@@ -13,7 +13,7 @@ const FavoriteBlogList = () => {
           ?.map((blog) => <FavoriteBlogCard key={blog?.id} blog={blog} />)
       ) : (
         <p className="pt-4 text-2xl text-center">
-          You do not have any favorite blog!
+          You have not added any blogs as favourites yet!
         </p>
       )}
     </ul>

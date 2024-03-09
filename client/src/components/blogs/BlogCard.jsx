@@ -15,7 +15,8 @@ import { getFormattedDate } from '../../utils/date-time-utils';
 
 const BlogCard = ({ blog }) => {
   const [showAction, setShowAction] = useState(false);
-  const { searchText, setSearchText, setShowSearchModal } = useSearch();
+  const { searchText, setSearchText, setShowSearchModal, setSearchResult } =
+    useSearch();
   const navigate = useNavigate();
   const user = useGetUser();
   const { fetchBlogAuthorData } = useFetchBlogAuthorData();
@@ -56,6 +57,7 @@ const BlogCard = ({ blog }) => {
     setShowSearchModal(false);
     navigate(`/blogs/${id}`);
     setSearchText('');
+    setSearchResult([]);
   };
 
   //* Navigate to Edit Blog Page

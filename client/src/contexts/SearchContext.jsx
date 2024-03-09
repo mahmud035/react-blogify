@@ -4,6 +4,7 @@ export const SearchContext = createContext();
 
 const SearchProvider = ({ children }) => {
   const [searchText, setSearchText] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
   const [showSearchModal, setShowSearchModal] = useState(false);
 
   const searchInfo = {
@@ -11,6 +12,8 @@ const SearchProvider = ({ children }) => {
     setSearchText,
     showSearchModal,
     setShowSearchModal,
+    searchResult,
+    setSearchResult,
   };
 
   return (
