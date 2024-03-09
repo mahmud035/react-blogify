@@ -4,7 +4,7 @@ import RegistrationForm from '../components/auth/RegistrationForm';
 const RegistrationPage = () => {
   return (
     <main>
-      <section className="container">
+      <section className="container min-h-[calc(100vh-90px)]">
         <div className=" w-full md:w-1/2 mx-auto bg-[#030317] p-8 rounded-md mt-12">
           <h2 className="mb-6 text-2xl font-bold">Register</h2>
 

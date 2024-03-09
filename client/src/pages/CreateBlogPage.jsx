@@ -51,7 +51,7 @@ const CreateBlogPage = () => {
   return (
     <main>
       <section>
-        <div className="container pb-12">
+        <div className="container min-h-[calc(100vh-90px)]">
           {/* Form Input field for creating Blog Post  */}
           <form
             onSubmit={handleSubmit(handleCreateBlog)}

@@ -9,7 +9,7 @@ const ProfilePage = () => {
 
   return (
     <main className="mx-auto max-w-[1020px] py-8">
-      <div className="container">
+      <div className="container min-h-[calc(100vh-90px)]">
         <ProfileInfo />
         <MyBlogs />
       </div>
