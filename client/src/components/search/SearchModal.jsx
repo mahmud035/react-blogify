@@ -72,7 +72,7 @@ const SearchModal = () => {
           <div className="my-4 divide-y-2 divide-slate-500/30 max-h-[440px] overflow-y-scroll overscroll-contain">
             {loading ? (
               <p className="py-8 text-2xl italic text-center">
-                Fetching Blog For Title:{' '}
+                Fetching Blogs For Title:{' '}
                 <span className="text-[#00d991]">{`'${keyword}'`}</span>
               </p>
             ) : (
