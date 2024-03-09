@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { actions } from '../../actions';
 import checkIcon from '../../assets/icons/check.svg';
@@ -14,9 +14,15 @@ const Bio = () => {
   const user = useGetUser();
   const { showLoggedInUserInfo } = useShowLoggedInUserInfo();
   const [bio, setBio] = useState(
-    showLoggedInUserInfo ? user?.bio : profile?.blogAuthor?.bio
+    showLoggedInUserInfo ? profile?.user?.bio : profile?.blogAuthor?.bio
   );
   const [editMode, setEditMode] = useState(false);
+
+  useEffect(() => {
+    if (showLoggedInUserInfo) {
+      setBio(user?.bio);
+    }
+  }, [showLoggedInUserInfo, user?.bio]);
 
   //* Edit Bio
   const handleBioEdit = async () => {
@@ -63,6 +69,9 @@ const Bio = () => {
             <textarea
               onChange={(e) => setBio(e.target.value)}
               value={bio}
+              // value={
+              //   showLoggedInUserInfo ? user?.bio : profile?.blogAuthor?.bio
+              // }
               className={`p-2 leading-[188%] text-gray-400 lg:text-lg rounded ${
                 bio?.length === 0 && 'outline outline-red-500 outline-offset-0'
               }`}
@@ -76,7 +85,10 @@ const Bio = () => {
         {showLoggedInUserInfo ? (
           !editMode ? (
             <button
-              onClick={() => setEditMode(true)}
+              onClick={() => {
+                setBio(user?.bio);
+                setEditMode(true);
+              }}
               className="rounded-full flex-center h-7 w-7"
             >
               <img src={editIcon} alt="Edit" />
