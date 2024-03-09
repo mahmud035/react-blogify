@@ -41,7 +41,15 @@ const useAxios = () => {
 
           if (response.status === 200) {
             const { accessToken } = response.data;
-            localStorage.setItem('accessToken', accessToken);
+
+            const authInfo = JSON.parse(localStorage.getItem('authInfo'));
+            if (authInfo) {
+              const newAccessToken = accessToken;
+              localStorage.setItem(
+                'authInfo',
+                JSON.stringify({ ...authInfo, accessToken: newAccessToken })
+              );
+            }
             setAuth({ ...auth, accessToken });
 
             // Retry the original request with the new accessToken

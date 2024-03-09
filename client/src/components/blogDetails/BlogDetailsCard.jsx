@@ -60,7 +60,11 @@ const BlogDetailsCard = () => {
         </div>
         <img
           className="object-cover w-full mx-auto rounded-md md:w-8/12 h-80 md:h-96"
-          src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/400x400`}
+          src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/600x400`}
+          onError={(e) => {
+            e.currentTarget.src =
+              'https://placehold.co/600x400?text=Your%20image%20is%20uploaded.%20Please%20refresh%20the%20page.';
+          }}
           alt="Blog Thumbnail"
         />
         {/* Tags */}

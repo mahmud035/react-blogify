@@ -105,8 +105,11 @@ const BlogCard = ({ blog }) => {
     <div onClick={(e) => handleNavigate(e)} className="blog-card">
       <img
         className={`blog-thumb ${searchText.length > 0 ? 'h-28' : 'max-h-48'}`}
-        src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/400x400`}
-        alt=""
+        src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/600x400`}
+        onError={(e) => {
+          e.currentTarget.src = 'https://placehold.co/600x400';
+        }}
+        alt="Blog Thumbnail"
       />
       <div className="relative mt-2">
         <h3 className="text-xl text-slate-300 lg:text-2xl">
