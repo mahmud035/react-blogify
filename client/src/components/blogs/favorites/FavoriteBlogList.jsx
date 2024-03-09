@@ -9,7 +9,7 @@ const FavoriteBlogList = () => {
     <ul className="my-5 space-y-5">
       {user?.favourites?.length > 0 ? (
         user?.favourites
-          ?.sort((a, b) => new Date(b?.createAt) - new Date(a?.createAt))
+          ?.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt))
           ?.map((blog) => <FavoriteBlogCard key={blog?.id} blog={blog} />)
       ) : (
         <p className="pt-4 text-2xl text-center">
