@@ -3,10 +3,10 @@ import { actions } from '../actions';
 import searchIcon from '../assets/icons/search.svg';
 import lwsLogo from '../assets/logo.svg';
 import SearchModal from '../components/search/SearchModal';
-import useAuth from '../hooks/useAuth';
-import useGetUser from '../hooks/useGetUser';
-import useProfile from '../hooks/useProfile';
-import useSearch from '../hooks/useSearch';
+import useAuth from '../hooks/auth/useAuth';
+import useGetUser from '../hooks/auth/useGetUser';
+import useProfile from '../hooks/profile/useProfile';
+import useSearch from '../hooks/search/useSearch';
 
 const Header = () => {
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();

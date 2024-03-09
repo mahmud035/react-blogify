@@ -1,5 +1,5 @@
+import useProfile from '../../hooks/profile/useProfile';
 import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
-import useProfile from '../../hooks/useProfile';
 import BlogList from '../blogs/BlogList';
 
 const MyBlogs = () => {

@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import { actions } from '../../actions';
 import editIcon from '../../assets/icons/edit.svg';
+import useAxios from '../../hooks/auth/useAxios';
+import useGetUser from '../../hooks/auth/useGetUser';
+import useProfile from '../../hooks/profile/useProfile';
 import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
-import useAxios from '../../hooks/useAxios';
-import useGetUser from '../../hooks/useGetUser';
-import useProfile from '../../hooks/useProfile';
 
 const ProfileImage = () => {
   const user = useGetUser();

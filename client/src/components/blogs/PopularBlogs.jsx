@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { actions } from '../../actions';
-import useBlog from '../../hooks/useBlog';
+import useBlog from '../../hooks/blog/useBlog';
 import PopularBlogList from './PopularBlogList';
 
 const PopularBlogs = () => {

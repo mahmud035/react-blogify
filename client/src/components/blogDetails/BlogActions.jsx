@@ -5,10 +5,10 @@ import heartFilledIcon from '../../assets/icons/heart-filled.svg';
 import heartIcon from '../../assets/icons/heart.svg';
 import likeIcon from '../../assets/icons/like.svg';
 import likedFilledIcon from '../../assets/icons/likeFilled.svg';
-import useAxios from '../../hooks/useAxios';
-import useBlog from '../../hooks/useBlog';
-import useGetUser from '../../hooks/useGetUser';
-import useProfile from '../../hooks/useProfile';
+import useAxios from '../../hooks/auth/useAxios';
+import useGetUser from '../../hooks/auth/useGetUser';
+import useBlog from '../../hooks/blog/useBlog';
+import useProfile from '../../hooks/profile/useProfile';
 
 const BlogActions = () => {
   const { profileDispatch } = useProfile();

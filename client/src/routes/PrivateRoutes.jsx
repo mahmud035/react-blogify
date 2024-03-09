@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import LargeLoader from '../components/ui/LargeLoader';
-import useAuth from '../hooks/useAuth';
-import useProfile from '../hooks/useProfile';
+import useAuth from '../hooks/auth/useAuth';
+import useProfile from '../hooks/profile/useProfile';
 
 const PrivateRoutes = ({ children }) => {
   const location = useLocation();

@@ -1,5 +1,5 @@
-import useBlog from '../../hooks/useBlog';
-import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
+import useBlog from '../../hooks/blog/useBlog';
+import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
 import { getFormattedDate } from '../../utils/date-time-utils';
 import Tags from './Tags';
 

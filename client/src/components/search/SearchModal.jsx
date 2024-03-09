@@ -1,5 +1,5 @@
 import modalCloseIcon from '../../assets/icons/close.svg';
-import useSearch from '../../hooks/useSearch';
+import useSearch from '../../hooks/search/useSearch';
 import BlogList from '../blogs/BlogList';
 
 const SearchModal = () => {

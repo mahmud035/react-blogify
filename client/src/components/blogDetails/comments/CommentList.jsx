@@ -1,4 +1,4 @@
-import useBlog from '../../../hooks/useBlog';
+import useBlog from '../../../hooks/blog/useBlog';
 import Comment from './Comment';
 
 const CommentList = () => {

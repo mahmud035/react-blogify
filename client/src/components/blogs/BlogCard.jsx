@@ -5,12 +5,12 @@ import { actions } from '../../actions';
 import threeDotsIcon from '../../assets/icons/3dots.svg';
 import deleteIcon from '../../assets/icons/delete.svg';
 import editIcon from '../../assets/icons/edit.svg';
-import useAxios from '../../hooks/useAxios';
-import useBlog from '../../hooks/useBlog';
-import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
-import useGetUser from '../../hooks/useGetUser';
-import useProfile from '../../hooks/useProfile';
-import useSearch from '../../hooks/useSearch';
+import useAxios from '../../hooks/auth/useAxios';
+import useGetUser from '../../hooks/auth/useGetUser';
+import useBlog from '../../hooks/blog/useBlog';
+import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
+import useProfile from '../../hooks/profile/useProfile';
+import useSearch from '../../hooks/search/useSearch';
 import { getFormattedDate } from '../../utils/date-time-utils';
 
 const BlogCard = ({ blog }) => {

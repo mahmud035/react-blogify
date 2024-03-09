@@ -1,5 +1,5 @@
-import useBlog from '../../hooks/useBlog';
-import useGetUser from '../../hooks/useGetUser';
+import useGetUser from '../../hooks/auth/useGetUser';
+import useBlog from '../../hooks/blog/useBlog';
 import CommentBox from './comments/CommentBox';
 import CommentList from './comments/CommentList';
 

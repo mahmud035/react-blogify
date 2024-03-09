@@ -5,7 +5,7 @@ import { actions } from '../actions';
 import BlogActions from '../components/blogDetails/BlogActions';
 import BlogComments from '../components/blogDetails/BlogComments';
 import BlogDetailsCard from '../components/blogDetails/BlogDetailsCard';
-import useBlog from '../hooks/useBlog';
+import useBlog from '../hooks/blog/useBlog';
 
 const BlogDetailsPage = () => {
   const { blogDispatch } = useBlog();

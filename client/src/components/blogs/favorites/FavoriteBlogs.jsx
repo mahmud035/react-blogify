@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { actions } from '../../../actions';
-import useAxios from '../../../hooks/useAxios';
-import useProfile from '../../../hooks/useProfile';
+import useAxios from '../../../hooks/auth/useAxios';
+import useProfile from '../../../hooks/profile/useProfile';
 import FavoriteBlogList from './FavoriteBlogList';
 
 const FavoriteBlogs = () => {

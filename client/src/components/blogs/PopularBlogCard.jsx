@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import useFetchBlogAuthorData from '../../hooks/useFetchBlogAuthorData';
+import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
 
 const PopularBlogCard = ({ blog }) => {
   const { fetchBlogAuthorData } = useFetchBlogAuthorData();

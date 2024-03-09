@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { actions } from '../actions';
 import InputField from '../components/ui/InputField';
-import useAxios from '../hooks/useAxios';
-import useProfile from '../hooks/useProfile';
+import useAxios from '../hooks/auth/useAxios';
+import useProfile from '../hooks/profile/useProfile';
 
 const EditBlogPage = () => {
   const { profileDispatch } = useProfile();

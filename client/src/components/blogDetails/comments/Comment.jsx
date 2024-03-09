@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { actions } from '../../../actions';
-import useAxios from '../../../hooks/useAxios';
-import useBlog from '../../../hooks/useBlog';
-import useGetUser from '../../../hooks/useGetUser';
+import useAxios from '../../../hooks/auth/useAxios';
+import useGetUser from '../../../hooks/auth/useGetUser';
+import useBlog from '../../../hooks/blog/useBlog';
 
 const Comment = ({ comment }) => {
   const user = useGetUser();

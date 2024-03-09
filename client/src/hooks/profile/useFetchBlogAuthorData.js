@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { actions } from '../actions';
+import { actions } from '../../actions';
 import useProfile from './useProfile';
 
 const useFetchBlogAuthorData = () => {

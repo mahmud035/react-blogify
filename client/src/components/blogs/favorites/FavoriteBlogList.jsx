@@ -1,4 +1,4 @@
-import useProfile from '../../../hooks/useProfile';
+import useProfile from '../../../hooks/profile/useProfile';
 import FavoriteBlogCard from './FavoriteBlogCard';
 
 const FavoriteBlogList = () => {

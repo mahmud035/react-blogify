@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/auth/useAuth';
 import InputField from '../ui/InputField';
 
 const LoginForm = () => {

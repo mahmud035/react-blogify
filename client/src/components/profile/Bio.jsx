@@ -3,10 +3,10 @@ import { toast } from 'react-toastify';
 import { actions } from '../../actions';
 import checkIcon from '../../assets/icons/check.svg';
 import editIcon from '../../assets/icons/edit.svg';
+import useAxios from '../../hooks/auth/useAxios';
+import useGetUser from '../../hooks/auth/useGetUser';
+import useProfile from '../../hooks/profile/useProfile';
 import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
-import useAxios from '../../hooks/useAxios';
-import useGetUser from '../../hooks/useGetUser';
-import useProfile from '../../hooks/useProfile';
 
 const Bio = () => {
   const { profile, profileDispatch } = useProfile();
@@ -69,9 +69,6 @@ const Bio = () => {
             <textarea
               onChange={(e) => setBio(e.target.value)}
               value={bio}
-              // value={
-              //   showLoggedInUserInfo ? user?.bio : profile?.blogAuthor?.bio
-              // }
               className={`p-2 leading-[188%] text-gray-400 lg:text-lg rounded ${
                 bio?.length === 0 && 'outline outline-red-500 outline-offset-0'
               }`}

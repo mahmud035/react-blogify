@@ -1,5 +1,5 @@
+import useProfile from '../profile/useProfile';
 import useAuth from './useAuth';
-import useProfile from './useProfile';
 
 const useGetUser = () => {
   const { auth } = useAuth();

@@ -5,7 +5,7 @@ import BlogList from '../components/blogs/BlogList';
 import PopularBlogs from '../components/blogs/PopularBlogs';
 import FavoriteBlogs from '../components/blogs/favorites/FavoriteBlogs';
 import Error from '../components/ui/Error';
-import useBlog from '../hooks/useBlog';
+import useBlog from '../hooks/blog/useBlog';
 
 const blogPerPage = 10;
 
