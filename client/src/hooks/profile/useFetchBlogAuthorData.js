@@ -7,6 +7,7 @@ const useFetchBlogAuthorData = () => {
   const { profileDispatch } = useProfile();
   const navigate = useNavigate();
 
+  //* Fetch Blog Author Data
   const fetchBlogAuthorData = async (profileId) => {
     localStorage.setItem('profileId', profileId);
 
