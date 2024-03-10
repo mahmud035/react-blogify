@@ -35,44 +35,6 @@ const EditBlogPage = () => {
     handleEditBlog(id, data, uploadedImage, thumbnail);
   };
 
-  //* Edit Blog
-  // const handleEditBlog = async (data) => {
-  //   const formData = new FormData();
-
-  //   // Append newly uploaded image if available
-  //   if (uploadedImage) {
-  //     formData.append('thumbnail', uploadedImage);
-  //   } else {
-  //     // If no new image is uploaded, append the existing thumbnail
-  //     formData.append('thumbnail', data?.thumbnail[0] || thumbnail);
-  //   }
-
-  //   formData.append('title', data.title);
-  //   formData.append('content', data.content);
-  //   formData.append('tags', data.tags);
-
-  //   try {
-  //     const response = await api.patch(
-  //       `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${id}`,
-  //       formData
-  //     );
-
-  //     if (response.status === 200) {
-  //       profileDispatch({
-  //         type: actions.profile.DATA_EDITED,
-  //         data: response.data,
-  //       });
-  //       toast.success('Blog updated successfully.');
-  //       navigate(`/blogs/${response.data?.id}`);
-  //     }
-  //   } catch (error) {
-  //     profileDispatch({
-  //       type: actions.profile.DATA_FETCH_ERROR,
-  //       error: error.message,
-  //     });
-  //   }
-  // };
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
