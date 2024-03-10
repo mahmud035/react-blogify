@@ -3,7 +3,8 @@ import FavoriteBlogList from './FavoriteBlogList';
 
 const FavoriteBlogs = () => {
   const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
-  // Fetch Favorites Blogs
+
+  //* Fetch Favorites Blogs
   useFetchFavoriteBlogs(userId);
 
   return (
