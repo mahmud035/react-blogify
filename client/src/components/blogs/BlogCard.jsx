@@ -7,6 +7,7 @@ import useGetUser from '../../hooks/auth/useGetUser';
 import useBlogActions from '../../hooks/blog/useBlogActions';
 import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
 import useSearch from '../../hooks/search/useSearch';
+import { getBlogThumbnail } from '../../utils';
 import { getFormattedDate } from '../../utils/date-time-utils';
 
 const BlogCard = ({ blog }) => {
@@ -25,6 +26,7 @@ const BlogCard = ({ blog }) => {
     author: { id: profileId, firstName, lastName, avatar } = {},
     likes,
   } = blog || {};
+  const blogThumbnail = getBlogThumbnail(thumbnail);
 
   const isBlogPostedByUser = blog?.author?.id === user?.id;
 
@@ -34,10 +36,6 @@ const BlogCard = ({ blog }) => {
     avatar !== null
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
-
-  const blogThumbnail = `${
-    import.meta.env.VITE_SERVER_BASE_URL
-  }/uploads/blog/${thumbnail}`;
 
   const handleShowAction = (e) => {
     e.preventDefault();
@@ -55,7 +53,7 @@ const BlogCard = ({ blog }) => {
   };
 
   //* Navigate to Edit Blog Page
-  const handleEditBlog = (e, blog, blogId) => {
+  const navigateEditBlogPage = (e, blog, blogId) => {
     e.preventDefault();
     e.stopPropagation();
     localStorage.setItem('blogToEdit', JSON.stringify(blog));
@@ -144,7 +142,7 @@ const BlogCard = ({ blog }) => {
             <div className="action-modal-container">
               {/* NOTE: Use e.preventDefault() and e.stopPropagation() to stop the propagation of click event */}
               <button
-                onClick={(e) => handleEditBlog(e, blog, id)}
+                onClick={(e) => navigateEditBlogPage(e, blog, id)}
                 className="action-menu-item hover:text-lwsGreen"
               >
                 <img src={editIcon} alt="Edit" />

@@ -91,6 +91,17 @@ const blogReducer = (state, action) => {
         },
       };
     }
+    // Data Edited
+    case actions.blog.DATA_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        blogs: state.blogs?.map((blog) => {
+          if (blog.id === action.data.id) return action.data;
+          else return blog;
+        }),
+      };
+    }
     // Delete Blog
     case actions.blog.DATA_DELETED: {
       return {

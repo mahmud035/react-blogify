@@ -1,18 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { actions } from '../actions';
 import InputField from '../components/ui/InputField';
-import useAxios from '../hooks/auth/useAxios';
-import useProfile from '../hooks/profile/useProfile';
+import useBlogActions from '../hooks/blog/useBlogActions';
+import { getBlogThumbnail } from '../utils';
 
 const EditBlogPage = () => {
-  const { profileDispatch } = useProfile();
-  const { api } = useAxios();
-  const navigate = useNavigate();
   const blogToEdit = JSON.parse(localStorage.getItem('blogToEdit'));
   const { id, thumbnail, title, tags, content } = blogToEdit || {};
+  const { handleEditBlog } = useBlogActions();
+  const blogThumbnail = getBlogThumbnail(thumbnail);
   const {
     register,
     handleSubmit,
@@ -26,10 +23,6 @@ const EditBlogPage = () => {
   });
   const [uploadedImage, setUploadedImage] = useState(null);
 
-  const blogThumbnail = `${
-    import.meta.env.VITE_SERVER_BASE_URL
-  }/uploads/blog/${thumbnail}`;
-
   const handleImageChange = (e) => {
     if (e.target.files?.length > 0) {
       setUploadedImage(e.target.files[0]);
@@ -38,42 +31,51 @@ const EditBlogPage = () => {
   };
 
   //* Edit Blog
-  const handleEditBlog = async (data) => {
-    const formData = new FormData();
-
-    // Append newly uploaded image if available
-    if (uploadedImage) {
-      formData.append('thumbnail', uploadedImage);
-    } else {
-      // If no new image is uploaded, append the existing thumbnail
-      formData.append('thumbnail', data?.thumbnail[0] || thumbnail);
-    }
-
-    formData.append('title', data.title);
-    formData.append('content', data.content);
-    formData.append('tags', data.tags);
-
-    try {
-      const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${id}`,
-        formData
-      );
-
-      if (response.status === 200) {
-        profileDispatch({
-          type: actions.profile.DATA_EDITED,
-          data: response.data,
-        });
-        toast.success('Blog updated successfully.');
-        navigate(`/blogs/${response.data?.id}`);
-      }
-    } catch (error) {
-      profileDispatch({
-        type: actions.profile.DATA_FETCH_ERROR,
-        error: error.message,
-      });
-    }
+  const onSubmit = (data) => {
+    handleEditBlog(id, data, uploadedImage, thumbnail);
   };
+
+  //* Edit Blog
+  // const handleEditBlog = async (data) => {
+  //   const formData = new FormData();
+
+  //   // Append newly uploaded image if available
+  //   if (uploadedImage) {
+  //     formData.append('thumbnail', uploadedImage);
+  //   } else {
+  //     // If no new image is uploaded, append the existing thumbnail
+  //     formData.append('thumbnail', data?.thumbnail[0] || thumbnail);
+  //   }
+
+  //   formData.append('title', data.title);
+  //   formData.append('content', data.content);
+  //   formData.append('tags', data.tags);
+
+  //   try {
+  //     const response = await api.patch(
+  //       `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${id}`,
+  //       formData
+  //     );
+
+  //     if (response.status === 200) {
+  //       profileDispatch({
+  //         type: actions.profile.DATA_EDITED,
+  //         data: response.data,
+  //       });
+  //       toast.success('Blog updated successfully.');
+  //       navigate(`/blogs/${response.data?.id}`);
+  //     }
+  //   } catch (error) {
+  //     profileDispatch({
+  //       type: actions.profile.DATA_FETCH_ERROR,
+  //       error: error.message,
+  //     });
+  //   }
+  // };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main>
@@ -81,7 +83,7 @@ const EditBlogPage = () => {
         <div className="container min-h-[calc(100vh-90px)]">
           {/* Form Input field for creating Blog Post  */}
           <form
-            onSubmit={handleSubmit(handleEditBlog)}
+            onSubmit={handleSubmit(onSubmit)}
             action="#"
             method="POST"
             className="createBlog"
