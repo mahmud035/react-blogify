@@ -4,13 +4,13 @@ import { actions } from '../../../actions';
 import useAxios from '../../auth/useAxios';
 import useBlog from '../useBlog';
 
-const useCommentActions = (reset = () => {}) => {
+const useCommentActions = () => {
   const { blogDispatch } = useBlog();
   const { api } = useAxios();
   const { blogId } = useParams();
 
   //* Post Comment
-  const handlePostComment = async (data) => {
+  const handlePostComment = async (data, reset) => {
     try {
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/comment`,

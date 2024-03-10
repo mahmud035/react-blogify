@@ -11,7 +11,7 @@ const CommentBox = () => {
     reset,
     formState: { errors },
   } = useForm({ defaultValues: { content: '' } });
-  const { handlePostComment } = useCommentActions(reset);
+  const { handlePostComment } = useCommentActions();
 
   // Show dummy avatar if user's avatar is not found
   const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
@@ -19,6 +19,11 @@ const CommentBox = () => {
     user?.avatar !== null
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
+
+  //* Post Comment
+  const onSubmit = (data) => {
+    handlePostComment(data, reset);
+  };
 
   return (
     <div className="flex space-x-4 items -center">
@@ -30,7 +35,7 @@ const CommentBox = () => {
 
       <div className="w-full">
         {/* Form */}
-        <form action="" onSubmit={handleSubmit(handlePostComment)}>
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
           <InputField label="" error={errors?.content}>
             <textarea
               {...register('content', {
