@@ -7,6 +7,7 @@ const useFetchPopularBlogs = () => {
   const { blogState, blogDispatch } = useBlog();
   const { popularBlogs } = blogState || {};
 
+  //* Fetch Popular Blogs
   useEffect(() => {
     let ignore = false;
     blogDispatch({ type: actions.blog.DATA_FETCHING });
