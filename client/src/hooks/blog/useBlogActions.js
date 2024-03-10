@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { actions } from '../../actions';
 import useAxios from '../auth/useAxios';
@@ -10,6 +11,7 @@ const useBlogActions = () => {
   const { api } = useAxios();
   const user = useGetUser();
   const { blogDispatch } = useBlog();
+  const navigate = useNavigate();
 
   //* Toggle Favorite
   const handleToggleFavorite = async (blogId) => {
@@ -57,7 +59,39 @@ const useBlogActions = () => {
     }
   };
 
-  return { handleToggleFavorite, handleToggleLike };
+  //* Create New Blog
+  const handleCreateBlog = async (data) => {
+    const formData = new FormData();
+    const file = data?.thumbnail[0];
+
+    formData.append('thumbnail', file);
+    formData.append('title', data.title);
+    formData.append('content', data.content);
+    formData.append('tags', data.tags);
+
+    try {
+      const response = await api.post(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/`,
+        formData
+      );
+
+      if (response.status === 201) {
+        profileDispatch({
+          type: actions.profile.DATA_CREATED,
+          data: response.data.blog,
+        });
+        toast.success('Blog created successfully.');
+        navigate(`/blogs/${response.data?.blog?.id}`);
+      }
+    } catch (error) {
+      profileDispatch({
+        type: actions.profile.DATA_FETCH_ERROR,
+        error: error.message,
+      });
+    }
+  };
+
+  return { handleToggleFavorite, handleToggleLike, handleCreateBlog };
 };
 
 export default useBlogActions;
