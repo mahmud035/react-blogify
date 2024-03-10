@@ -20,7 +20,7 @@ const RegistrationForm = () => {
   });
   const navigate = useNavigate();
 
-  const handleLogout = async (formData) => {
+  const handleRegistration = async (formData) => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/auth/register`,
@@ -40,7 +40,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleLogout)} action="">
+    <form onSubmit={handleSubmit(handleRegistration)} action="">
       {/* First Name */}
       <InputField label="First Name" error={errors?.firstName}>
         <input
