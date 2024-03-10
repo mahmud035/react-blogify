@@ -91,7 +91,39 @@ const useBlogActions = () => {
     }
   };
 
-  return { handleToggleFavorite, handleToggleLike, handleCreateBlog };
+  //* Delete Blog
+  const handleDeleteBlog = async (blogId) => {
+    const confirm = window.confirm('Are you sure you want to DELETE the blog?');
+
+    if (confirm) {
+      try {
+        const response = await api.delete(
+          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}`
+        );
+
+        if (response.status === 200) {
+          profileDispatch({
+            type: actions.profile.DATA_DELETED,
+            data: blogId,
+          });
+          blogDispatch({ type: actions.blog.DATA_DELETED, data: blogId });
+          toast.success('Blog deleted successfully');
+        }
+      } catch (error) {
+        profileDispatch({
+          type: actions.profile.DATA_FETCH_ERROR,
+          error: error.message,
+        });
+      }
+    }
+  };
+
+  return {
+    handleToggleFavorite,
+    handleToggleLike,
+    handleCreateBlog,
+    handleDeleteBlog,
+  };
 };
 
 export default useBlogActions;
