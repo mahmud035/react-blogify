@@ -1,15 +1,9 @@
-import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { actions } from '../../../actions';
-import useAxios from '../../../hooks/auth/useAxios';
 import useGetUser from '../../../hooks/auth/useGetUser';
-import useBlog from '../../../hooks/blog/useBlog';
+import useCommentActions from '../../../hooks/blog/comment/useCommentActions';
 
 const Comment = ({ comment }) => {
   const user = useGetUser();
-  const { api } = useAxios();
-  const { blogDispatch } = useBlog();
-  const { blogId } = useParams();
+  const { handleDeleteComment } = useCommentActions();
   const {
     id,
     content,
@@ -22,30 +16,6 @@ const Comment = ({ comment }) => {
     avatar !== null
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
-
-  //* Delete Comment
-  const handleDeleteComment = async (commentId) => {
-    try {
-      const response = await api.delete(
-        `${
-          import.meta.env.VITE_SERVER_BASE_URL
-        }/blogs/${blogId}/comment/${commentId}`
-      );
-
-      if (response.status === 200) {
-        blogDispatch({
-          type: actions.blog.DELETE_COMMENT,
-          data: response.data?.comments,
-        });
-        toast.success('Comment Deleted Successfully.');
-      }
-    } catch (error) {
-      blogDispatch({
-        type: actions.blog.DATA_FETCH_ERROR,
-        error: error.message,
-      });
-    }
-  };
 
   return (
     <div className="flex flex-col my-8 space-y-4 sm:space-y-0 sm:space-x-4 sm:items-center sm:flex-row">

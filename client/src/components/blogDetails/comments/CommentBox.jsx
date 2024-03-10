@@ -1,23 +1,17 @@
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { actions } from '../../../actions';
-import useAxios from '../../../hooks/auth/useAxios';
 import useGetUser from '../../../hooks/auth/useGetUser';
-import useBlog from '../../../hooks/blog/useBlog';
+import useCommentActions from '../../../hooks/blog/comment/useCommentActions';
 import InputField from '../../ui/InputField';
 
 const CommentBox = () => {
   const user = useGetUser();
-  const { blogDispatch } = useBlog();
-  const { api } = useAxios();
-  const { blogId } = useParams();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({ defaultValues: { content: '' } });
+  const { handlePostComment } = useCommentActions(reset);
 
   // Show dummy avatar if user's avatar is not found
   const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
@@ -25,30 +19,6 @@ const CommentBox = () => {
     user?.avatar !== null
       ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
       : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
-
-  //* Post Comment
-  const handlePostComment = async (data) => {
-    try {
-      const response = await api.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/comment`,
-        { content: data.content }
-      );
-
-      if (response.status === 200) {
-        blogDispatch({
-          type: actions.blog.ADD_COMMENT,
-          data: response.data?.comments,
-        });
-        reset();
-        toast.success('Comment Added Successfully.');
-      }
-    } catch (error) {
-      blogDispatch({
-        type: actions.blog.DATA_FETCH_ERROR,
-        error: error.message,
-      });
-    }
-  };
 
   return (
     <div className="flex space-x-4 items -center">
