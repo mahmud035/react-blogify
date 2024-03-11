@@ -1,3 +1,8 @@
+const stopDefaultBehavior = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+
 const getBlogThumbnail = (thumbnail) => {
   return `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/blog/${thumbnail}`;
 };
@@ -15,4 +20,9 @@ const getAuthorAvatar = (authorAvatar, nameFirstChar) => {
     : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
 };
 
-export { getAuthorAvatar, getBlogThumbnail, getUserAvatar };
+export {
+  getAuthorAvatar,
+  getBlogThumbnail,
+  getUserAvatar,
+  stopDefaultBehavior,
+};

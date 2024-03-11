@@ -7,7 +7,11 @@ import useGetUser from '../../hooks/auth/useGetUser';
 import useBlogActions from '../../hooks/blog/useBlogActions';
 import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
 import useSearch from '../../hooks/search/useSearch';
-import { getAuthorAvatar, getBlogThumbnail } from '../../utils';
+import {
+  getAuthorAvatar,
+  getBlogThumbnail,
+  stopDefaultBehavior,
+} from '../../utils';
 import { getFormattedDate } from '../../utils/date-time-utils';
 
 const BlogCard = ({ blog }) => {
@@ -35,14 +39,12 @@ const BlogCard = ({ blog }) => {
   const authorAvatar = getAuthorAvatar(avatar, nameFirstChar);
 
   const handleShowAction = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    stopDefaultBehavior(e);
     setShowAction((prevAction) => !prevAction);
   };
 
   const handleNavigate = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    stopDefaultBehavior(e);
     setShowSearchModal(false);
     navigate(`/blogs/${id}`);
     setSearchText('');
@@ -51,8 +53,7 @@ const BlogCard = ({ blog }) => {
 
   //* Navigate to Edit Blog Page
   const navigateEditBlogPage = (e, blog, blogId) => {
-    e.preventDefault();
-    e.stopPropagation();
+    stopDefaultBehavior(e);
     localStorage.setItem('blogToEdit', JSON.stringify(blog));
     navigate(`/edit-blog/${blogId}`);
     setShowAction(false);
@@ -84,8 +85,7 @@ const BlogCard = ({ blog }) => {
             <div className="flex items-center space-x-2 capitalize">
               <div
                 onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
+                  stopDefaultBehavior(e);
                   fetchBlogAuthorProfile(profileId, true);
                 }}
                 className="text-white"
@@ -99,8 +99,7 @@ const BlogCard = ({ blog }) => {
               <div>
                 <h5
                   onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
+                    stopDefaultBehavior(e);
                     fetchBlogAuthorProfile(profileId, true);
                   }}
                   className="text-sm text-slate-500"
@@ -147,8 +146,7 @@ const BlogCard = ({ blog }) => {
               </button>
               <button
                 onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
+                  stopDefaultBehavior(e);
                   handleDeleteBlog(id);
                 }}
                 className="action-menu-item hover:text-red-500"
