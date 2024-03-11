@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { actions } from '../../actions';
 import useAuth from '../../hooks/auth/useAuth';
+import useFetchUserProfile from '../../hooks/profile/useFetchUserProfile';
 import useProfile from '../../hooks/profile/useProfile';
 import Footer from '../../shared/Footer';
 import Header from '../../shared/Header';
@@ -19,41 +20,8 @@ const MainLayout = () => {
   const profileId =
     localStorage.getItem('profileId') || profile?.blogAuthor?.id;
 
-  //* NOTE: Fetch / Re-fetch the logged-in user's information upon successful login and store it in the ProfileContext. Then, provide this user information across the application using the ProvideProvider. Additionally, ensure that the user information is re-fetched when the page is reloaded.
-
-  useEffect(() => {
-    if (userId) {
-      let ignore = false;
-      profileDispatch({ type: actions.profile.DATA_FETCHING });
-
-      const fetchUserProfile = async () => {
-        try {
-          const response = await axios.get(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`
-          );
-
-          if (response.status === 200 && !ignore) {
-            profileDispatch({
-              type: actions.profile.DATA_FETCHED,
-              data: response.data,
-            });
-          }
-        } catch (error) {
-          console.log(error);
-          profileDispatch({
-            type: actions.profile.DATA_FETCH_ERROR,
-            error: error?.response?.data?.error,
-          });
-        }
-      };
-      fetchUserProfile();
-
-      // cleanup
-      return () => {
-        ignore = true;
-      };
-    }
-  }, [userId]);
+  //* Fetch User Profile
+  useFetchUserProfile(userId);
 
   //* Re-fetch the profile data of the currently viewed author when page reloads
   useEffect(() => {
