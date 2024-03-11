@@ -1,5 +1,6 @@
 import useGetUser from '../../../hooks/auth/useGetUser';
 import useCommentActions from '../../../hooks/blog/comment/useCommentActions';
+import { getAuthorAvatar } from '../../../utils';
 
 const Comment = ({ comment }) => {
   const user = useGetUser();
@@ -12,10 +13,7 @@ const Comment = ({ comment }) => {
 
   // Show dummy avatar if avatar is not found
   const nameFirstChar = firstName?.slice(0, 1)?.toUpperCase();
-  const authorAvatar =
-    avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${avatar}`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
+  const authorAvatar = getAuthorAvatar(avatar, nameFirstChar);
 
   return (
     <div className="flex flex-col my-8 space-y-4 sm:space-y-0 sm:space-x-4 sm:items-center sm:flex-row">

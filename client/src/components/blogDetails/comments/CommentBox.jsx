@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import useGetUser from '../../../hooks/auth/useGetUser';
 import useCommentActions from '../../../hooks/blog/comment/useCommentActions';
+import { getUserAvatar } from '../../../utils';
 import InputField from '../../ui/InputField';
 
 const CommentBox = () => {
@@ -15,10 +16,7 @@ const CommentBox = () => {
 
   // Show dummy avatar if user's avatar is not found
   const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
-  const userAvatar =
-    user?.avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
+  const userAvatar = getUserAvatar(user?.avatar, userNameFirstChar);
 
   //* Post Comment
   const onSubmit = (data) => {

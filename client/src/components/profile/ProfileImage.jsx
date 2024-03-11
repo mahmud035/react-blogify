@@ -5,6 +5,7 @@ import useAxios from '../../hooks/auth/useAxios';
 import useGetUser from '../../hooks/auth/useGetUser';
 import useProfile from '../../hooks/profile/useProfile';
 import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
+import { getAuthorAvatar, getUserAvatar } from '../../utils';
 
 const ProfileImage = () => {
   const user = useGetUser();
@@ -23,17 +24,8 @@ const ProfileImage = () => {
     nameFirstChar = blogAuthor?.firstName?.slice(0, 1)?.toUpperCase();
   }
 
-  const userAvatar =
-    user?.avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
-
-  const authorAvatar =
-    blogAuthor?.avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
-          blogAuthor?.avatar
-        }`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
+  const userAvatar = getUserAvatar(user?.avatar, nameFirstChar);
+  const authorAvatar = getAuthorAvatar(blogAuthor?.avatar, nameFirstChar);
 
   const handleFileUpload = (e) => {
     e.preventDefault();
@@ -41,6 +33,7 @@ const ProfileImage = () => {
     fileUploadRef.current.click();
   };
 
+  //* Update User Avatar
   const updateUserAvatar = async () => {
     try {
       const formData = new FormData();

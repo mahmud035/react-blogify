@@ -1,6 +1,6 @@
 import useBlog from '../../hooks/blog/useBlog';
 import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
-import { getBlogThumbnail } from '../../utils';
+import { getAuthorAvatar, getBlogThumbnail } from '../../utils';
 import { getFormattedDate } from '../../utils/date-time-utils';
 import Tags from './Tags';
 
@@ -20,10 +20,7 @@ const BlogDetailsCard = () => {
 
   // Show dummy avatar if avatar is not found
   const nameFirstChar = firstName?.slice(0, 1)?.toUpperCase();
-  const authorAvatar =
-    avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${avatar}`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${nameFirstChar}`;
+  const authorAvatar = getAuthorAvatar(avatar, nameFirstChar);
 
   return (
     <section>

@@ -8,6 +8,7 @@ import useGetUser from '../hooks/auth/useGetUser';
 import useProfile from '../hooks/profile/useProfile';
 import usePortal from '../hooks/search/usePortal';
 import useSearch from '../hooks/search/useSearch';
+import { getUserAvatar } from '../utils';
 
 const Header = () => {
   const { setSearchText, showSearchModal, setShowSearchModal } = useSearch();
@@ -19,10 +20,7 @@ const Header = () => {
 
   // Show dummy avatar if user's avatar is not found
   const userNameFirstChar = user?.firstName?.slice(0, 1)?.toUpperCase();
-  const userAvatar =
-    user?.avatar !== null
-      ? `${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${user?.avatar}`
-      : `https://dummyimage.com/200x200/00D991/ffffff&text=${userNameFirstChar}`;
+  const userAvatar = getUserAvatar(user?.avatar, userNameFirstChar);
 
   //* Logout
   const handleLogout = () => {
