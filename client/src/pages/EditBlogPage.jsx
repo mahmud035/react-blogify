@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import InputField from '../components/ui/InputField';
 import useBlogActions from '../hooks/blog/useBlogActions';
+import useSetTitle from '../hooks/useSetTitle';
 import { getBlogThumbnail } from '../utils';
 
 const EditBlogPage = () => {
+  useSetTitle('Edit Blog');
   const blogToEdit = JSON.parse(localStorage.getItem('blogToEdit'));
   const { id, thumbnail, title, tags, content } = blogToEdit || {};
   const { handleEditBlog } = useBlogActions();

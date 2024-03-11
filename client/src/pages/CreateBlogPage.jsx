@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form';
 import InputField from '../components/ui/InputField';
 import useBlogActions from '../hooks/blog/useBlogActions';
+import useSetTitle from '../hooks/useSetTitle';
 
 const CreateBlogPage = () => {
+  useSetTitle('Create Blog');
   const { handleCreateBlog } = useBlogActions();
   const {
     register,

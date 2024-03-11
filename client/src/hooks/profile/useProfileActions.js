@@ -8,12 +8,10 @@ const useProfileActions = () => {
   const { api } = useAxios();
 
   //* Edit Bio
-  const handleBioEdit = async (bio) => {
+  const handleBioEdit = async (bio, setEditMode) => {
     if (bio?.length === 0) {
       return toast.warn('Please write something about yourself.');
     }
-
-    profileDispatch({ type: actions.profile.DATA_FETCHING });
 
     try {
       const response = await api.patch(
@@ -27,6 +25,7 @@ const useProfileActions = () => {
           data: response.data?.user?.bio,
         });
         toast.success('Profile Updated Successfully!');
+        setEditMode(false);
       }
     } catch (error) {
       profileDispatch({

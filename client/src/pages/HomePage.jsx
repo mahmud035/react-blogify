@@ -3,10 +3,12 @@ import PopularBlogs from '../components/blogs/PopularBlogs';
 import FavoriteBlogs from '../components/blogs/favorites/FavoriteBlogs';
 import Error from '../components/ui/Error';
 import useFetchBlogs from '../hooks/blog/useFetchBlogs';
+import useSetTitle from '../hooks/useSetTitle';
 
 const HomePage = () => {
   const { blogs, error, hasMore, loaderRef, showMessage } = useFetchBlogs();
   const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
+  useSetTitle('Home');
 
   return (
     <main>

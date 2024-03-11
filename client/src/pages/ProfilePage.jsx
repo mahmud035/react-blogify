@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import MyBlogs from '../components/profile/MyBlogs';
 import ProfileInfo from '../components/profile/ProfileInfo';
+import useSetTitle from '../hooks/useSetTitle';
 
 const ProfilePage = () => {
+  useSetTitle('Profile');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

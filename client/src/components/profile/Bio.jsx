@@ -59,7 +59,7 @@ const Bio = () => {
             </button>
           ) : (
             <button
-              onClick={() => handleBioEdit(bio)}
+              onClick={() => handleBioEdit(bio, setEditMode)}
               className="rounded-full flex-center h-7 w-7"
             >
               <img src={checkIcon} alt="Check" />
