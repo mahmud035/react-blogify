@@ -6,11 +6,12 @@ import useFetchUserProfile from '../../hooks/profile/useFetchUserProfile';
 import useProfile from '../../hooks/profile/useProfile';
 import Footer from '../../shared/Footer';
 import Header from '../../shared/Header';
+import Error from '../ui/Error';
 import LargeLoader from '../ui/LargeLoader';
 
 const MainLayout = () => {
   const { profile } = useProfile();
-  const { loading } = profile || {};
+  const { loading, error } = profile || {};
   const { auth } = useAuth();
   const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
 
@@ -28,18 +29,26 @@ const MainLayout = () => {
     fetchBlogAuthorProfile(profileId, false);
   }, [profileId]);
 
+  //* Decide what to render on UI
+  let content;
+
+  if (loading) {
+    content = <LargeLoader message="Loading" />;
+  } else if (!loading && error) {
+    content = <Error error={error} />;
+  } else if (!loading && !error) {
+    content = (
+      <>
+        <Outlet />
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <div>
       <Header />
-
-      {loading ? (
-        <LargeLoader message="Loading" />
-      ) : (
-        <>
-          <Outlet />
-          <Footer />
-        </>
-      )}
+      {content}
     </div>
   );
 };

@@ -10,6 +10,15 @@ const HomePage = () => {
   const userId = JSON.parse(localStorage.getItem('authInfo'))?.userId;
   useSetTitle('Home');
 
+  //* Decide what to render on UI
+  let content;
+
+  if (error) {
+    content = <Error error={error} />;
+  } else if (!error && blogs?.length > 0) {
+    content = <BlogList blogs={blogs} />;
+  }
+
   return (
     <main>
       {/* Begin Blogs  */}
@@ -18,7 +27,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-7">
             {/* Blog Contents  */}
             <div className="space-y-3 md:col-span-5">
-              {!error ? <BlogList blogs={blogs} /> : <Error error={error} />}
+              {content}
 
               {hasMore && !error && (
                 <div

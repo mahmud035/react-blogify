@@ -16,7 +16,6 @@ const useFetchBlogs = () => {
   //* Fetch Blogs Data
   useEffect(() => {
     let ignore = false;
-    blogDispatch({ type: actions.blog.DATA_FETCHING });
 
     const fetchBlogs = async () => {
       try {

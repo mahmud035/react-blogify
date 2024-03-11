@@ -30,7 +30,7 @@ const useAxios = () => {
         const originalRequest = error.config;
 
         // IMPORTANT: If the error status is 403 and there is no originalRequest._retry flag, it means the token has expired and we need to refresh it.
-        if (error.response.status === 403 && !originalRequest._retry) {
+        if (error?.response?.status === 403 && !originalRequest._retry) {
           originalRequest._retry = true;
 
           const refreshToken = localStorage.getItem('refreshToken');
