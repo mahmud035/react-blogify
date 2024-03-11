@@ -21,8 +21,10 @@ const Bio = () => {
   useEffect(() => {
     if (showLoggedInUserInfo) {
       setBio(user?.bio);
+    } else {
+      setBio(profile?.blogAuthor?.bio);
     }
-  }, [showLoggedInUserInfo, user?.bio]);
+  }, [showLoggedInUserInfo, user?.bio, profile?.blogAuthor?.bio]);
 
   //* Edit Bio
   const handleBioEdit = async () => {
@@ -59,11 +61,13 @@ const Bio = () => {
         <div className="flex-1">
           {!editMode ? (
             <p className="leading-[188%] text-gray-400 lg:text-lg">
-              {bio?.length
+              {bio?.length ? bio : 'No Bio Information Found!'}
+
+              {/* {bio?.length
                 ? showLoggedInUserInfo
                   ? user?.bio
                   : profile?.blogAuthor?.bio
-                : 'No Bio Information Found!'}
+                : 'No Bio Information Found!'} */}
             </p>
           ) : (
             <textarea
