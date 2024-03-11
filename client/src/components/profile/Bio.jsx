@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import { actions } from '../../actions';
 import checkIcon from '../../assets/icons/check.svg';
 import editIcon from '../../assets/icons/edit.svg';
-import useAxios from '../../hooks/auth/useAxios';
 import useGetUser from '../../hooks/auth/useGetUser';
 import useProfile from '../../hooks/profile/useProfile';
+import useProfileActions from '../../hooks/profile/useProfileActions';
 import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
 
 const Bio = () => {
-  const { profile, profileDispatch } = useProfile();
-  const { api } = useAxios();
+  const [editMode, setEditMode] = useState(false);
+  const { profile } = useProfile();
   const user = useGetUser();
   const { showLoggedInUserInfo } = useShowLoggedInUserInfo();
   const [bio, setBio] = useState(
     showLoggedInUserInfo ? profile?.user?.bio : profile?.blogAuthor?.bio
   );
-  const [editMode, setEditMode] = useState(false);
+  const { handleBioEdit } = useProfileActions();
 
   useEffect(() => {
     if (showLoggedInUserInfo) {
@@ -26,35 +24,6 @@ const Bio = () => {
     }
   }, [showLoggedInUserInfo, user?.bio, profile?.blogAuthor?.bio]);
 
-  //* Edit Bio
-  const handleBioEdit = async () => {
-    if (bio?.length === 0) {
-      return toast.warn('Please write something about yourself.');
-    }
-
-    profileDispatch({ type: actions.profile.DATA_FETCHING });
-
-    try {
-      const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/profile`,
-        { bio }
-      );
-
-      if (response.status === 200) {
-        profileDispatch({
-          type: actions.profile.USER_DATA_EDITED,
-          data: response.data?.user?.bio,
-        });
-        toast.success('Profile Updated Successfully!');
-      }
-    } catch (error) {
-      profileDispatch({
-        type: actions.profile.DATA_FETCH_ERROR,
-        error: error.message,
-      });
-    }
-  };
-
   return (
     <>
       <div className="flex items-start gap-2 mt-4 lg:mt-6">
@@ -62,12 +31,6 @@ const Bio = () => {
           {!editMode ? (
             <p className="leading-[188%] text-gray-400 lg:text-lg">
               {bio?.length ? bio : 'No Bio Information Found!'}
-
-              {/* {bio?.length
-                ? showLoggedInUserInfo
-                  ? user?.bio
-                  : profile?.blogAuthor?.bio
-                : 'No Bio Information Found!'} */}
             </p>
           ) : (
             <textarea
@@ -96,7 +59,7 @@ const Bio = () => {
             </button>
           ) : (
             <button
-              onClick={handleBioEdit}
+              onClick={() => handleBioEdit(bio)}
               className="rounded-full flex-center h-7 w-7"
             >
               <img src={checkIcon} alt="Check" />
