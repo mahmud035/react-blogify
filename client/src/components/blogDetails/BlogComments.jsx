@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import useGetUser from '../../hooks/auth/useGetUser';
 import useBlog from '../../hooks/blog/useBlog';
 import CommentBox from './comments/CommentBox';
@@ -7,6 +8,7 @@ const BlogComments = () => {
   const { blogState: { singleBlog } = {} } = useBlog();
   const { comments } = singleBlog;
   const user = useGetUser();
+  const commentListRef = useRef(null);
 
   return (
     <section id="comments">
@@ -15,9 +17,9 @@ const BlogComments = () => {
           Comments ({comments?.length})
         </h2>
 
-        {/* TODO: If user is loggedIn, then show the commentBox. */}
-        {user && <CommentBox />}
-        <CommentList />
+        {/* NOTE: If user is loggedIn, then show the commentBox. */}
+        {user && <CommentBox ref={commentListRef} />}
+        <CommentList ref={commentListRef} />
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
+import { forwardRef } from 'react';
 import { useForm } from 'react-hook-form';
 import useGetUser from '../../../hooks/auth/useGetUser';
 import useCommentActions from '../../../hooks/blog/comment/useCommentActions';
 import { getUserAvatar } from '../../../utils';
 import InputField from '../../ui/InputField';
 
-const CommentBox = () => {
+const CommentBox = forwardRef((props, ref) => {
   const user = useGetUser();
   const {
     register,
@@ -20,7 +21,7 @@ const CommentBox = () => {
 
   //* Post Comment
   const onSubmit = (data) => {
-    handlePostComment(data, reset);
+    handlePostComment(data, reset, ref);
   };
 
   return (
@@ -57,6 +58,6 @@ const CommentBox = () => {
       </div>
     </div>
   );
-};
+});
 
 export default CommentBox;

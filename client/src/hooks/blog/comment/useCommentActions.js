@@ -1,3 +1,4 @@
+import { flushSync } from 'react-dom';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { actions } from '../../../actions';
@@ -10,7 +11,7 @@ const useCommentActions = () => {
   const { blogId } = useParams();
 
   //* Post Comment
-  const handlePostComment = async (data, reset) => {
+  const handlePostComment = async (data, reset, ref) => {
     try {
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/comment`,
@@ -18,11 +19,20 @@ const useCommentActions = () => {
       );
 
       if (response.status === 200) {
-        blogDispatch({
-          type: actions.blog.ADD_COMMENT,
-          data: response.data?.comments,
+        // NOTE: use flushSync to update the DOM synchronously
+        flushSync(() => {
+          blogDispatch({
+            type: actions.blog.ADD_COMMENT,
+            data: response.data?.comments,
+          });
+          reset(); // reset comment box
         });
-        reset(); // reset comment box
+        // scroll to the newly added comment
+        ref.current.lastChild.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        });
+
         toast.success('Comment Added Successfully.');
       }
     } catch (error) {
