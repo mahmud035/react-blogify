@@ -5,7 +5,7 @@ import deleteIcon from '../../assets/icons/delete.svg';
 import editIcon from '../../assets/icons/edit.svg';
 import useGetUser from '../../hooks/auth/useGetUser';
 import useBlogActions from '../../hooks/blog/useBlogActions';
-import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
+import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
 import useSearch from '../../hooks/search/useSearch';
 import { getBlogThumbnail } from '../../utils';
 import { getFormattedDate } from '../../utils/date-time-utils';
@@ -16,7 +16,7 @@ const BlogCard = ({ blog }) => {
     useSearch();
   const navigate = useNavigate();
   const user = useGetUser();
-  const { fetchBlogAuthorData } = useFetchBlogAuthorData();
+  const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
   const { handleDeleteBlog } = useBlogActions();
   const {
     id,
@@ -89,7 +89,7 @@ const BlogCard = ({ blog }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  fetchBlogAuthorData(profileId);
+                  fetchBlogAuthorProfile(profileId, true);
                 }}
                 className="text-white"
               >
@@ -104,7 +104,7 @@ const BlogCard = ({ blog }) => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    fetchBlogAuthorData(profileId);
+                    fetchBlogAuthorProfile(profileId, true);
                   }}
                   className="text-sm text-slate-500"
                 >

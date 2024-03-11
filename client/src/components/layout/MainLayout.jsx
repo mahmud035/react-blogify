@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { actions } from '../../actions';
 import useAuth from '../../hooks/auth/useAuth';
+import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
 import useFetchUserProfile from '../../hooks/profile/useFetchUserProfile';
 import useProfile from '../../hooks/profile/useProfile';
 import Footer from '../../shared/Footer';
@@ -10,9 +9,10 @@ import Header from '../../shared/Header';
 import LargeLoader from '../ui/LargeLoader';
 
 const MainLayout = () => {
-  const { profile, profileDispatch } = useProfile();
+  const { profile } = useProfile();
   const { loading } = profile || {};
   const { auth } = useAuth();
+  const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
 
   const userId =
     JSON.parse(localStorage.getItem('authInfo'))?.userId || auth?.user?.id;
@@ -20,42 +20,12 @@ const MainLayout = () => {
   const profileId =
     localStorage.getItem('profileId') || profile?.blogAuthor?.id;
 
-  //* Fetch User Profile
+  //* Fetch / Re-fetch User Profile
   useFetchUserProfile(userId);
 
-  //* Re-fetch the profile data of the currently viewed author when page reloads
+  //* On page reload, re-fetch currently viewed author's profile information
   useEffect(() => {
-    if (profileId) {
-      let ignore = false;
-      profileDispatch({ type: actions.profile.DATA_FETCHING });
-
-      const fetchBlogAuthorProfile = async () => {
-        try {
-          const response = await axios.get(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
-          );
-
-          if (response.status === 200 && !ignore) {
-            profileDispatch({
-              type: actions.profile.BLOG_AUTHOR_DATA_FETCHED,
-              data: response.data,
-            });
-          }
-        } catch (error) {
-          console.log(error);
-          profileDispatch({
-            type: actions.profile.DATA_FETCH_ERROR,
-            error: error.message,
-          });
-        }
-      };
-      fetchBlogAuthorProfile();
-
-      // cleanup
-      return () => {
-        ignore = true;
-      };
-    }
+    fetchBlogAuthorProfile(profileId, false);
   }, [profileId]);
 
   return (

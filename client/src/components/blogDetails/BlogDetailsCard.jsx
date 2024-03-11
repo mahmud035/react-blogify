@@ -1,11 +1,11 @@
 import useBlog from '../../hooks/blog/useBlog';
-import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
+import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
 import { getBlogThumbnail } from '../../utils';
 import { getFormattedDate } from '../../utils/date-time-utils';
 import Tags from './Tags';
 
 const BlogDetailsCard = () => {
-  const { fetchBlogAuthorData } = useFetchBlogAuthorData();
+  const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
   const { blogState } = useBlog();
   const { singleBlog } = blogState || {};
   const {
@@ -33,7 +33,7 @@ const BlogDetailsCard = () => {
           <div className="flex items-center space-x-2 capitalize">
             <img
               onClick={() => {
-                fetchBlogAuthorData(profileId);
+                fetchBlogAuthorProfile(profileId, true);
               }}
               className="font-bold text-white cursor-pointer avater-img hover:text-white/80"
               src={authorAvatar}
@@ -41,7 +41,7 @@ const BlogDetailsCard = () => {
             />
             <h5
               onClick={() => {
-                fetchBlogAuthorData(profileId);
+                fetchBlogAuthorProfile(profileId, true);
               }}
               className="text-sm cursor-pointer text-slate-500"
             >

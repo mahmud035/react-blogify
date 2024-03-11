@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import useFetchBlogAuthorData from '../../hooks/profile/useFetchBlogAuthorData';
+import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
 
 const PopularBlogCard = ({ blog }) => {
-  const { fetchBlogAuthorData } = useFetchBlogAuthorData();
+  const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
   const {
     id,
     title,
@@ -21,7 +21,7 @@ const PopularBlogCard = ({ blog }) => {
         by{' '}
         <span
           onClick={() => {
-            fetchBlogAuthorData(profileId);
+            fetchBlogAuthorProfile(profileId, true);
           }}
           className="cursor-pointer"
         >

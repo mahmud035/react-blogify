@@ -11,8 +11,6 @@ const useFetchUserProfile = (userId) => {
   //* Fetch User Profile
   useEffect(() => {
     if (userId) {
-      console.log('fetching user profile info...');
-
       let ignore = false;
       profileDispatch({ type: actions.profile.DATA_FETCHING });
 
