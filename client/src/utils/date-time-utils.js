@@ -2,7 +2,7 @@ const getFormattedDate = (timestamp) => {
   const localDate = new Date(timestamp);
   const now = new Date();
 
-  // Calculate the difference in milliseconds
+  // Calculate the differences
   const timeDiff = now - localDate;
   const diffInSeconds = Math.floor(timeDiff / 1000);
   const diffInMinutes = Math.floor(diffInSeconds / 60);
