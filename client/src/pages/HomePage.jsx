@@ -23,7 +23,7 @@ const HomePage = () => {
     <main>
       {/* Begin Blogs  */}
       <section>
-        <div className="container min-h-[calc(100vh-90px)]">
+        <div className="container min-h-[calc(100vh-90px)] pb-12">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-7">
             {/* Blog Contents  */}
             <div className="space-y-3 md:col-span-5">
