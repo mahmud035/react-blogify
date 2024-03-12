@@ -27,7 +27,6 @@ const useFetchUserProfile = (userId) => {
             });
           }
         } catch (error) {
-          console.log(error);
           profileDispatch({
             type: actions.profile.DATA_FETCH_ERROR,
             error: error?.response?.data?.error,

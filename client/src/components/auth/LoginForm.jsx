@@ -48,7 +48,6 @@ const LoginForm = () => {
         }
       }
     } catch (error) {
-      console.log(error);
       setError('root.random', {
         type: 'random',
         message: `${error?.response?.data?.error}`,

@@ -36,7 +36,6 @@ const useFetchBlogs = () => {
           setPage((prevPage) => prevPage + 1);
         }
       } catch (error) {
-        console.log(error);
         blogDispatch({
           type: actions.blog.DATA_FETCH_ERROR,
           error: error.message,

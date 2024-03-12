@@ -26,7 +26,6 @@ const useFetchSingleBlog = () => {
           });
         }
       } catch (error) {
-        console.log(error);
         blogDispatch({
           type: actions.blog.DATA_FETCH_ERROR,
           error: error.message,
