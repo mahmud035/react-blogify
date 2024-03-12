@@ -36,7 +36,7 @@ const Bio = () => {
             <textarea
               onChange={(e) => setBio(e.target.value)}
               value={bio}
-              className={`p-2 leading-[188%] text-gray-400 lg:text-lg rounded ${
+              className={`p-2 leading-[188%] text-gray-400 lg:text-lg rounded w-80 mx-auto sm:w-96 md:w-[500px] lg:w-[550px]  ${
                 bio?.length === 0 && 'outline outline-red-500 outline-offset-0'
               }`}
               cols="55"
