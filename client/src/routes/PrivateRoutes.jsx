@@ -15,7 +15,7 @@ const PrivateRoutes = ({ children }) => {
     auth?.accessToken;
 
   if (loading) {
-    return <LargeLoader message="Loading" />;
+    return <LargeLoader />;
   }
 
   return (

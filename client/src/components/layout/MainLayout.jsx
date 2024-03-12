@@ -33,7 +33,7 @@ const MainLayout = () => {
   let content;
 
   if (loading) {
-    content = <LargeLoader message="Loading" />;
+    content = <LargeLoader />;
   } else if (!loading && error) {
     content = <Error error={error} />;
   } else if (!loading && !error) {

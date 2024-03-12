@@ -1,9 +1,9 @@
-const SmallLoader = ({ message }) => {
+const SmallLoader = () => {
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-167px)] -mt-20  mx-auto max-w-[420px]">
-      <p className="p-8 text-3xl text-center text-[#00d991] rounded-md bg-teal-50 ">
-        {message}
-      </p>
+    <div className="flex items-center justify-center h-full mx-auto max-w-[420px]">
+      <p className="text-3xl font-thin">L</p>
+      <div className="mt-5 h-3 w-3 animate-spin rounded-full border-2 border-dashed border-[#00d991]"></div>
+      <p className="text-3xl font-thin">ading....</p>
     </div>
   );
 };
