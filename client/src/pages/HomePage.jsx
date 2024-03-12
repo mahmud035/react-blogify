@@ -34,7 +34,7 @@ const HomePage = () => {
                   ref={loaderRef}
                   className="text-xl italic text-center text-white"
                 >
-                  Fetching more blogs...
+                  Fetching blogs...
                 </div>
               )}
 
