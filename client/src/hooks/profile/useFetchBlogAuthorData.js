@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useProfile from './useProfile';
 
 const useFetchBlogAuthorProfile = () => {
@@ -13,9 +14,7 @@ const useFetchBlogAuthorProfile = () => {
       localStorage.setItem('profileId', profileId);
 
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${profileId}`
-        );
+        const response = await axios.get(`${baseURL}/profile/${profileId}`);
 
         if (response.status === 200) {
           profileDispatch({

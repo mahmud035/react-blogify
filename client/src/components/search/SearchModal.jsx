@@ -4,6 +4,7 @@ import modalCloseIcon from '../../assets/icons/close.svg';
 import searchIcon from '../../assets/icons/search.svg';
 import useDebounce from '../../hooks/search/useDebounce';
 import useSearch from '../../hooks/search/useSearch';
+import { baseURL } from '../../utils';
 import BlogList from '../blogs/BlogList';
 
 const SearchModal = () => {
@@ -19,9 +20,7 @@ const SearchModal = () => {
     setSearchText(term);
 
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/search?q=${term}`
-      );
+      const response = await axios.get(`${baseURL}/search?q=${term}`);
 
       if (response.status === 200) {
         setLoading(false);

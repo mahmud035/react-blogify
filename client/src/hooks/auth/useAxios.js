@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { api } from '../../api';
+import { baseURL } from '../../utils';
 import useAuth from './useAuth';
 
 const useAxios = () => {
@@ -34,10 +35,9 @@ const useAxios = () => {
           originalRequest._retry = true;
 
           const refreshToken = localStorage.getItem('refreshToken');
-          const response = await axios.post(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/auth/refresh-token`,
-            { refreshToken }
-          );
+          const response = await axios.post(`${baseURL}/auth/refresh-token`, {
+            refreshToken,
+          });
 
           if (response.status === 200) {
             const { accessToken } = response.data;

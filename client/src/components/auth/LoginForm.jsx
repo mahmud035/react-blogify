@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/auth/useAuth';
+import { baseURL } from '../../utils';
 import InputField from '../ui/InputField';
 
 const LoginForm = () => {
@@ -25,10 +26,7 @@ const LoginForm = () => {
   const handleLogin = async (formData) => {
     //* API call will return (accessToken, refreshToken and Logged in User Information)
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/auth/login`,
-        formData
-      );
+      const response = await axios.post(`${baseURL}/auth/login`, formData);
 
       if (response.status === 200) {
         const { user, token } = response.data;

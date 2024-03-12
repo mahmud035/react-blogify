@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useBlog from './useBlog';
 
 const blogPerPage = 10;
@@ -20,9 +21,7 @@ const useFetchBlogs = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          `${
-            import.meta.env.VITE_SERVER_BASE_URL
-          }/blogs?page=${page}&limit=${blogPerPage}`
+          `${baseURL}/blogs?page=${page}&limit=${blogPerPage}`
         );
 
         if (response.data?.blogs?.length === 0) {

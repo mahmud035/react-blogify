@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useAxios from '../auth/useAxios';
 import useGetUser from '../auth/useGetUser';
 import useProfile from '../profile/useProfile';
@@ -18,9 +19,7 @@ const useBlogActions = () => {
     if (!user) return toast.error(`Please login to add the blog to favorites.`);
 
     try {
-      const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/favourite`
-      );
+      const response = await api.patch(`${baseURL}/blogs/${blogId}/favourite`);
 
       if (response.status === 200) {
         profileDispatch({
@@ -41,9 +40,7 @@ const useBlogActions = () => {
     if (!user) return toast.error(`Please login to like the blog.`);
 
     try {
-      const response = await api.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/like`
-      );
+      const response = await api.post(`${baseURL}/blogs/${blogId}/like`);
 
       if (response.status === 200) {
         blogDispatch({
@@ -70,10 +67,7 @@ const useBlogActions = () => {
     formData.append('tags', data.tags);
 
     try {
-      const response = await api.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/`,
-        formData
-      );
+      const response = await api.post(`${baseURL}/blogs/`, formData);
 
       if (response.status === 201) {
         profileDispatch({
@@ -97,9 +91,7 @@ const useBlogActions = () => {
 
     if (confirm) {
       try {
-        const response = await api.delete(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}`
-        );
+        const response = await api.delete(`${baseURL}/blogs/${blogId}`);
 
         if (response.status === 200) {
           profileDispatch({
@@ -135,10 +127,7 @@ const useBlogActions = () => {
     formData.append('tags', data.tags);
 
     try {
-      const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${id}`,
-        formData
-      );
+      const response = await api.patch(`${baseURL}/blogs/${id}`, formData);
 
       if (response.status === 200) {
         profileDispatch({

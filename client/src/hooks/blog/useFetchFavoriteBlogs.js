@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useAxios from '../auth/useAxios';
 import useProfile from '../profile/useProfile';
 
@@ -14,9 +15,7 @@ const useFetchFavoriteBlogs = (userId) => {
 
       const fetchFavoriteBlogs = async () => {
         try {
-          const response = await api.get(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/favourites`
-          );
+          const response = await api.get(`${baseURL}/blogs/favourites`);
 
           if (response.status === 200 && !ignore) {
             profileDispatch({

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useProfile from './useProfile';
 
 // NOTE: Fetch / Re-fetch the logged-in user's information upon successful login and store it in the ProfileContext. Then, provide this user information across the application using the ProvideProvider. Additionally, ensure that the user information is re-fetched when the page is reloaded.
@@ -16,9 +17,7 @@ const useFetchUserProfile = (userId) => {
 
       const fetchUserProfile = async () => {
         try {
-          const response = await axios.get(
-            `${import.meta.env.VITE_SERVER_BASE_URL}/profile/${userId}`
-          );
+          const response = await axios.get(`${baseURL}/profile/${userId}`);
 
           if (response.status === 200 && !ignore) {
             profileDispatch({

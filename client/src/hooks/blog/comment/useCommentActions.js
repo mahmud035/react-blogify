@@ -2,6 +2,7 @@ import { flushSync } from 'react-dom';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { actions } from '../../../actions';
+import { baseURL } from '../../../utils';
 import useAxios from '../../auth/useAxios';
 import useBlog from '../useBlog';
 
@@ -13,10 +14,9 @@ const useCommentActions = () => {
   //* Post Comment
   const handlePostComment = async (data, reset, ref) => {
     try {
-      const response = await api.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}/comment`,
-        { content: data.content }
-      );
+      const response = await api.post(`${baseURL}/blogs/${blogId}/comment`, {
+        content: data.content,
+      });
 
       if (response.status === 200) {
         // NOTE: use flushSync to update the DOM synchronously
@@ -47,9 +47,7 @@ const useCommentActions = () => {
   const handleDeleteComment = async (commentId) => {
     try {
       const response = await api.delete(
-        `${
-          import.meta.env.VITE_SERVER_BASE_URL
-        }/blogs/${blogId}/comment/${commentId}`
+        `${baseURL}/blogs/${blogId}/comment/${commentId}`
       );
 
       if (response.status === 200) {

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { baseURL } from '../../utils';
 import InputField from '../ui/InputField';
 
 const RegistrationForm = () => {
@@ -22,10 +23,7 @@ const RegistrationForm = () => {
 
   const handleRegistration = async (formData) => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/auth/register`,
-        formData
-      );
+      const response = await axios.post(`${baseURL}/auth/register`, formData);
 
       if (response.status === 201) {
         toast.success('Account Created Successfully!');

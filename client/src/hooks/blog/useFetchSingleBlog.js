@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useBlog from './useBlog';
 
 const useFetchSingleBlog = () => {
@@ -15,9 +16,7 @@ const useFetchSingleBlog = () => {
 
     const fetchSingleBlog = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs/${blogId}`
-        );
+        const response = await axios.get(`${baseURL}/blogs/${blogId}`);
 
         if (response.status === 200 && !ignore) {
           blogDispatch({

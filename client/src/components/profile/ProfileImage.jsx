@@ -5,7 +5,7 @@ import useAxios from '../../hooks/auth/useAxios';
 import useGetUser from '../../hooks/auth/useGetUser';
 import useProfile from '../../hooks/profile/useProfile';
 import useShowLoggedInUserInfo from '../../hooks/profile/useShowLoggedInUserInfo';
-import { getAuthorAvatar, getUserAvatar } from '../../utils';
+import { baseURL, getAuthorAvatar, getUserAvatar } from '../../utils';
 
 const ProfileImage = () => {
   const user = useGetUser();
@@ -41,10 +41,7 @@ const ProfileImage = () => {
         formData.append('avatar', file);
       }
 
-      const response = await api.post(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/profile/avatar`,
-        formData
-      );
+      const response = await api.post(`${baseURL}/profile/avatar`, formData);
 
       if (response.status === 200) {
         profileDispatch({

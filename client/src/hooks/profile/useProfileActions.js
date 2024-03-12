@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { actions } from '../../actions';
+import { baseURL } from '../../utils';
 import useAxios from '../auth/useAxios';
 import useProfile from './useProfile';
 
@@ -14,10 +15,7 @@ const useProfileActions = () => {
     }
 
     try {
-      const response = await api.patch(
-        `${import.meta.env.VITE_SERVER_BASE_URL}/profile`,
-        { bio }
-      );
+      const response = await api.patch(`${baseURL}/profile`, { bio });
 
       if (response.status === 200) {
         profileDispatch({
