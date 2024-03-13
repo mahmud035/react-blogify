@@ -74,7 +74,17 @@ const BlogCard = ({ blog }) => {
       />
       <div className="relative mt-2">
         <h3 className="text-xl text-slate-300 lg:text-2xl">
-          {title ? title : 'No Title Found'}
+          {searchText
+            ? title.split(new RegExp(`(${searchText})`, 'i')).map((char, i) =>
+                char.toLowerCase() === searchText.toLowerCase() ? (
+                  <span key={i} className="text-[#00d991]">
+                    {char}
+                  </span>
+                ) : (
+                  <span key={i}>{char}</span>
+                )
+              )
+            : title}
         </h3>
         <p className="mt-1 mb-6 text-base text-slate-500">
           {content && content?.length > 176
