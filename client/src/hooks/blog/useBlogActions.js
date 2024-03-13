@@ -5,6 +5,7 @@ import { baseURL } from '../../utils';
 import useAxios from '../auth/useAxios';
 import useGetUser from '../auth/useGetUser';
 import useProfile from '../profile/useProfile';
+import useSearch from '../search/useSearch';
 import useBlog from './useBlog';
 
 const useBlogActions = () => {
@@ -13,6 +14,7 @@ const useBlogActions = () => {
   const user = useGetUser();
   const { blogDispatch } = useBlog();
   const navigate = useNavigate();
+  const { searchResult, setSearchResult } = useSearch();
 
   //* Toggle Favorite
   const handleToggleFavorite = async (blogId) => {
@@ -99,6 +101,12 @@ const useBlogActions = () => {
             data: blogId,
           });
           blogDispatch({ type: actions.blog.DATA_DELETED, data: blogId });
+
+          // update searchResult
+          const updatedSearchResult = searchResult.filter(
+            (blog) => blog.id !== blogId
+          );
+          setSearchResult(updatedSearchResult);
           toast.success('Blog deleted successfully');
         }
       } catch (error) {

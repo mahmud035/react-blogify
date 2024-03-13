@@ -57,6 +57,9 @@ const BlogCard = ({ blog }) => {
     localStorage.setItem('blogToEdit', JSON.stringify(blog));
     navigate(`/edit-blog/${blogId}`);
     setShowAction(false);
+    setShowSearchModal(false);
+    setSearchText('');
+    setSearchResult([]);
   };
 
   return (

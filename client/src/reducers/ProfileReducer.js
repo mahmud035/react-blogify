@@ -84,11 +84,6 @@ const profileReducer = (state, action) => {
         user: {
           ...state.user,
           blogs: state.user?.blogs.filter((blog) => blog?.id !== action?.data),
-
-          // BUG in backend server. No need to implement this.
-          // favourites: state.user?.favourites.filter(
-          //   (favoriteBlog) => favoriteBlog?.id !== action.data
-          // ),
         },
       };
     }
