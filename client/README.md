@@ -2,7 +2,7 @@
 
 Assignment-5-React-Blogify is a React-based blogging platform developed as part of an assignment. It provides a user-friendly interface for creating, viewing, and managing blog posts.
 
-## Live Website: <a href="https://assignment-5-react-blogify.vercel.app/">React Blogify</a>
+## Live Website: <a href="https://assignment-5-react-blogify.vercel.app/" target="_blank">React Blogify</a>
 
 ## Features
 
