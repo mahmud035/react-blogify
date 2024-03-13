@@ -1,8 +1,5 @@
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { baseURL } from '../../utils';
+import useRegistration from '../../hooks/auth/useRegistration';
 import InputField from '../ui/InputField';
 
 const RegistrationForm = () => {
@@ -19,26 +16,15 @@ const RegistrationForm = () => {
       password: '',
     },
   });
-  const navigate = useNavigate();
+  const { handleRegistration } = useRegistration();
 
-  const handleRegistration = async (formData) => {
-    try {
-      const response = await axios.post(`${baseURL}/auth/register`, formData);
-
-      if (response.status === 201) {
-        toast.success('Account Created Successfully!');
-        navigate('/login');
-      }
-    } catch (error) {
-      setError('root.random', {
-        type: 'random',
-        message: `Something went wrong: ${error?.response?.data?.error}`,
-      });
-    }
+  //* Registration
+  const onSubmit = (formData) => {
+    handleRegistration(formData, setError);
   };
 
   return (
-    <form onSubmit={handleSubmit(handleRegistration)} action="">
+    <form onSubmit={handleSubmit(onSubmit)} action="">
       {/* First Name */}
       <InputField label="First Name" error={errors?.firstName}>
         <input
