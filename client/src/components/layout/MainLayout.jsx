@@ -46,10 +46,10 @@ const MainLayout = () => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       {content}
-    </div>
+    </>
   );
 };
 
