@@ -37,7 +37,7 @@ const SearchModal = () => {
   }, 500);
 
   const handleInputChange = (e) => {
-    const value = e.target.value.trim().toLowerCase();
+    const value = e.target.value.toLowerCase();
     setLoading(true);
     setKeyword(value);
     debouncedSearch(value);

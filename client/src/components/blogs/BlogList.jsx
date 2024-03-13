@@ -24,7 +24,7 @@ const BlogList = ({ blogs, keyword = '' }) => {
               <span className="text-[#00d991]">{`'${keyword}'`}</span>
             </p>
           ) : (
-            <p>No Blog Data Found!</p>
+            <p>No Blog Found!</p>
           )}
         </div>
       )}

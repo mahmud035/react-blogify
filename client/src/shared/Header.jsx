@@ -98,6 +98,10 @@ const Header = () => {
                   <img
                     className="font-bold text-white avater-img hover:text-white/80"
                     src={userAvatar}
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        'https://placehold.co/200?text=Image%20updated.%20Reload%20Page';
+                    }}
                     alt="Profile Image"
                   />
                 </Link>
@@ -107,7 +111,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Render Modal Using Portal */}
+      {/* Render Search Modal Using Portal */}
       {showSearchModal && renderPortal(<SearchModal />)}
     </header>
   );

@@ -62,6 +62,10 @@ const ProfileImage = () => {
       <img
         className="max-w-full rounded-full"
         src={showLoggedInUserInfo ? userAvatar : authorAvatar}
+        onError={(e) => {
+          e.currentTarget.src =
+            'https://placehold.co/200?text=Image%20updated.%20Reload%20Page';
+        }}
         alt="Profile Image"
       />
 
