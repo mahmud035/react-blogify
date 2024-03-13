@@ -61,7 +61,7 @@
       "email": "mhpcse@gmail.com",
       "firstName": "Mahmud",
       "lastName": "Hasan",
-      "avatar": "avatar-1710305342465-968496237.png",
+      "avatar": "avatar-1710321442348-547978307.png",
       "bio": "A Front End developer experience with multiple web application using React. My current target is to become a Skilled Front End Developer of React and Next.js within April 2024 and get a job within May 2024 InShaAllah.",
       "password": "$2b$08$zuLICabpSf1F4lrC.BgdTOizjEDi.nSWhmSHGpvKQVeZtb06zuHxy",
       "favourites": [
@@ -81,16 +81,6 @@
           "tags": "programming, algorithm, prototype, javascript"
         }
       ]
-    },
-    {
-      "id": "0ff04d2664e2bfca9b44",
-      "email": "test@gmail.com",
-      "firstName": "test",
-      "lastName": "profile",
-      "avatar": "avatar-1710305257220-512961750.jpg",
-      "bio": "hello bio updated ",
-      "password": "$2b$08$/Q1TxDr7Uqil2GG72KG2aO6G9OMgyWUMaUniQiNQItNdPZyAFtFO2",
-      "favourites": []
     }
   ],
   "blogs": [
@@ -536,6 +526,38 @@
         }
       ],
       "createdAt": "2024-03-13T03:29:11.050Z"
+    },
+    {
+      "id": "b3f76d3ec71eca7dba89",
+      "title": "Test blog 3",
+      "content": "content",
+      "thumbnail": "thumbnail-1710318979480-403608980.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710305342465-968496237.png"
+      },
+      "tags": "react, next.js, js",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-13T08:36:19.487Z"
+    },
+    {
+      "id": "f95920bed00ad28886a2",
+      "title": "Test blog 4",
+      "content": "dsadas",
+      "thumbnail": "thumbnail-1710319991638-910844392.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710305342465-968496237.png"
+      },
+      "tags": "react, next.js, js",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-13T08:52:38.763Z"
     }
   ]
 }
