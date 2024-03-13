@@ -14,7 +14,7 @@ const useBlogActions = () => {
   const user = useGetUser();
   const { blogDispatch } = useBlog();
   const navigate = useNavigate();
-  const { searchResult, setSearchResult } = useSearch();
+  const { searchText, searchResult, setSearchResult } = useSearch();
 
   //* Toggle Favorite
   const handleToggleFavorite = async (blogId) => {
@@ -103,10 +103,12 @@ const useBlogActions = () => {
           blogDispatch({ type: actions.blog.DATA_DELETED, data: blogId });
 
           // update searchResult
-          const updatedSearchResult = searchResult.filter(
-            (blog) => blog.id !== blogId
-          );
-          setSearchResult(updatedSearchResult);
+          if (searchText) {
+            const updatedSearchResult = searchResult.filter(
+              (blog) => blog.id !== blogId
+            );
+            setSearchResult(updatedSearchResult);
+          }
           toast.success('Blog deleted successfully');
         }
       } catch (error) {
