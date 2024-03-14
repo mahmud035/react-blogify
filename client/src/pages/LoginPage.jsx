@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import LoginForm from '../components/auth/LoginForm';
+import useSetTitle from '../hooks/useSetTitle';
 
 const LoginPage = () => {
+  useSetTitle('Login');
+
   return (
     <main>
       <section className="container min-h-[calc(100vh-90px)]">
