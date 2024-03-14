@@ -152,7 +152,7 @@ const BlogCard = ({ blog }) => {
               {/* NOTE: Use e.preventDefault() and e.stopPropagation() to stop the propagation of click event */}
               <button
                 onClick={(e) => navigateEditBlogPage(e, blog, id)}
-                className="action-menu-item hover:text-lwsGreen"
+                className="action-menu-item hover:text-green-500"
               >
                 <img src={editIcon} alt="Edit" />
                 Edit
