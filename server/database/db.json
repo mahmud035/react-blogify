@@ -61,7 +61,7 @@
       "email": "mhpcse@gmail.com",
       "firstName": "Mahmud",
       "lastName": "Hasan",
-      "avatar": "avatar-1710321442348-547978307.png",
+      "avatar": "avatar-1710410212660-242720633.png",
       "bio": "A Front End developer experience with multiple web application using React. My current target is to become a Skilled Front End Developer of React and Next.js within April 2024 and get a job within May 2024 InShaAllah.",
       "password": "$2b$08$zuLICabpSf1F4lrC.BgdTOizjEDi.nSWhmSHGpvKQVeZtb06zuHxy",
       "favourites": [
@@ -71,16 +71,73 @@
           "tags": "android, java, kotlin, permission"
         },
         {
-          "id": "210470a416ea45b625b8",
-          "title": "Node.js back-end debugging process",
+          "id": "7c12b4b48531bcc995ae",
+          "title": "A guide to Prototype in JavaScript",
           "tags": "programming, algorithm, prototype, javascript"
         },
+        {
+          "id": "4321b782f360f58c8c86",
+          "title": "এন্ড্রয়েড পার্মিশন",
+          "tags": "android, java, kotlin, permission"
+        }
+      ]
+    },
+    {
+      "id": "a99b874f9970bacf8c24",
+      "email": "test@gmail.com",
+      "firstName": "Test ",
+      "lastName": "Account ",
+      "avatar": "avatar-1710405304628-653184039.jpg",
+      "bio": "Test Account Bio update",
+      "password": "$2b$08$bTr65bNt.5bnfBdzmv2sAOHZY.NY8wRw1AKKGGPRn3YNtFQLSUeeG",
+      "favourites": [
         {
           "id": "7c12b4b48531bcc995ae",
           "title": "A guide to Prototype in JavaScript",
           "tags": "programming, algorithm, prototype, javascript"
+        },
+        {
+          "id": "4321b782f360f58c8c86",
+          "title": "এন্ড্রয়েড পার্মিশন",
+          "tags": "android, java, kotlin, permission"
+        },
+        {
+          "id": "4321b782f360f58c8c88",
+          "title": "JSON Parse | Android | Java",
+          "tags": "android, java, kotlin, permission"
         }
       ]
+    },
+    {
+      "id": "87ad214935e3c9ca9a15",
+      "email": "test2@gmail.com",
+      "firstName": "Test ",
+      "lastName": "Account 2",
+      "avatar": "avatar-1710407447359-127450922.jpg",
+      "bio": "Test Account 2 bio information",
+      "password": "$2b$08$0WcINy3rTe.UbIKusTvoruns379XWfRhJ/6DqtO0nkttaclFgcDhW",
+      "favourites": [
+        {
+          "id": "7c12b4b48531bcc995ae",
+          "title": "A guide to Prototype in JavaScript",
+          "tags": "programming, algorithm, prototype, javascript"
+        },
+        {
+          "id": "4321b782f360f58c8c89",
+          "title": "React useMemo Hook",
+          "tags": "android, java, kotlin, permission"
+        }
+      ]
+    },
+    {
+      "id": "1eac7ddb05362d363424",
+      "email": "test3@gmail.com",
+      "firstName": "Test",
+      "lastName": "Account 3",
+      "avatar": null,
+      "bio": "Test Account 3 Bio Information",
+      "password": "$2b$08$HJnze8rQUqwELaL7YvrtDeOfA31woySmVwdp1cFKfpmio2elQcL4a",
+      "favourites": []
     }
   ],
   "blogs": [
@@ -105,6 +162,12 @@
         },
         {
           "id": "3d2dde4b6548275fb066"
+        },
+        {
+          "id": "a99b874f9970bacf8c24"
+        },
+        {
+          "id": "87ad214935e3c9ca9a15"
         },
         {
           "id": "b5217704e41f619cb178"
@@ -172,23 +235,43 @@
           }
         },
         {
-          "id": "25834e29979b61bd3f66",
+          "id": "582bccc26d8b4f87548e",
           "content": "test 4",
           "author": {
             "id": "b5217704e41f619cb178",
             "firstName": "Mahmud",
             "lastName": "Hasan",
-            "avatar": "avatar-1710244623382-74006532.png"
+            "avatar": "avatar-1710321442348-547978307.png"
           }
         },
         {
-          "id": "b357274288fa4842a370",
+          "id": "062d7d42fdc9d5e7042a",
           "content": "test 5",
           "author": {
             "id": "b5217704e41f619cb178",
             "firstName": "Mahmud",
             "lastName": "Hasan",
-            "avatar": "avatar-1710244623382-74006532.png"
+            "avatar": "avatar-1710321442348-547978307.png"
+          }
+        },
+        {
+          "id": "6519b544a7dad3322731",
+          "content": "test 6",
+          "author": {
+            "id": "a99b874f9970bacf8c24",
+            "firstName": "Test ",
+            "lastName": "Account ",
+            "avatar": "avatar-1710398530067-439128590.jpg"
+          }
+        },
+        {
+          "id": "87a4db9ecc59b1ffe6cb",
+          "content": "test 7",
+          "author": {
+            "id": "a99b874f9970bacf8c24",
+            "firstName": "Test ",
+            "lastName": "Account ",
+            "avatar": "avatar-1710405304628-653184039.jpg"
           }
         }
       ],
@@ -212,6 +295,44 @@
         },
         {
           "id": "b5217704e41f619cb178"
+        },
+        {
+          "id": "87ad214935e3c9ca9a15"
+        }
+      ],
+      "comments": [
+        {
+          "id": "91d01a81b26d40d9e85c",
+          "content": "test comment ",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710410212660-242720633.png"
+          }
+        }
+      ],
+      "createdAt": "2024-02-24T09:01:37.581Z",
+      "isFavourite": false
+    },
+    {
+      "id": "4321b782f360f58c8c88",
+      "title": "JSON Parse | Android | Java",
+      "content": "JSON stands for JavaScript Object Notation. It is structured, lightweight, human-readable and easy to parse. It’s the best alternative to XML when our android app needs to interchange data from the server. XML parsing is very complex as compare to JSON parsing. First, We have to understand how JSON works. JSON contains Objects, Arrays and key and value. An object is represented by Curly Braces: “{}”, Array is represented by Square Brackets: “[]” Everything between curly braces :{} is called JSON Object & everything between square brackets : [] is a JSON Object. A JSON object can contain different key-value pairs. The value of a key can be an Array. And Array may contain different Objects. And Multiple objects are separated by a comma. Seems difficult?\n\nNo, It’s not. See the Sample JSON file which will help you to understand it by your own and we will use this to fetch data. This JSON file is hosted on https://api.myjson.com/bins/xcuq8",
+      "thumbnail": "thumbnail-4321b782f360f58c8c86.webp",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "android, java, kotlin, permission",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "a99b874f9970bacf8c24"
         }
       ],
       "comments": [],
@@ -233,6 +354,9 @@
       "likes": [
         {
           "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "b5217704e41f619cb178"
         }
       ],
       "comments": [
@@ -265,6 +389,9 @@
       "likes": [
         {
           "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "b5217704e41f619cb178"
         }
       ],
       "comments": [
@@ -276,6 +403,16 @@
             "firstName": "Tapas",
             "lastName": "Adhikary",
             "avatar": "avatar-1708764766479-243448656.png"
+          }
+        },
+        {
+          "id": "0f31d4fae905407a9f2c",
+          "content": "test 1",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710410212660-242720633.png"
           }
         }
       ],
@@ -304,25 +441,44 @@
       "isFavourite": false
     },
     {
-      "id": "4321b782f360f58c8c88",
-      "title": "JSON Parse | Android | Java",
-      "content": "JSON stands for JavaScript Object Notation. It is structured, lightweight, human-readable and easy to parse. It’s the best alternative to XML when our android app needs to interchange data from the server. XML parsing is very complex as compare to JSON parsing. First, We have to understand how JSON works. JSON contains Objects, Arrays and key and value. An object is represented by Curly Braces: “{}”, Array is represented by Square Brackets: “[]” Everything between curly braces :{} is called JSON Object & everything between square brackets : [] is a JSON Object. A JSON object can contain different key-value pairs. The value of a key can be an Array. And Array may contain different Objects. And Multiple objects are separated by a comma. Seems difficult?\n\nNo, It’s not. See the Sample JSON file which will help you to understand it by your own and we will use this to fetch data. This JSON file is hosted on https://api.myjson.com/bins/xcuq8",
-      "thumbnail": "thumbnail-4321b782f360f58c8c86.webp",
+      "id": "9114299c37f497c16472",
+      "title": "Top Headless UI libraries for React in 2024",
+      "content": "Headless UI libraries are a modern trend in web development that focus on providing the underlying logic and functionality for UI components without prescribing a specific visual style. This approach allows developers to build fully accessible UI components according to their design systems without being tied to any predefined styles or aesthetics. \r\nRadix UI, an open source component library, prioritizes fast development, easy maintenance, and accessibility. With 32 components available, it streamlines development by removing the need for configuration, allowing developers to quickly incorporate its components into their projects.\r\nNext, Headless UI provides completely unstyled and fully accessible UI components.The diverse array of elements in Headless UI is meticulously crafted to function effectively within the system, making it an excellent option for individuals who prioritize developing custom, inclusive interface designs with a distinct visual aesthetic.\r\nReact Aria is a library of React Hooks that provides accessible UI primitives for your design system. There are over 40 components with built-in behavior, adaptive interactions, accessibility, and internationalization, ready for your custom styles. It provides an excellent user experience, notably with functions such as screen reader assistance, keyboard controls, focus handling, language translations, and additional features.\r\nIn addition, Aria Kit is an open-source library that provides unstyled, primitive components for building accessible web apps, design systems, and component libraries with React. It contains a collection of components that handle accessibility, state management, and keyboard interactions, while leaving the styling and composition to the user.\r\nArk UI is a headless library known for building reusable, scalable design systems that works for a wide range of JS frameworks. The components are unstyled, declarative, accessible, and reliable, allowing for a delightful development experience. It supports multiple platforms and applications, helps create a consistent design system across them and uses state machines to ensure predictable and bug-free behavior in every component.\r\nFurthermore, Reach UI is a collection of accessible, React-based UI components for building design systems. This prioritization of accessibility results in user-friendly components that enhance inclusivity in web applications. Reach UI's components adhere to accessibility best practices, simplifying the process for developers to build applications suitable for all users, including those who depend on assistive technologies.\r\n",
+      "thumbnail": "thumbnail-1710245362161-369246005.png",
       "author": {
-        "id": "3d2dde4b6548275fb066",
-        "firstName": "Saad",
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
         "lastName": "Hasan",
-        "avatar": "avatar-1708764856675-623317122.jpg"
+        "avatar": "avatar-1710244623382-74006532.png"
       },
-      "tags": "android, java, kotlin, permission",
+      "tags": "react, css, resources",
       "likes": [
         {
-          "id": "346d7a36b3c41f3fbfa2"
+          "id": "a99b874f9970bacf8c24"
         }
       ],
       "comments": [],
-      "createdAt": "2024-02-24T09:01:37.581Z",
-      "isFavourite": false
+      "createdAt": "2024-03-12T12:03:29.078Z"
+    },
+    {
+      "id": "210470a416ea45b625b8",
+      "title": "Node.js back-end debugging process",
+      "content": "Node.js Debugging Tools\nNode.js provides a range of debugging tools and techniques to debug back-end applications. Here are some of the popular ones:\n\n1. Console.log()\nConsole.log() is one of the most basic and widely used debugging techniques in Node.js. It is a simple function that logs messages to the console, which can be used to trace the execution flow and identify bugs. For example:\n\n2. Debugger Statement\nDebugger statement is a built-in Node.js debugger that stops the execution of code at a specific point and allows you to inspect variables, call stack, and execute code line by line. For example:3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n",
+      "thumbnail": "thumbnail-1708794403625-465722215.png",
+      "author": {
+        "id": "7830e5903b889750f1e3",
+        "firstName": "Sumit",
+        "lastName": "Saha",
+        "avatar": "avatar-1708764729322-387087910.png"
+      },
+      "tags": "programming, algorithm, prototype, javascript",
+      "likes": [
+        {
+          "id": "b5217704e41f619cb178"
+        }
+      ],
+      "comments": [],
+      "createdAt": "2024-02-24T17:06:43.629Z"
     },
     {
       "id": "6c33b31ecaa2b8917db2",
@@ -369,40 +525,19 @@
       },
       "tags": "programming, algorithm, prototype, javascript",
       "likes": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "8d3121558063f3c2dd5f",
+          "content": "test comment",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710410212660-242720633.png"
+          }
+        }
+      ],
       "createdAt": "2024-02-24T16:59:13.363Z"
-    },
-    {
-      "id": "210470a416ea45b625b8",
-      "title": "Node.js back-end debugging process",
-      "content": "Node.js Debugging Tools\nNode.js provides a range of debugging tools and techniques to debug back-end applications. Here are some of the popular ones:\n\n1. Console.log()\nConsole.log() is one of the most basic and widely used debugging techniques in Node.js. It is a simple function that logs messages to the console, which can be used to trace the execution flow and identify bugs. For example:\n\n2. Debugger Statement\nDebugger statement is a built-in Node.js debugger that stops the execution of code at a specific point and allows you to inspect variables, call stack, and execute code line by line. For example:3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n",
-      "thumbnail": "thumbnail-1708794403625-465722215.png",
-      "author": {
-        "id": "7830e5903b889750f1e3",
-        "firstName": "Sumit",
-        "lastName": "Saha",
-        "avatar": "avatar-1708764729322-387087910.png"
-      },
-      "tags": "programming, algorithm, prototype, javascript",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-02-24T17:06:43.629Z"
-    },
-    {
-      "id": "9114299c37f497c16472",
-      "title": "Top Headless UI libraries for React in 2024",
-      "content": "Headless UI libraries are a modern trend in web development that focus on providing the underlying logic and functionality for UI components without prescribing a specific visual style. This approach allows developers to build fully accessible UI components according to their design systems without being tied to any predefined styles or aesthetics. \r\nRadix UI, an open source component library, prioritizes fast development, easy maintenance, and accessibility. With 32 components available, it streamlines development by removing the need for configuration, allowing developers to quickly incorporate its components into their projects.\r\nNext, Headless UI provides completely unstyled and fully accessible UI components.The diverse array of elements in Headless UI is meticulously crafted to function effectively within the system, making it an excellent option for individuals who prioritize developing custom, inclusive interface designs with a distinct visual aesthetic.\r\nReact Aria is a library of React Hooks that provides accessible UI primitives for your design system. There are over 40 components with built-in behavior, adaptive interactions, accessibility, and internationalization, ready for your custom styles. It provides an excellent user experience, notably with functions such as screen reader assistance, keyboard controls, focus handling, language translations, and additional features.\r\nIn addition, Aria Kit is an open-source library that provides unstyled, primitive components for building accessible web apps, design systems, and component libraries with React. It contains a collection of components that handle accessibility, state management, and keyboard interactions, while leaving the styling and composition to the user.\r\nArk UI is a headless library known for building reusable, scalable design systems that works for a wide range of JS frameworks. The components are unstyled, declarative, accessible, and reliable, allowing for a delightful development experience. It supports multiple platforms and applications, helps create a consistent design system across them and uses state machines to ensure predictable and bug-free behavior in every component.\r\nFurthermore, Reach UI is a collection of accessible, React-based UI components for building design systems. This prioritization of accessibility results in user-friendly components that enhance inclusivity in web applications. Reach UI's components adhere to accessibility best practices, simplifying the process for developers to build applications suitable for all users, including those who depend on assistive technologies.\r\n",
-      "thumbnail": "thumbnail-1710245362161-369246005.png",
-      "author": {
-        "id": "b5217704e41f619cb178",
-        "firstName": "Mahmud",
-        "lastName": "Hasan",
-        "avatar": "avatar-1710244623382-74006532.png"
-      },
-      "tags": "react, css, resources",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-03-12T12:03:29.078Z"
     },
     {
       "id": "dd6894de764865d726af",
@@ -485,24 +620,8 @@
       "createdAt": "2024-03-12T13:31:49.707Z"
     },
     {
-      "id": "03b5fa7cf5733d00987a",
-      "title": "Test Blog 1",
-      "content": "blog content... update",
-      "thumbnail": "thumbnail-1710300523429-416034153.jpg",
-      "author": {
-        "id": "b5217704e41f619cb178",
-        "firstName": "Mahmud",
-        "lastName": "Hasan",
-        "avatar": "avatar-1710244623382-74006532.png"
-      },
-      "tags": "react, next.js, js",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-03-13T03:28:43.438Z"
-    },
-    {
       "id": "d26cbad75758fbe03ac3",
-      "title": "Test blog 2 ",
+      "title": "Test blog 1",
       "content": "blog content...",
       "thumbnail": "thumbnail-1710300551039-584603107.jpg",
       "author": {
@@ -528,36 +647,36 @@
       "createdAt": "2024-03-13T03:29:11.050Z"
     },
     {
-      "id": "b3f76d3ec71eca7dba89",
-      "title": "Test blog 3",
+      "id": "43d1e5fbb922c7ab7a8a",
+      "title": "Test Account Blog 1",
       "content": "content",
-      "thumbnail": "thumbnail-1710318979480-403608980.jpg",
+      "thumbnail": "thumbnail-1710398251706-609819607.jpg",
       "author": {
-        "id": "b5217704e41f619cb178",
-        "firstName": "Mahmud",
-        "lastName": "Hasan",
-        "avatar": "avatar-1710305342465-968496237.png"
+        "id": "a99b874f9970bacf8c24",
+        "firstName": "Test ",
+        "lastName": "Account ",
+        "avatar": "avatar-1710398131868-469166915.jpg"
       },
       "tags": "react, next.js, js",
       "likes": [],
       "comments": [],
-      "createdAt": "2024-03-13T08:36:19.487Z"
+      "createdAt": "2024-03-14T06:37:31.715Z"
     },
     {
-      "id": "f95920bed00ad28886a2",
-      "title": "Test blog 4",
-      "content": "dsadas",
-      "thumbnail": "thumbnail-1710319991638-910844392.jpg",
+      "id": "98a262aa1229648984cf",
+      "title": "Test Account Blog 2",
+      "content": "content",
+      "thumbnail": "thumbnail-1710398277971-307313951.jpg",
       "author": {
-        "id": "b5217704e41f619cb178",
-        "firstName": "Mahmud",
-        "lastName": "Hasan",
-        "avatar": "avatar-1710305342465-968496237.png"
+        "id": "a99b874f9970bacf8c24",
+        "firstName": "Test ",
+        "lastName": "Account ",
+        "avatar": "avatar-1710398131868-469166915.jpg"
       },
-      "tags": "react, next.js, js",
+      "tags": "redux, redux toolkit, RTQ Query",
       "likes": [],
       "comments": [],
-      "createdAt": "2024-03-13T08:52:38.763Z"
+      "createdAt": "2024-03-14T06:37:57.982Z"
     }
   ]
 }
