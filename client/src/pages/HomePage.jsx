@@ -1,7 +1,6 @@
 import BlogList from '../components/blogs/BlogList';
 import PopularBlogs from '../components/blogs/PopularBlogs';
 import FavoriteBlogs from '../components/blogs/favorites/FavoriteBlogs';
-import Error from '../components/ui/Error';
 import useFetchBlogs from '../hooks/blog/useFetchBlogs';
 import useSetTitle from '../hooks/useSetTitle';
 
@@ -13,9 +12,7 @@ const HomePage = () => {
   //* Decide what to render on UI
   let content;
 
-  if (error) {
-    content = <Error error={error} />;
-  } else if (!error && blogs?.length > 0) {
+  if (!error && blogs?.length > 0) {
     content = <BlogList blogs={blogs} />;
   }
 

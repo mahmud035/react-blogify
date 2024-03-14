@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/auth/useAuth';
+import useBlog from '../../hooks/blog/useBlog';
 import useFetchBlogAuthorProfile from '../../hooks/profile/useFetchBlogAuthorData';
 import useFetchUserProfile from '../../hooks/profile/useFetchUserProfile';
 import useProfile from '../../hooks/profile/useProfile';
@@ -10,10 +11,12 @@ import Error from '../ui/Error';
 import LargeLoader from '../ui/LargeLoader';
 
 const MainLayout = () => {
-  const { profile } = useProfile();
-  const { loading, error } = profile || {};
-  const { auth } = useAuth();
   const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
+  const { auth } = useAuth();
+  const { profile } = useProfile();
+  const { blogState } = useBlog();
+  const { loading, error: profileError } = profile || {};
+  const { error: blogError } = blogState || {};
 
   const userId =
     JSON.parse(localStorage.getItem('authInfo'))?.userId || auth?.user?.id;
@@ -34,9 +37,9 @@ const MainLayout = () => {
 
   if (loading) {
     content = <LargeLoader />;
-  } else if (!loading && error) {
-    content = <Error error={error} />;
-  } else if (!loading && !error) {
+  } else if (profileError || blogError) {
+    content = <Error error={profileError || blogError} />;
+  } else {
     content = (
       <>
         <Outlet />

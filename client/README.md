@@ -55,6 +55,7 @@ https://github.com/mahmud035/React-Blogify-Server
 - Express.js
 - json-server
 
-## Contributing
+## Test Account
 
-Contributions are welcome! If you find any bugs or have suggestions for improvement, please open an issue or submit a pull request.
+Email: mhpcse@gmail.com <br/>
+Password: 11111111
