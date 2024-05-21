@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 hygiene-factors.txt
+backend-server
+
 
 # Editor directories and files
 .vscode/*

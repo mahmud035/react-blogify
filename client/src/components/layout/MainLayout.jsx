@@ -8,14 +8,13 @@ import useProfile from '../../hooks/profile/useProfile';
 import Footer from '../../shared/Footer';
 import Header from '../../shared/Header';
 import Error from '../ui/Error';
-import LargeLoader from '../ui/LargeLoader';
 
 const MainLayout = () => {
   const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
   const { auth } = useAuth();
   const { profile } = useProfile();
   const { blogState } = useBlog();
-  const { loading, error: profileError } = profile || {};
+  const { error: profileError } = profile || {};
   const { error: blogError } = blogState || {};
 
   const userId =
@@ -35,9 +34,7 @@ const MainLayout = () => {
   //* Decide what to render on UI
   let content;
 
-  if (loading) {
-    content = <LargeLoader />;
-  } else if (profileError || blogError) {
+  if (profileError || blogError) {
     content = <Error error={profileError || blogError} />;
   } else {
     content = (
