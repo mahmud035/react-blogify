@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import eyeCloseIcon from '../../assets/icons/eye-close.svg';
+import eyeOpenIcon from '../../assets/icons/eye-open.svg';
 import useRegistration from '../../hooks/auth/useRegistration';
 import InputField from '../ui/InputField';
 
 const RegistrationForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -77,29 +81,42 @@ const RegistrationForm = () => {
       </InputField>
 
       {/* Password */}
-      <InputField label="Password" error={errors?.password}>
-        <input
-          {...register('password', {
-            required: 'Password is required',
-            minLength: {
-              value: 8,
-              message: 'Password should be at least 8 characters.',
-            },
-            maxLength: {
-              value: 20,
-              message: 'Password can be maximum 20 characters.',
-            },
-          })}
-          type="password"
-          id="password"
-          name="password"
-          className={`w-full p-3 bg-[#030317] border rounded-md focus:outline-none ${
-            errors?.password
-              ? 'border-red-500 focus:border-red-500'
-              : 'border-white/20 focus:border-indigo-500'
-          }`}
-        />
-      </InputField>
+      <div className="flex relative">
+        <InputField label="Password" error={errors?.password}>
+          <input
+            {...register('password', {
+              required: 'Password is required',
+              minLength: {
+                value: 8,
+                message: 'Password should be at least 8 characters.',
+              },
+              maxLength: {
+                value: 20,
+                message: 'Password can be maximum 20 characters.',
+              },
+            })}
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            name="password"
+            className={`w-full p-3 bg-[#030317] border rounded-md focus:outline-none ${
+              errors?.password
+                ? 'border-red-500 focus:border-red-500'
+                : 'border-white/20 focus:border-indigo-500'
+            }`}
+          />
+        </InputField>
+
+        <span
+          onClick={() => setShowPassword(!showPassword)}
+          className="cursor-pointer absolute right-4 top-11"
+        >
+          {showPassword ? (
+            <img src={eyeOpenIcon} alt="eye-open" />
+          ) : (
+            <img src={eyeCloseIcon} alt="eye-close" />
+          )}
+        </span>
+      </div>
 
       {/* Show error message */}
       {errors.root && (

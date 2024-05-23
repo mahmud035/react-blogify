@@ -4,7 +4,7 @@ const InputField = ({ label, children, htmlFor, error }) => {
   const id = htmlFor || getChildId(children);
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 w-full">
       {label && (
         <label htmlFor={id} className="block mb-2">
           {label}
