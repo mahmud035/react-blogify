@@ -1,6 +1,6 @@
 # Assignment-5-React-Blogify
 
-Assignment-5-React-Blogify is a React-based blogging platform developed as part of an assignment. It provides a user-friendly interface for creating, viewing, and managing blog posts.
+React-Blogify is a React-based blogging platform developed as part of an assignment. It provides a user-friendly interface for creating, viewing, and managing blog posts.
 
 ## Live Website: <a href="https://assignment-5-react-blogify.vercel.app/" target="_blank">React Blogify</a>
 
@@ -19,13 +19,13 @@ Assignment-5-React-Blogify is a React-based blogging platform developed as part 
 1. **Clone the Repository:**
 
 ```bash
-git clone https://github.com/mahmud035/Assignment-5-React-Blogify.git
+git clone https://github.com/mahmud035/React-Blogify.git
 ```
 
 2. **Install Dependencies:**
 
 ```bash
-cd Assignment-5-React-Blogify
+cd React-Blogify
 
 npm install
 ```
