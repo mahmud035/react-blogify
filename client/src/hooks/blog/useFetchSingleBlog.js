@@ -37,7 +37,7 @@ const useFetchSingleBlog = () => {
     return () => {
       ignore = true;
     };
-  }, [blogId]);
+  }, [blogDispatch, blogId]);
 };
 
 export default useFetchSingleBlog;

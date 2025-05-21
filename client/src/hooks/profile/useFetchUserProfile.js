@@ -39,7 +39,7 @@ const useFetchUserProfile = (userId) => {
         ignore = true;
       };
     }
-  }, [userId]);
+  }, [profileDispatch, userId]);
 };
 
 export default useFetchUserProfile;

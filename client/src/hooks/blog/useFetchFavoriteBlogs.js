@@ -36,7 +36,7 @@ const useFetchFavoriteBlogs = (userId) => {
         ignore = true;
       };
     }
-  }, [userId]);
+  }, [userId, profileDispatch]);
 };
 
 export default useFetchFavoriteBlogs;

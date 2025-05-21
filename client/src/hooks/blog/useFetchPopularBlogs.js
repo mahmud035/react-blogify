@@ -36,7 +36,7 @@ const useFetchPopularBlogs = () => {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [blogDispatch]);
 
   return { popularBlogs };
 };

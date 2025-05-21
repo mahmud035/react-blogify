@@ -61,7 +61,7 @@ const useFetchBlogs = () => {
       ignore = true;
       if (observer) observer.disconnect();
     };
-  }, [hasMore, page]);
+  }, [hasMore, page, blogDispatch]);
 
   //* Show Success Message
   useEffect(() => {
