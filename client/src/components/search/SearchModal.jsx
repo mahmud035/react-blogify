@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import modalCloseIcon from '../../assets/icons/close.svg';
 import searchIcon from '../../assets/icons/search.svg';
 import useDebounce from '../../hooks/search/useDebounce';
@@ -43,14 +43,37 @@ const SearchModal = () => {
     debouncedSearch(value);
   };
 
+  const handleCloseModal = useCallback(() => {
+    setShowSearchModal(false);
+    setKeyword('');
+    setSearchText('');
+    setSearchResult([]);
+  }, [setShowSearchModal, setKeyword, setSearchText, setSearchResult]);
+
   useEffect(() => {
     searchInputRef.current.focus();
-  }, []);
+
+    // Close modal on Escape key
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [handleCloseModal]);
 
   return (
-    <section className="absolute top-0 left-0 z-50 grid w-full h-full place-items-center bg-slate-800/80 backdrop-blur-sm">
+    <section
+      className="absolute top-0 left-0 z-50 grid w-full h-full place-items-center bg-slate-800/80 backdrop-blur-sm"
+      onClick={handleCloseModal}
+    >
       {/* Search Container  */}
-      <div className="relative w-10/12 p-4 mx-auto border rounded-lg shadow-lg sm:w-8/12 md:w-6/12 bg-slate-900 border-slate-600/50 shadow-slate-400/10">
+      <div
+        className="relative w-10/12 p-4 mx-auto border rounded-lg shadow-lg sm:w-8/12 md:w-6/12 bg-slate-900 border-slate-600/50 shadow-slate-400/10"
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+      >
         {/* Search  */}
         <div className="relative">
           <h3 className="pl-2 my-2 text-xl font-bold text-slate-400">
@@ -94,20 +117,18 @@ const SearchModal = () => {
         </div>
 
         {/* Close the Modal */}
-        <div
-          onClick={() => {
-            setShowSearchModal(false);
-            setKeyword('');
-            setSearchText('');
-            setSearchResult([]);
-          }}
+        <button
+          onClick={handleCloseModal}
+          className="absolute w-8 h-8 p-0 transition-opacity bg-transparent border-none cursor-pointer right-2 top-2 hover:opacity-80"
+          aria-label="Close search modal"
+          type="button"
         >
           <img
             src={modalCloseIcon}
-            alt="Close"
-            className="absolute w-8 h-8 cursor-pointer right-2 top-2"
+            alt=""
+            className="w-full h-full pointer-events-none"
           />
-        </div>
+        </button>
       </div>
     </section>
   );

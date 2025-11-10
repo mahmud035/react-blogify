@@ -17,31 +17,38 @@ const Comment = ({ comment }) => {
   const nameFirstChar = firstName?.slice(0, 1)?.toUpperCase();
   const authorAvatar = getAuthorAvatar(avatar, nameFirstChar);
 
+  const handleViewProfile = () => {
+    fetchBlogAuthorProfile(authorId, true);
+  };
+
   return (
     <div className="flex flex-col my-8 space-y-4 sm:space-y-0 sm:space-x-4 sm:items-center sm:flex-row">
       <div className="flex items-start w-full space-x-4 sm:mr-8">
-        <img
-          onClick={() => {
-            fetchBlogAuthorProfile(authorId, true);
-          }}
-          className="font-bold text-white cursor-pointer avater-img hover:text-white/80"
-          src={authorAvatar}
-          onError={(e) => {
-            e.currentTarget.src =
-              'https://placehold.co/200?text=Image%20updated.%20Reload%20Page';
-          }}
-          alt="Profile Image"
-        />
+        <button
+          onClick={handleViewProfile}
+          className="p-0 transition-opacity bg-transparent border-none cursor-pointer hover:opacity-80"
+          aria-label={`View ${firstName} ${lastName}'s profile`}
+          type="button"
+        >
+          <img
+            className="font-bold text-white pointer-events-none avater-img"
+            src={authorAvatar}
+            onError={(e) => {
+              e.currentTarget.src =
+                'https://placehold.co/200?text=Image%20updated.%20Reload%20Page';
+            }}
+            alt=""
+          />
+        </button>
         <div className="w-full">
           <div>
-            <h5
-              onClick={() => {
-                fetchBlogAuthorProfile(authorId, true);
-              }}
-              className="font-bold cursor-pointer text-slate-400"
+            <button
+              onClick={handleViewProfile}
+              className="p-0 font-bold text-left transition-colors bg-transparent border-none cursor-pointer text-slate-400 hover:text-slate-300"
+              type="button"
             >
               {firstName} {lastName}
-            </h5>
+            </button>
             <p className="text-slate-300">{content}</p>
           </div>
         </div>

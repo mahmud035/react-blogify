@@ -22,30 +22,54 @@ const BlogActions = () => {
   return (
     <div className="floating-action">
       <ul className="floating-action-menus">
+        {/* Like Button */}
         <li>
-          <img
+          <button
             onClick={() => handleToggleLike(id)}
-            src={isLiked ? likedFilledIcon : likeIcon}
-            alt="like"
-          />
-          <span>{likes?.length}</span>
+            className="flex items-center gap-2 p-0 transition-opacity bg-transparent border-none cursor-pointer hover:opacity-80"
+            aria-label={isLiked ? 'Unlike this post' : 'Like this post'}
+            type="button"
+          >
+            <img
+              src={isLiked ? likedFilledIcon : likeIcon}
+              alt=""
+              className="pointer-events-none"
+            />
+            <span>{likes?.length}</span>
+          </button>
         </li>
 
+        {/* Favorite Button */}
         {showFavoriteIcon && (
-          <li onClick={() => handleToggleFavorite(id)}>
-            <img
-              src={isFavorite ? heartFilledIcon : heartIcon}
-              alt="Favorite"
-            />
+          <li>
+            <button
+              onClick={() => handleToggleFavorite(id)}
+              className="p-0 transition-opacity bg-transparent border-none cursor-pointer hover:opacity-80"
+              aria-label={
+                isFavorite ? 'Remove from favorites' : 'Add to favorites'
+              }
+              type="button"
+            >
+              <img
+                src={isFavorite ? heartFilledIcon : heartIcon}
+                alt=""
+                className="pointer-events-none"
+              />
+            </button>
           </li>
         )}
 
-        <a href="#comments">
-          <li>
-            <img src={commentIcon} alt="Comments" />
+        {/* Comments Link */}
+        <li>
+          <a
+            href="#comments"
+            className="flex items-center gap-2 transition-opacity hover:opacity-80"
+            aria-label={`View ${comments?.length} comments`}
+          >
+            <img src={commentIcon} alt="" className="pointer-events-none" />
             <span>{comments?.length}</span>
-          </li>
-        </a>
+          </a>
+        </li>
       </ul>
     </div>
   );

@@ -22,28 +22,35 @@ const BlogDetailsCard = () => {
   const nameFirstChar = firstName?.slice(0, 1)?.toUpperCase();
   const authorAvatar = getAuthorAvatar(avatar, nameFirstChar);
 
+  const handleViewProfile = () => {
+    fetchBlogAuthorProfile(profileId, true);
+  };
+
   return (
     <section>
       <div className="container py-8 text-center">
         <h1 className="text-3xl font-bold md:text-5xl">{title}</h1>
         <div className="flex items-center justify-center gap-4 my-4">
           <div className="flex items-center space-x-2 capitalize">
-            <img
-              onClick={() => {
-                fetchBlogAuthorProfile(profileId, true);
-              }}
-              className="font-bold text-white cursor-pointer avater-img hover:text-white/80"
-              src={authorAvatar}
-              alt="Profile Image"
-            />
-            <h5
-              onClick={() => {
-                fetchBlogAuthorProfile(profileId, true);
-              }}
-              className="text-sm cursor-pointer text-slate-500"
+            <button
+              onClick={handleViewProfile}
+              className="p-0 transition-opacity bg-transparent border-none cursor-pointer hover:opacity-80"
+              aria-label={`View ${firstName} ${lastName}'s profile`}
+              type="button"
+            >
+              <img
+                className="font-bold text-white pointer-events-none avater-img"
+                src={authorAvatar}
+                alt=""
+              />
+            </button>
+            <button
+              onClick={handleViewProfile}
+              className="p-0 text-sm transition-colors bg-transparent border-none cursor-pointer text-slate-500 hover:text-slate-700"
+              type="button"
             >
               {firstName} {lastName}
-            </h5>
+            </button>
           </div>
 
           <span className="text-sm text-slate-700 dot">
