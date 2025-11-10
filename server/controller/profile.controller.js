@@ -1,5 +1,5 @@
-const { ProfileService } = require("../services/profile.service");
-const getAuthUser = require("../util/getAuthUser");
+const { ProfileService } = require('../services/profile.service');
+const getAuthUser = require('../util/getAuthUser');
 
 /**
  * Get user profile by user ID.
@@ -12,7 +12,7 @@ const getUserProfile = (req, res) => {
   const { userId } = req.params;
 
   if (!userId) {
-    return res.status(400).json({ message: "User ID is required" });
+    return res.status(400).json({ message: 'User ID is required' });
   }
 
   const user = ProfileService.getUserById(userId);
@@ -33,7 +33,9 @@ const updateUserProfile = (req, res) => {
   const { body } = req;
 
   if (!user?.id) {
-    return res.status(400).json({ message: "User Not Found with Acccess Token" });
+    return res
+      .status(400)
+      .json({ message: 'User Not Found with Access Token' });
   }
 
   if (req?.file) {
@@ -41,26 +43,32 @@ const updateUserProfile = (req, res) => {
   }
 
   if (body?.email) {
-    throw new Error("Email cannot be updated");
+    throw new Error('Email cannot be updated');
   }
 
   if (body?.id) {
-    throw new Error("User ID cannot be updated");
+    throw new Error('User ID cannot be updated');
   }
 
   // Only Allowed to update name, avatar, bio, and socials. Throw an error if any other field is updated
-  const allowedFields = ["firstName", "avatar", "bio", "lastName", "favourites"];
+  const allowedFields = [
+    'firstName',
+    'avatar',
+    'bio',
+    'lastName',
+    'favourites',
+  ];
   const fields = Object.keys(body);
   const isAllowed = fields.every((field) => allowedFields.includes(field));
 
   if (!isAllowed) {
-    throw new Error("Invalid field(s) to update");
+    throw new Error('Invalid field(s) to update');
   }
 
   const response = ProfileService.updateUserProfile(user, body);
 
   res.status(200).json({
-    message: "User profile updated successfully",
+    message: 'User profile updated successfully',
     user: response,
   });
 };
@@ -80,17 +88,19 @@ const uploadAvatar = (req, res) => {
   const { file } = req;
 
   if (!user) {
-    return res.status(400).json({ message: "User Not Found" });
+    return res.status(400).json({ message: 'User Not Found' });
   }
 
   if (!file) {
-    return res.status(400).json({ message: "Avatar is required" });
+    return res.status(400).json({ message: 'Avatar is required' });
   }
 
-  const response = ProfileService.updateUserProfile(user, { avatar: file.filename });
+  const response = ProfileService.updateUserProfile(user, {
+    avatar: file.filename,
+  });
 
   res.status(200).json({
-    message: "Avatar uploaded successfully",
+    message: 'Avatar uploaded successfully',
     user: response,
   });
 };

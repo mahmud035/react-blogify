@@ -1,4 +1,4 @@
-const { AuthService } = require("../services/auth.serivce");
+const { AuthService } = require('../services/auth.serivce');
 
 /**
  * Handles the login functionality.
@@ -9,10 +9,12 @@ const { AuthService } = require("../services/auth.serivce");
  */
 const login = async (req, res) => {
   if (!req?.body?.email || !req?.body?.password) {
-    return res.status(400).json({ message: "Please provide email and password" });
+    return res
+      .status(400)
+      .json({ message: 'Please provide email and password' });
   }
 
-  const result = await AuthService.login(req.body);
+  const result = AuthService.login(req.body);
 
   res.status(200).json(result);
 };
@@ -30,9 +32,14 @@ const login = async (req, res) => {
  * @returns {Object} The result of the registration process.
  */
 const register = (req, res) => {
-  if (!req?.body?.email || !req?.body?.password || !req?.body?.firstName || !req?.body?.lastName) {
+  if (
+    !req?.body?.email ||
+    !req?.body?.password ||
+    !req?.body?.firstName ||
+    !req?.body?.lastName
+  ) {
     return res.status(400).json({
-      message: "Please provide email, password, firstName and lastName",
+      message: 'Please provide email, password, firstName and lastName',
     });
   }
 
@@ -51,10 +58,10 @@ const refreshToken = async (req, res) => {
   const { refreshToken } = req.body || {};
 
   if (!refreshToken) {
-    return res.status(400).json({ message: "Please provide refreshToken" });
+    return res.status(400).json({ message: 'Please provide refreshToken' });
   }
 
-  const result = await AuthService.refreshToken(refreshToken);
+  const result = AuthService.refreshToken(refreshToken);
 
   res.status(200).json(result);
 };

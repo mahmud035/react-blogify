@@ -1,4 +1,4 @@
-const jsonServer = require("./jsonServer");
+const jsonServer = require('./jsonServer');
 const db = jsonServer.db;
 
 /**
@@ -21,12 +21,8 @@ class Model {
    * @returns {object} - The newly created user object.
    */
   create(data) {
-    try {
-      db.get(this.#DATABASE_NAME).push(data).write();
-      return data;
-    } catch (e) {
-      throw new Error("Data created");
-    }
+    db.get(this.#DATABASE_NAME).push(data).write();
+    return data;
   }
 
   /**
@@ -36,7 +32,10 @@ class Model {
    * @throws {Error} - If the user is not found.
    */
   findUserByEmail(email) {
-    const user = db.get(this.#DATABASE_NAME).find({ email: email?.trim() }).value();
+    const user = db
+      .get(this.#DATABASE_NAME)
+      .find({ email: email?.trim() })
+      .value();
     return user;
   }
 
@@ -84,7 +83,10 @@ class Model {
    * @returns {object} - The updated user object.
    */
   updateById(id, user) {
-    const newUser = db.get(this.#DATABASE_NAME).updateById(id, Object.assign({}, user)).write();
+    const newUser = db
+      .get(this.#DATABASE_NAME)
+      .updateById(id, Object.assign({}, user))
+      .write();
     return newUser;
   }
 
@@ -95,7 +97,11 @@ class Model {
    * @returns {object} - The updated user object.
    */
   updateOne(query, data) {
-    const newUser = db.get(this.#DATABASE_NAME).find(query).assign(data).write();
+    const newUser = db
+      .get(this.#DATABASE_NAME)
+      .find(query)
+      .assign(data)
+      .write();
     return newUser;
   }
 
