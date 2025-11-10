@@ -29,7 +29,6 @@ const SearchModal = () => {
         setSearchResult(response.data.data);
       }
     } catch (error) {
-      // console.error(error);
       setLoading(false);
       setSearchText('');
       setSearchResult([]);
@@ -50,6 +49,19 @@ const SearchModal = () => {
     setSearchResult([]);
   }, [setShowSearchModal, setKeyword, setSearchText, setSearchResult]);
 
+  const handleBackdropClick = (e) => {
+    // Only close if clicking the backdrop itself, not its children
+    if (e.target === e.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
+  const handleBackdropKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      handleCloseModal();
+    }
+  };
+
   useEffect(() => {
     searchInputRef.current.focus();
 
@@ -67,7 +79,11 @@ const SearchModal = () => {
   return (
     <section
       className="absolute top-0 left-0 z-50 grid w-full h-full place-items-center bg-slate-800/80 backdrop-blur-sm"
-      onClick={handleCloseModal}
+      onClick={handleBackdropClick}
+      onKeyDown={handleBackdropKeyDown}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="search-modal-title"
     >
       {/* Search Container  */}
       <div
@@ -76,7 +92,10 @@ const SearchModal = () => {
       >
         {/* Search  */}
         <div className="relative">
-          <h3 className="pl-2 my-2 text-xl font-bold text-slate-400">
+          <h3
+            id="search-modal-title"
+            className="pl-2 my-2 text-xl font-bold text-slate-400"
+          >
             Search for Your Desire Blogs
           </h3>
 
@@ -96,6 +115,7 @@ const SearchModal = () => {
             type="text"
             placeholder="Start Typing to Search"
             className="w-full p-2 pl-10 text-base text-white bg-transparent border-none rounded-lg outline-none focus:ring focus:ring-indigo-600"
+            aria-label="Search blogs"
           />
         </div>
 

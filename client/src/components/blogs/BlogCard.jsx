@@ -67,8 +67,22 @@ const BlogCard = ({ blog }) => {
     setSearchResult([]);
   };
 
+  // Handle keyboard navigation for the card
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleNavigate(e);
+    }
+  };
+
   return (
-    <div onClick={(e) => handleNavigate(e)} className="blog-card">
+    <div
+      onClick={(e) => handleNavigate(e)}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      className="blog-card"
+      aria-label={`Read blog: ${title}`}
+    >
       <img
         className={`blog-thumb ${searchText.length > 0 ? 'h-28' : 'max-h-48'}`}
         src={blogThumbnail ? blogThumbnail : `https://dummyimage.com/600x400`}
@@ -156,6 +170,7 @@ const BlogCard = ({ blog }) => {
               <button
                 onClick={(e) => navigateEditBlogPage(e, blog, id)}
                 className="action-menu-item hover:text-green-500"
+                type="button"
               >
                 <img src={editIcon} alt="" />
                 Edit
@@ -166,6 +181,7 @@ const BlogCard = ({ blog }) => {
                   handleDeleteBlog(id);
                 }}
                 className="action-menu-item hover:text-red-500"
+                type="button"
               >
                 <img src={deleteIcon} alt="" />
                 Delete
