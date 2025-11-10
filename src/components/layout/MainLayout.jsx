@@ -7,7 +7,7 @@ import useFetchUserProfile from '../../hooks/profile/useFetchUserProfile';
 import useProfile from '../../hooks/profile/useProfile';
 import Footer from '../../shared/Footer';
 import Header from '../../shared/Header';
-import Error from '../ui/Error';
+import ErrorMessage from '../ui/Error';
 
 const MainLayout = () => {
   const { fetchBlogAuthorProfile } = useFetchBlogAuthorProfile();
@@ -35,7 +35,7 @@ const MainLayout = () => {
   let content;
 
   if (profileError || blogError) {
-    content = <Error error={profileError || blogError} />;
+    content = <ErrorMessage error={profileError || blogError} />;
   } else {
     content = (
       <>

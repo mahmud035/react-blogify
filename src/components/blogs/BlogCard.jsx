@@ -51,6 +51,11 @@ const BlogCard = ({ blog }) => {
     setSearchResult([]);
   };
 
+  const handleViewProfile = (e) => {
+    stopDefaultBehavior(e);
+    fetchBlogAuthorProfile(profileId, true);
+  };
+
   //* Navigate to Edit Blog Page
   const navigateEditBlogPage = (e, blog, blogId) => {
     stopDefaultBehavior(e);
@@ -96,29 +101,26 @@ const BlogCard = ({ blog }) => {
         {!searchText && (
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 capitalize">
-              <div
-                onClick={(e) => {
-                  stopDefaultBehavior(e);
-                  fetchBlogAuthorProfile(profileId, true);
-                }}
-                className="text-white"
+              <button
+                onClick={handleViewProfile}
+                className="p-0 text-white transition-opacity bg-transparent border-none cursor-pointer hover:opacity-80"
+                aria-label={`View ${firstName} ${lastName}'s profile`}
+                type="button"
               >
                 <img
-                  className="avater-img hover:text-white/80"
+                  className="pointer-events-none avater-img"
                   src={authorAvatar}
-                  alt="Profile Image"
+                  alt=""
                 />
-              </div>
+              </button>
               <div>
-                <h5
-                  onClick={(e) => {
-                    stopDefaultBehavior(e);
-                    fetchBlogAuthorProfile(profileId, true);
-                  }}
-                  className="text-sm text-slate-500"
+                <button
+                  onClick={handleViewProfile}
+                  className="p-0 text-sm text-left transition-colors bg-transparent border-none cursor-pointer text-slate-500 hover:text-slate-400"
+                  type="button"
                 >
                   {firstName} {lastName}
-                </h5>
+                </button>
                 <div className="flex items-center text-xs text-slate-700">
                   <span>
                     {blog?.createdAt && getFormattedDate(blog?.createdAt)}
@@ -138,23 +140,24 @@ const BlogCard = ({ blog }) => {
         <div className="absolute top-0 right-0">
           {isBlogPostedByUser && (
             <button
-              onClick={(e) => {
-                handleShowAction(e);
-              }}
+              onClick={handleShowAction}
+              className="p-0 transition-opacity bg-transparent border-none cursor-pointer hover:opacity-80"
+              aria-label="Blog actions menu"
+              aria-expanded={showAction}
+              type="button"
             >
-              <img src={threeDotsIcon} alt="3dots of Action" />
+              <img src={threeDotsIcon} alt="" className="pointer-events-none" />
             </button>
           )}
 
           {/* Action Menus Popup  */}
           {showAction && (
             <div className="action-modal-container">
-              {/* NOTE: Use e.preventDefault() and e.stopPropagation() to stop the propagation of click event */}
               <button
                 onClick={(e) => navigateEditBlogPage(e, blog, id)}
                 className="action-menu-item hover:text-green-500"
               >
-                <img src={editIcon} alt="Edit" />
+                <img src={editIcon} alt="" />
                 Edit
               </button>
               <button
@@ -164,7 +167,7 @@ const BlogCard = ({ blog }) => {
                 }}
                 className="action-menu-item hover:text-red-500"
               >
-                <img src={deleteIcon} alt="Delete" />
+                <img src={deleteIcon} alt="" />
                 Delete
               </button>
             </div>

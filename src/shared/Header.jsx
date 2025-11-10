@@ -53,16 +53,17 @@ const Header = () => {
             </li>
             {/* Close SearchModal and clear search field */}
             {user && (
-              <li
-                onClick={() => {
-                  setShowSearchModal(true);
-                  setSearchText('');
-                }}
-                className="flex items-center gap-2 cursor-pointer"
-              >
-                {/* A Search Modal will Open */}
-                <img src={searchIcon} alt="Search" />
-                <span>Search</span>
+              <li>
+                <button
+                  onClick={() => {
+                    setShowSearchModal(true);
+                    setSearchText('');
+                  }}
+                  className="flex items-center gap-2 p-0 text-white transition-all duration-200 bg-transparent border-none cursor-pointer hover:text-white/80"
+                >
+                  <img src={searchIcon} alt="Search" />
+                  <span>Search</span>
+                </button>
               </li>
             )}
 

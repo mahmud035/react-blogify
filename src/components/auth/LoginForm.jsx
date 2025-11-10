@@ -49,13 +49,13 @@ const LoginForm = () => {
       </InputField>
 
       {/* Password */}
-      <div className="flex relative">
+      <div className="relative flex">
         <InputField label="Password" error={errors?.password}>
           <input
             {...register('password', {
               required: 'Password is required',
             })}
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
             className={`w-full p-3 bg-[#030317] border rounded-md focus:outline-none ${
@@ -66,16 +66,18 @@ const LoginForm = () => {
           />
         </InputField>
 
-        <span
+        <button
+          type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="cursor-pointer absolute right-4 top-11"
+          className="absolute p-0 bg-transparent border-none cursor-pointer right-4 top-11"
+          aria-label={showPassword ? 'Hide password' : 'Show password'}
         >
-          {showPassword ? (
-            <img src={eyeOpenIcon} alt="eye-open" />
-          ) : (
-            <img src={eyeCloseIcon} alt="eye-close" />
-          )}
-        </span>
+          <img
+            src={showPassword ? eyeOpenIcon : eyeCloseIcon}
+            alt=""
+            className="pointer-events-none"
+          />
+        </button>
       </div>
 
       {/* Show error message if user is not found */}

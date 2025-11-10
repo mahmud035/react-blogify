@@ -10,6 +10,10 @@ const PopularBlogCard = ({ blog }) => {
     likes,
   } = blog;
 
+  const handleViewProfile = () => {
+    fetchBlogAuthorProfile(profileId, true);
+  };
+
   return (
     <li>
       <Link to={`/blogs/${id}`}>
@@ -19,15 +23,14 @@ const PopularBlogCard = ({ blog }) => {
       </Link>
       <p className="text-sm text-slate-600">
         by{' '}
-        <span
-          onClick={() => {
-            fetchBlogAuthorProfile(profileId, true);
-          }}
-          className="cursor-pointer"
+        <button
+          onClick={handleViewProfile}
+          className="p-0 underline transition-colors bg-transparent border-none cursor-pointer text-inherit hover:text-slate-500"
+          type="button"
         >
           {firstName} {lastName}
-        </span>
-        <span>·</span> {likes?.length} Likes
+        </button>
+        <span> · </span> {likes?.length} Likes
       </p>
     </li>
   );
