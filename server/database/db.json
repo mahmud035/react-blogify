@@ -138,6 +138,16 @@
       "bio": "Test Account 3 Bio Information",
       "password": "$2b$08$HJnze8rQUqwELaL7YvrtDeOfA31woySmVwdp1cFKfpmio2elQcL4a",
       "favourites": []
+    },
+    {
+      "id": "92e261b96b5d6a27fdf2",
+      "email": "fihynobis@mailinator.com",
+      "firstName": "Sydney",
+      "lastName": "Santana",
+      "avatar": null,
+      "bio": "",
+      "password": "$2b$08$3/e6g2/ABPkOpbvvZgdqwOysZsSI9Cq2TiPQWlzxhfnpBqc.vF1nC",
+      "favourites": []
     }
   ],
   "blogs": [

@@ -110,7 +110,7 @@ const updateBlog = async (req, res) => {
 };
 
 const getPopularBlogs = async (req, res) => {
-  const { limit } = req.query;
+  const { limit } = req.query || {};
 
   const popularBlogs = BlogService.popularBlogs(limit);
   return res.status(200).json(popularBlogs);
