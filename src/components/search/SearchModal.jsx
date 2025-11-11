@@ -87,6 +87,7 @@ const SearchModal = () => {
     >
       {/* Search Container  */}
       <div
+        role="presentation"
         className="relative w-10/12 p-4 mx-auto border rounded-lg shadow-lg sm:w-8/12 md:w-6/12 bg-slate-900 border-slate-600/50 shadow-slate-400/10"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
       >
