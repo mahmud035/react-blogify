@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+/* Design tokens (Tailwind v4 CSS-first). Semantic names → utilities like
+   bg-background, text-foreground, border-border, bg-primary. */
+@theme {
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #030317;
+  --color-surface: #030317;
+  --color-foreground: #ffffff;
+  --color-muted: #94a3b8;
+  --color-border: #1e293b;
+
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-accent: #00d991;
+  --color-danger: #ef4444;
+}
+
+@layer base {
+  * {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full max-w-6xl px-5 mx-auto;
+  }
+
+  header {
+    @apply mb-4 text-foreground border-b border-slate-800;
+  }
+
+  nav {
+    @apply flex items-center flex-col md:flex-row justify-between md:p-4 py-2 md:py-6 gap-4 sticky top-0 min-h-[60px];
+  }
+
+  .avatar-img {
+    @apply grid w-8 h-8 text-sm font-bold rounded-full md:w-10 md:h-10 place-items-center;
+  }
+  .avatar-img span {
+    line-height: 0;
+  }
+
+  .blog-card {
+    @apply flex gap-4 flex-col md:flex-row bg-surface p-3 border border-slate-800/40 rounded-lg transition-all hover:border-blue-900/50 hover:shadow-lg shadow-slate-200/50 cursor-pointer;
+  }
+  .blog-card > div {
+    @apply flex-1;
+  }
+  .blog-thumb {
+    @apply object-cover rounded-md aspect-video;
+  }
+
+  .sidebar-card {
+    @apply p-4 border rounded-lg border-slate-800/40 hover:border-slate-800/90;
+  }
+
+  .dot {
+    @apply relative before:rounded-full pl-4 before:translate-y-[6px] before:absolute before:left-0 before:content-[''] before:w-1 before:h-1 before:bg-slate-500/40;
+  }
+
+  .floating-action {
+    @apply fixed p-4 py-2 -translate-x-1/2 border rounded-full shadow-lg shadow-slate-900/60 bottom-10 left-1/2 bg-slate-800/80 backdrop-blur-md border-slate-200/20;
+  }
+  .floating-action-menus {
+    @apply flex gap-6;
+  }
+  .floating-action-menus li {
+    @apply flex items-center gap-2 transition-all cursor-pointer hover:scale-105 hover:opacity-90;
+  }
+  .floating-action-menus li span {
+    @apply text-xs;
+  }
+  .floating-action-menus li img {
+    @apply w-6 h-6;
+  }
+
+  .tags {
+    @apply flex flex-wrap justify-center gap-2 mx-auto my-6;
+  }
+  .tags li {
+    @apply p-2 px-4 text-sm transition-all rounded-md cursor-pointer bg-slate-700 hover:bg-slate-800 hover:ring hover:ring-slate-500;
+  }
+
+  .create-blog {
+    @apply w-11/12 mx-auto my-8 md:w-8/12;
+  }
+  .create-blog input.title-input {
+    @apply w-full pl-0 text-3xl font-bold bg-transparent border-none shadow-none outline-none appearance-none focus:ring-0 placeholder:text-3xl;
+  }
+  .create-blog textarea {
+    @apply w-full pl-0 text-lg bg-transparent border-none outline-none appearance-none focus:ring-0 placeholder:text-lg;
+  }
+  .create-blog input.tags-input {
+    @apply w-full text-base font-normal bg-transparent outline-none text-slate-400 placeholder:text-base placeholder:italic;
+  }
+
+  .action-modal-container {
+    @apply absolute bg-slate-900 border border-slate-800 right-full top-6 min-w-[200px] divide-y divide-slate-800 py-1 rounded-md overflow-hidden z-10;
+  }
+  .action-menu-item {
+    @apply flex items-center w-full gap-2 px-4 py-2 text-gray-100 transition-all hover:bg-slate-800;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 text-white transition-all duration-200 rounded-md bg-primary md:py-3 hover:bg-primary-hover disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+}
