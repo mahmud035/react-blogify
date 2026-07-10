@@ -60,7 +60,7 @@ export const config = {
     isConfigured: Boolean(
       env.CLOUDINARY_API_KEY && env.CLOUDINARY_API_SECRET,
     ),
-    /** Base folder per the engineering charter's asset-isolation convention. */
-    folder: 'clients/sakib/react-blogify',
+    /** Base Cloudinary folder for this project's media. */
+    folder: 'home/personal/react-blogify/products',
   },
 } as const;
