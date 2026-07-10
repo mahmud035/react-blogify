@@ -61,6 +61,6 @@ export const config = {
       env.CLOUDINARY_API_KEY && env.CLOUDINARY_API_SECRET,
     ),
     /** Base Cloudinary folder for this project's media. */
-    folder: 'home/personal/react-blogify/products',
+    folder: 'personal/react-blogify',
   },
 } as const;
