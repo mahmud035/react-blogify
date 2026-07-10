@@ -81,14 +81,20 @@ npm run build             # tsc typecheck/emit
 
 ## Deploy (Vercel)
 
-Separate Vercel project with **Root Directory = `server`**. The `vercel.json` routes all
-requests to `api/index.ts`; `@vercel/node` compiles TypeScript and bundles `src/`.
+Separate Vercel project with **Root Directory = `server`**. `vercel.json` uses an explicit
+`builds` entry so Vercel builds only `api/index.ts` as a `@vercel/node` serverless function
+(compiling TS and bundling `src/`) and routes every request to it — no build command or output
+directory is needed.
 
-1. New Project → import repo → set Root Directory to `server`.
-2. Add env vars (Production): `NODE_ENV=production`, `MONGODB_URI` (Atlas), the two JWT
-   secrets + expiries, the three Cloudinary vars, and `CLIENT_URL` = the deployed client origin.
-3. Deploy, then seed the production DB: `MONGODB_URI="<atlas>" npm run seed` (locally, once).
-4. Smoke-test: `BASE_URL="https://<deployment>" npm run smoke`.
+1. New Project → import `mahmud035/react-blogify` → **Root Directory = `server`**.
+   Framework Preset = Other. Leave Build Command / Output Directory empty (the `builds` config
+   handles it).
+2. Add env vars (Production): `NODE_ENV=production`, `MONGODB_URI` (Atlas), `JWT_ACCESS_SECRET`,
+   `JWT_REFRESH_SECRET`, `JWT_ACCESS_EXPIRES_IN`, `JWT_REFRESH_EXPIRES_IN`,
+   `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, and `CLIENT_URL`
+   (the deployed client origin — set once the client is live in Phase 2).
+3. Deploy. The Atlas DB is already seeded; re-run `MONGODB_URI="<atlas>" npm run seed` only to reset.
+4. Smoke-test the deployment: `BASE_URL="https://<deployment>" npm run smoke`.
 
 Cross-site cookies: production sets `SameSite=None; Secure`, so the API must be HTTPS and
 `CLIENT_URL` must exactly match the client origin for `credentials` requests to work.
