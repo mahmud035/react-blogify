@@ -1,0 +1,692 @@
+{
+  "users": [
+    {
+      "id": "7830e5903b889750f1e3",
+      "email": "sumitsaha@learnwithsumit.com",
+      "firstName": "Sumit",
+      "lastName": "Saha",
+      "avatar": "avatar-1708764729322-387087910.png",
+      "bio": "A Full Stack Web Application Developer from Bangladesh 🇧🇩 & a Programming Content Creator. Spend most of time coding outstanding projects or creating contents",
+      "password": "$2b$08$l8LuMMePmC0u.SdhhsMfqeo34HAF/o70eagtLO8V4HiHUyphNgu3q",
+      "favourites": []
+    },
+    {
+      "id": "346d7a36b3c41f3fbfa2",
+      "email": "tapasadhikary@learnwithsumit.com",
+      "firstName": "Tapas",
+      "lastName": "Adhikary",
+      "avatar": "avatar-1708764766479-243448656.png",
+      "bio": "Creating content is my passion. After spending over a decade in software engineering, I'm on a mission to make learning easy, and practical. I create written and video content on JavaScript, Web Development, Full Stack, and Career development.",
+      "password": "$2b$08$p15BeTInMoszGTNI3gtwNu2XiSadWVdPXaxQPQy8XZd1jj/6yPQae",
+      "favourites": []
+    },
+    {
+      "id": "f810ae24754a6cdc6d01",
+      "email": "akash@learnwithsumit.com",
+      "firstName": "Akash",
+      "lastName": "Ahmed",
+      "avatar": "avatar-1708764802524-290642702.png",
+      "bio": "I am a junior web developer, experience with web applications and building websites.",
+      "password": "$2b$08$FJn3tesDW9nqExgPr0MqKulICwf5B9FABPn1MjnImf2cXFm5o20KC",
+      "favourites": []
+    },
+    {
+      "id": "3d2dde4b6548275fb066",
+      "email": "saadhasan@learnwithsumit.com",
+      "firstName": "Saad",
+      "lastName": "Hasan",
+      "avatar": "avatar-1708764856675-623317122.jpg",
+      "bio": "I am Saad Hasan, self-taught Junior Software Developer from Bangladesh. I have been working as a Professional Frontend Developer for the last 1 year, Though I started my Self-Taught Programming Journey In 2014.",
+      "password": "$2b$08$e9uY0ZjxXJ9F4r36Ln4oCu4nLZ92OKaQ466VEVDtxBPCs/JL/ChR.",
+      "favourites": [
+        {
+          "id": "7c12b4b48531bcc995ae",
+          "title": "A guide to Prototype in JavaScript",
+          "tags": "programming, algorithm, prototype, javascript"
+        }
+      ]
+    },
+    {
+      "id": "65aff389f1822a5e9f43",
+      "email": "salahuddin@learnwithsumit.com",
+      "firstName": "Md",
+      "lastName": "salahuddin",
+      "avatar": "avatar-1708882452726-336021919.jpeg",
+      "bio": "",
+      "password": "$2b$08$At/U5W1/ASt/F3zWCqOZnO75ftNVjwR.RVf0FEhEdQ0nHkll5tJ4m",
+      "favourites": []
+    },
+    {
+      "id": "b5217704e41f619cb178",
+      "email": "mhpcse@gmail.com",
+      "firstName": "Mahmud",
+      "lastName": "Hasan",
+      "avatar": "avatar-1710410212660-242720633.png",
+      "bio": "A Front End developer experience with multiple web application using React. My current target is to become a Skilled Front End Developer of React and Next.js within April 2024 and get a job within May 2024 InShaAllah.",
+      "password": "$2b$08$zuLICabpSf1F4lrC.BgdTOizjEDi.nSWhmSHGpvKQVeZtb06zuHxy",
+      "favourites": [
+        {
+          "id": "4321b782f360f58c8c89",
+          "title": "React useMemo Hook",
+          "tags": "android, java, kotlin, permission"
+        },
+        {
+          "id": "7c12b4b48531bcc995ae",
+          "title": "A guide to Prototype in JavaScript",
+          "tags": "programming, algorithm, prototype, javascript"
+        },
+        {
+          "id": "4321b782f360f58c8c86",
+          "title": "এন্ড্রয়েড পার্মিশন",
+          "tags": "android, java, kotlin, permission"
+        }
+      ]
+    },
+    {
+      "id": "a99b874f9970bacf8c24",
+      "email": "test@gmail.com",
+      "firstName": "Test ",
+      "lastName": "Account ",
+      "avatar": "avatar-1710405304628-653184039.jpg",
+      "bio": "Test Account Bio update",
+      "password": "$2b$08$bTr65bNt.5bnfBdzmv2sAOHZY.NY8wRw1AKKGGPRn3YNtFQLSUeeG",
+      "favourites": [
+        {
+          "id": "7c12b4b48531bcc995ae",
+          "title": "A guide to Prototype in JavaScript",
+          "tags": "programming, algorithm, prototype, javascript"
+        },
+        {
+          "id": "4321b782f360f58c8c86",
+          "title": "এন্ড্রয়েড পার্মিশন",
+          "tags": "android, java, kotlin, permission"
+        },
+        {
+          "id": "4321b782f360f58c8c88",
+          "title": "JSON Parse | Android | Java",
+          "tags": "android, java, kotlin, permission"
+        }
+      ]
+    },
+    {
+      "id": "87ad214935e3c9ca9a15",
+      "email": "test2@gmail.com",
+      "firstName": "Test ",
+      "lastName": "Account 2",
+      "avatar": "avatar-1710407447359-127450922.jpg",
+      "bio": "Test Account 2 bio information",
+      "password": "$2b$08$0WcINy3rTe.UbIKusTvoruns379XWfRhJ/6DqtO0nkttaclFgcDhW",
+      "favourites": [
+        {
+          "id": "7c12b4b48531bcc995ae",
+          "title": "A guide to Prototype in JavaScript",
+          "tags": "programming, algorithm, prototype, javascript"
+        },
+        {
+          "id": "4321b782f360f58c8c89",
+          "title": "React useMemo Hook",
+          "tags": "android, java, kotlin, permission"
+        }
+      ]
+    },
+    {
+      "id": "1eac7ddb05362d363424",
+      "email": "test3@gmail.com",
+      "firstName": "Test",
+      "lastName": "Account 3",
+      "avatar": null,
+      "bio": "Test Account 3 Bio Information",
+      "password": "$2b$08$HJnze8rQUqwELaL7YvrtDeOfA31woySmVwdp1cFKfpmio2elQcL4a",
+      "favourites": []
+    },
+    {
+      "id": "92e261b96b5d6a27fdf2",
+      "email": "fihynobis@mailinator.com",
+      "firstName": "Sydney",
+      "lastName": "Santana",
+      "avatar": null,
+      "bio": "",
+      "password": "$2b$08$3/e6g2/ABPkOpbvvZgdqwOysZsSI9Cq2TiPQWlzxhfnpBqc.vF1nC",
+      "favourites": []
+    }
+  ],
+  "blogs": [
+    {
+      "id": "7c12b4b48531bcc995ae",
+      "title": "A guide to Prototype in JavaScript",
+      "content": "Developers may construct interactive and dynamic online apps with the robust programming language — JavaScript. The prototype is one of the most crucial ideas in JavaScript since it allows objects to share functionality.\n\n\nPrototypes in JavaScript\nEvery object in JavaScript has a prototype, which serves as the object’s bare bones. The methods and properties that an object will inherit are specified in the prototype. An object inherits all of its prototype’s properties and functions when you create a new one. \nIn this example, we define the Person constructor function, which has the two inputs of name and age. The Person prototype then gets a new method called sayHello that logs a welcome message to the console.\n\nThe new keyword is then used to create a new Person object called sumit. JavaScript searches the prototype chain of the sumit object for the sayHello method when the sayHello method is called on the sumit object. As the sayHello method is present in the Person prototype, JavaScript locates it and uses it to greet the sumit object.\n\nBecause you may share functionality amongst objects without having to write duplicate code, prototypes are crucial in JavaScript. For instance, you could simply create a new object and set its prototype to be the Person prototype if you wanted to create another object that had the same sayHello method as the Person object",
+      "thumbnail": "thumbnail-1708765741114-630266656.png",
+      "author": {
+        "id": "7830e5903b889750f1e3",
+        "firstName": "Sumit",
+        "lastName": "Saha",
+        "avatar": "avatar-1708764729322-387087910.png"
+      },
+      "tags": "programming, algorithm, prototype, javascript",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "f810ae24754a6cdc6d01"
+        },
+        {
+          "id": "3d2dde4b6548275fb066"
+        },
+        {
+          "id": "a99b874f9970bacf8c24"
+        },
+        {
+          "id": "87ad214935e3c9ca9a15"
+        },
+        {
+          "id": "b5217704e41f619cb178"
+        }
+      ],
+      "comments": [
+        {
+          "id": "83fbf83e7a33ca0ac1ea",
+          "content": "অনেক সুন্দর হয়েছে",
+          "author": {
+            "id": "346d7a36b3c41f3fbfa2",
+            "firstName": "Tapas",
+            "lastName": "Adhikary",
+            "avatar": "avatar-1708764766479-243448656.png"
+          }
+        },
+        {
+          "id": "a6cb6149982d6641fdcf",
+          "content": "Thank you for this wonderful video. Learning JS for last 1 year and this 'new' key word was giving me headache. I was searching for a better explanation for last one month. Even though I have found some, nothing beats learning in mother tongue. Great job.",
+          "author": {
+            "id": "f810ae24754a6cdc6d01",
+            "firstName": "Akash",
+            "lastName": "Ahmed",
+            "avatar": "avatar-1708764802524-290642702.png"
+          }
+        },
+        {
+          "id": "48554b3ebbc9a9a5187c",
+          "content": "আমি JavaScript এর অনেক  টিউটোরিয়াল দেখেছি অন্যান্য ভাইয়াদের channel থেকে। আমার মনে হয়, কিছু কিছু ভাইদের উদ্দেশ্য হয়তো বিগিনারদের ভীতু করা, ভাগিয়ে দেওয়া যে সহজ বিষয় কঠিন করে বুঝানো। আমি আপনার মধ্যে সেটা একদমই দেখি না। সত্যিকার অর্থে- আপনি একজন বিগিনারবান্ধব।। অসংখ্য ধন্যবাদ ভাইয়া আপনাকে।",
+          "author": {
+            "id": "3d2dde4b6548275fb066",
+            "firstName": "Saad",
+            "lastName": "Hasan",
+            "avatar": "avatar-1708764856675-623317122.jpg"
+          }
+        },
+        {
+          "id": "41e5d37dd73ae8b17c77",
+          "content": "test 1",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710244623382-74006532.png"
+          }
+        },
+        {
+          "id": "cd5c4333710201264755",
+          "content": "test 2",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710244623382-74006532.png"
+          }
+        },
+        {
+          "id": "4bc81087f0b6ce844512",
+          "content": "test 3",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710244623382-74006532.png"
+          }
+        },
+        {
+          "id": "582bccc26d8b4f87548e",
+          "content": "test 4",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710321442348-547978307.png"
+          }
+        },
+        {
+          "id": "062d7d42fdc9d5e7042a",
+          "content": "test 5",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710321442348-547978307.png"
+          }
+        },
+        {
+          "id": "6519b544a7dad3322731",
+          "content": "test 6",
+          "author": {
+            "id": "a99b874f9970bacf8c24",
+            "firstName": "Test ",
+            "lastName": "Account ",
+            "avatar": "avatar-1710398530067-439128590.jpg"
+          }
+        },
+        {
+          "id": "87a4db9ecc59b1ffe6cb",
+          "content": "test 7",
+          "author": {
+            "id": "a99b874f9970bacf8c24",
+            "firstName": "Test ",
+            "lastName": "Account ",
+            "avatar": "avatar-1710405304628-653184039.jpg"
+          }
+        }
+      ],
+      "createdAt": "2024-02-24T09:09:01.121Z"
+    },
+    {
+      "id": "4321b782f360f58c8c89",
+      "title": "React useMemo Hook",
+      "content": "useMemo is used to memoize the result of a function, meaning it caches the result and returns it when the inputs to that function haven't changed since the last render. It takes two arguments: the function to memoize and an array of dependencies. If any of the dependencies change between renders, the memoized function is re-executed; otherwise, the cached result is returned.",
+      "thumbnail": "thumbnail-4321b782f360f58c8c89.avif",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "android, java, kotlin, permission",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "b5217704e41f619cb178"
+        },
+        {
+          "id": "87ad214935e3c9ca9a15"
+        }
+      ],
+      "comments": [
+        {
+          "id": "91d01a81b26d40d9e85c",
+          "content": "test comment ",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710410212660-242720633.png"
+          }
+        }
+      ],
+      "createdAt": "2024-02-24T09:01:37.581Z",
+      "isFavourite": false
+    },
+    {
+      "id": "4321b782f360f58c8c88",
+      "title": "JSON Parse | Android | Java",
+      "content": "JSON stands for JavaScript Object Notation. It is structured, lightweight, human-readable and easy to parse. It’s the best alternative to XML when our android app needs to interchange data from the server. XML parsing is very complex as compare to JSON parsing. First, We have to understand how JSON works. JSON contains Objects, Arrays and key and value. An object is represented by Curly Braces: “{}”, Array is represented by Square Brackets: “[]” Everything between curly braces :{} is called JSON Object & everything between square brackets : [] is a JSON Object. A JSON object can contain different key-value pairs. The value of a key can be an Array. And Array may contain different Objects. And Multiple objects are separated by a comma. Seems difficult?\n\nNo, It’s not. See the Sample JSON file which will help you to understand it by your own and we will use this to fetch data. This JSON file is hosted on https://api.myjson.com/bins/xcuq8",
+      "thumbnail": "thumbnail-4321b782f360f58c8c86.webp",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "android, java, kotlin, permission",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "a99b874f9970bacf8c24"
+        }
+      ],
+      "comments": [],
+      "createdAt": "2024-02-24T09:01:37.581Z",
+      "isFavourite": false
+    },
+    {
+      "id": "4321b782f360f58c8c85",
+      "title": "Scope and Scope Chain in JavaScript",
+      "content": "In Simple, we can assume Scope as the area, where our program can access our declared variables. Simple is that. There is no Rocket Science behind this to get confused.\n\nBut there are some types of Scope, and we need to understand the differences and how it works. Cause, In larger projects it will help us to avoid collisions.\n\nSo there are 3 types of Scope in JavaScript:\n\n1. Global Scope\n\n2. Function Scope\n\n3. Block Scope.\n\nGlobal Scope:\n\nGlobal Scope is a global area of our JavaScript Codes. It is a default Scope. Any Variable or function that’s not inside any function or block, is inside the global scope by default. So everything we write in our code is into the Global Scope or Globally accessible.\n\nLet’s See an Example:\n\n\nSo, in the example, we declared the name variable and the showName() function in the Global Scope. We can get the value of the name and invoke showName() function from anywhere. That’s we are able to access the name variable from inside the showName() function.\n\nFunctional Scope:\n\nFunctional scope is also known as Local Scope. In functional Scope, variables are declared into a function which means between the curly brackets. And most importantly those variables are only accessible into the function. We can access those variables outside of the function.\n\nLet’s see an example:\n\n\nSo, We can see that we cannot access the variables which are declared in the functional scope outside of that function. And also we can see that functional scope creates its own environment and it doesn’t modify the global variables (name variable remains ‘Tamim’ )\n\nBlock Scope:\n\nSo, Block Scope is almost similar to Function Scope but just applicable for let and const. The area between if/else, loop or switch case is considered as block scope. The declared let/const variables can only be accessed into the scope. But It differs when it comes to the var. We can access the ‘var’ variables outside of the block scopes.\n\nLet’s see an Example:\n\n\nScope Chaining:\n\nScope Chaining is another important concept in JavaScript. Actually, It’s the behavior of JavaScript, how the program will act, or which variable will javaScript pick at a certain point. As we know till now about the three scopes, When JavaScript runs, the browser scope tries to find a variable value in the current scope. If it could not find the value, It tries to go outside of the current scope to find out the value. And it will continue this process until it finds out the variable value or it reaches the Global Scope. In the end, if It fails to find out the value of the variable it will throw a ‘ReferenceError’ or print undefined. And try to relate it by yourself.",
+      "thumbnail": "thumbnail-1708765297564-606798153.png",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "JavaScript, Async, Scope",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "b5217704e41f619cb178"
+        }
+      ],
+      "comments": [
+        {
+          "id": "19becccf4ebf3e6cf385",
+          "content": "অনেক সুন্দর হয়েছে",
+          "author": {
+            "id": "346d7a36b3c41f3fbfa2",
+            "firstName": "Tapas",
+            "lastName": "Adhikary",
+            "avatar": "avatar-1708764766479-243448656.png"
+          }
+        }
+      ],
+      "createdAt": "2024-02-24T09:01:37.581Z",
+      "isFavourite": false
+    },
+    {
+      "id": "4321b782f360f58c8c86",
+      "title": "এন্ড্রয়েড পার্মিশন",
+      "content": "এন্ড্রয়েড ইউজারদের ললিপপ খাওয়ানোর পাশাপাশি তাদের নিরপত্তার বিষয়টি নিশ্চিত করতে ললিপপ ভার্সন থেকে রান টাইম পার্মিশন নামক একটি অদ্ভুত বস্তু গুগল তাদের খাতায় যোগ করেছে । যেখানে, কোনো এপ ডেভেলোপার যদি তার এপ ইউজারের Storage, Camera, Contacts, Locationঅথবা Microphone সহ অন্যান্য যেকোনো গুরুত্বপূর্ণ এরিয়াতে হাত দিতে চাইলে অবশ্যই ইউজার কতৃক পারমিশন নিয়ে তারপরেই হাতা হাতি করতে হবে । আমার মনে হয় গুগল বাংলাদেশের কথা ভেবেই এই বস্তুটি তাদের খাতায় যুক্ত করেছেন । কারণ, আমরা (৯০% মানুষ) আল্লাহর ওয়াস্তে আমাদের এপ কি কি পার্মিশন নিচ্ছে অথবা Terms & Condition এ কি লেখা আছে সেট না পড়েই সব কিছু তে Allow করে দেই (আমিও এর ব্যাতিক্রম নই 🤓 )। যেটা অনেকটা ঝুকিপূর্ণ, কারণ আমাদের কিছু ভাই রয়েছে (হ্যাকার) যারা RAT বা ট্রজান হর্স দিয়ে খুব সুন্দর করে ভিকটিমের ডেটা নিজের মনে করে চুরি করে নিতে পারে । তা আমি সে বিষয়ে কিছু না বলে আমরা এখানে দেখবো কিভাবে আমরা রানটাইম ইউজারের কাছে পার্মিশন নিতে পারবো । 😁 \n আগের ভার্সন গুলোর মতই আমাদের আগেই AndroidManifest.xml এ পার্মিশন গুলো উল্লেখ করে নিতে হবে",
+      "thumbnail": "thumbnail-1708765297564-606798153.png",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "android, java, kotlin, permission",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        },
+        {
+          "id": "b5217704e41f619cb178"
+        }
+      ],
+      "comments": [
+        {
+          "id": "19becccf4ebf3e6cf385",
+          "content": "অনেক সুন্দর হয়েছে",
+          "author": {
+            "id": "346d7a36b3c41f3fbfa2",
+            "firstName": "Tapas",
+            "lastName": "Adhikary",
+            "avatar": "avatar-1708764766479-243448656.png"
+          }
+        },
+        {
+          "id": "0f31d4fae905407a9f2c",
+          "content": "test 1",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710410212660-242720633.png"
+          }
+        }
+      ],
+      "createdAt": "2024-02-24T09:01:37.581Z",
+      "isFavourite": false
+    },
+    {
+      "id": "4321b782f360f58c8c87",
+      "title": "Create Custom Dialog with listview | Android | Java",
+      "content": "Often we might need to create a custom dialog with listview to choose different kinds of actions for a particular option. In certain cases, we use such type of menu items for menus. So, In this post, I will show you how you can create this Custom Dialog with Listview :",
+      "thumbnail": "thumbnail-1708765297564-606798153.png",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "android, java, kotlin, permission",
+      "likes": [
+        {
+          "id": "346d7a36b3c41f3fbfa2"
+        }
+      ],
+      "comments": [],
+      "createdAt": "2024-02-24T09:01:37.581Z",
+      "isFavourite": false
+    },
+    {
+      "id": "9114299c37f497c16472",
+      "title": "Top Headless UI libraries for React in 2024",
+      "content": "Headless UI libraries are a modern trend in web development that focus on providing the underlying logic and functionality for UI components without prescribing a specific visual style. This approach allows developers to build fully accessible UI components according to their design systems without being tied to any predefined styles or aesthetics. \r\nRadix UI, an open source component library, prioritizes fast development, easy maintenance, and accessibility. With 32 components available, it streamlines development by removing the need for configuration, allowing developers to quickly incorporate its components into their projects.\r\nNext, Headless UI provides completely unstyled and fully accessible UI components.The diverse array of elements in Headless UI is meticulously crafted to function effectively within the system, making it an excellent option for individuals who prioritize developing custom, inclusive interface designs with a distinct visual aesthetic.\r\nReact Aria is a library of React Hooks that provides accessible UI primitives for your design system. There are over 40 components with built-in behavior, adaptive interactions, accessibility, and internationalization, ready for your custom styles. It provides an excellent user experience, notably with functions such as screen reader assistance, keyboard controls, focus handling, language translations, and additional features.\r\nIn addition, Aria Kit is an open-source library that provides unstyled, primitive components for building accessible web apps, design systems, and component libraries with React. It contains a collection of components that handle accessibility, state management, and keyboard interactions, while leaving the styling and composition to the user.\r\nArk UI is a headless library known for building reusable, scalable design systems that works for a wide range of JS frameworks. The components are unstyled, declarative, accessible, and reliable, allowing for a delightful development experience. It supports multiple platforms and applications, helps create a consistent design system across them and uses state machines to ensure predictable and bug-free behavior in every component.\r\nFurthermore, Reach UI is a collection of accessible, React-based UI components for building design systems. This prioritization of accessibility results in user-friendly components that enhance inclusivity in web applications. Reach UI's components adhere to accessibility best practices, simplifying the process for developers to build applications suitable for all users, including those who depend on assistive technologies.\r\n",
+      "thumbnail": "thumbnail-1710245362161-369246005.png",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "react, css, resources",
+      "likes": [
+        {
+          "id": "a99b874f9970bacf8c24"
+        }
+      ],
+      "comments": [],
+      "createdAt": "2024-03-12T12:03:29.078Z"
+    },
+    {
+      "id": "210470a416ea45b625b8",
+      "title": "Node.js back-end debugging process",
+      "content": "Node.js Debugging Tools\nNode.js provides a range of debugging tools and techniques to debug back-end applications. Here are some of the popular ones:\n\n1. Console.log()\nConsole.log() is one of the most basic and widely used debugging techniques in Node.js. It is a simple function that logs messages to the console, which can be used to trace the execution flow and identify bugs. For example:\n\n2. Debugger Statement\nDebugger statement is a built-in Node.js debugger that stops the execution of code at a specific point and allows you to inspect variables, call stack, and execute code line by line. For example:3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n",
+      "thumbnail": "thumbnail-1708794403625-465722215.png",
+      "author": {
+        "id": "7830e5903b889750f1e3",
+        "firstName": "Sumit",
+        "lastName": "Saha",
+        "avatar": "avatar-1708764729322-387087910.png"
+      },
+      "tags": "programming, algorithm, prototype, javascript",
+      "likes": [
+        {
+          "id": "b5217704e41f619cb178"
+        }
+      ],
+      "comments": [],
+      "createdAt": "2024-02-24T17:06:43.629Z"
+    },
+    {
+      "id": "6c33b31ecaa2b8917db2",
+      "title": "লিনিয়ার সার্চ । ডেটা স্ট্রাকচার ও এলগোরিদম",
+      "content": "গত ৫-৬ বছর থেকে Android, Fontend, Backend, Web Security ইত্যাদি নিয়ে কাজ করতে করতে একটা সময় মনে হলো, কোনো একটা জিনিস শেখা বাদ পরে গেছে। একটু কিছু চিন্তার পর বুঝতে পারলাম প্রোগ্রামিং এর সব থেকে important জিনিসটাই শেখা হয় নাই। আর তা হলো “ Data Structure & Algorithm ” । এটির গুরুত্ব নিয়ে বলার কিছু নাই।\n\nতাই Quarantine এর শেষের দিকে মাইন্ড সেটআপ করলাম,সব কিছু বাদ দিয়ে DS & Algo তেই ফোকাস করবো। তাই Android Studio কে লাল সালাম দিয়ে শেখা শুরু করলাম । এখন যখন আমি এই পোস্টটি লিখছি, তখনো আমি Data Structure & Algorithm এ খুব ভালো না, বলতে গেলে পারিই না। একদম বাচ্চা আমি। তবে এই পোস্ট টি মূলত আমি নিজের জন্যেই লিখছি, যেন ভবিষ্যতে যদি কখনো দরকার পরে বা কিছু ভূলে যাই তখবে নিজের লেখা জার্নাল দেখে আবার মনে করে নিতে পারি। (তবে এই পোষ্ট গুলো অবশ্যই পাবলিক থাকবে যেন অন্য কেউ যদি চায়, এগুলো follow করতে পারে )তাই এই পোষ্ট কিংবা এর পরবর্তীতে Data Structure & Algorithm নিয়ে পোষ্ট গুলো তে ভূল থাকা স্বাভাবিক। ভুলত্রুটি গুলো দেখিয়ে দেবার অনুরোধ রইলো।\n\nলিনিয়ার সার্চ এলগোরিদম\n\nএই অনেক অনেক সার্চিং এলগোরিদমের মধ্যে লিনিয়ার সার্চ সব থেকে সহজ একটি এলগোরিদম। ধরুন আপনি একটি বই এর তাক থেকে কোনো একটি নিদৃষ্ট বই খুজবেন অথবা তো আমি চাইলে এক এক করে খুজে বের করতে পারেন অথবা randomly ও খুজতে পারেন। লিনিয়ার সার্চের ক্ষেত্রে আমরা নিদির্ষ্ট বইটি এক এক করে খুজবো।\nঅর্থাৎ বই এর তাকের প্রথম থেকে খোজা শুরু করবো, প্রথম বইটি দেখবো। সেটা কি আমাদের কাংখিত বই ? যদি বইটি আমরা পেয়ে যাই তবে খোজা বাদ দিবো আর না পেলে খুজতেই থাকবো যতক্ষন পর্যন্ত আমরা আমাদের কাংখিত বই টি না পাচ্ছি ।\n\n\nআচ্ছা ধরুন, একটি Array আছে যার মধ্যে ৫,১২,১৮,২০,২৬ এই ৫টি Int ভ্যালু আছে। এখন আমাদের খুজতে হবে ২০ ভ্যালু টি array এর কোন পজিশন/index এ আছে।\n\nতবে ২০ এর ইনডেক্স খোজার জন্য আমরা নিচের ধাপ গুলো ফলো করতে পারি\n\nধাপ-১ঃ ধরি লিস্টে n সংখ্যক উপাদান আছে।\n\nধাপ-২ঃ এখন আমরা i এর মান ০ নেই এবং i এর মান (n-1) পর্যন্ত বাড়াতে থাকবো। প্রতিটি মানের জন্যে ধাপ-৩ এ যাই।\n\nধাপ-৩ঃ i এর মান array এর পজিশন/ইনডেক্স হিসেবে চিন্তা করি এবং array[i] এর ভ্যালু আমাদের কাংক্ষিত ভ্যালুর সাথে মিলে কিনা তা চেক করে দেখি। যদি মিলে যায় তবে ধাপঃ৪ এ যাই নাহলে আবার ধাপঃ২ এ যাই।\n\nধাপ-৪ঃ i এর ভ্যালু return করি এবং প্রোগ্রাম বন্ধ করি ।",
+      "thumbnail": "thumbnail-1708765461841-967006271.png",
+      "author": {
+        "id": "3d2dde4b6548275fb066",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1708764856675-623317122.jpg"
+      },
+      "tags": "programming, algorithm",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-02-24T09:04:21.871Z"
+    },
+    {
+      "id": "9d5598ab44600a379103",
+      "title": "Dev Retro 2022: What made me a better developer this year?",
+      "content": "Writing about the Dev Retro 2022 will be a bit off track if I do not discuss the journey briefly before it, which shaped my career as a blogger. The year 2021 was about writing. Writing here on my blog, freeCodeCamp, CSS-Tricks, Dev, and many other platforms.\n\nAt the end of 2021, I could establish myself as a technology blogger on the prominent platforms mentioned. The most exciting fact was that I was one of the top contributors/most-read authors on all these platforms.\n\nWhile these achievements were immense, I was still wondering about doing something else, trying something different in 2022. To be honest, I was trying to put myself out of my comfort zone, banking on all experiences I've gained over the years.\n\nThis article captures my journey of becoming a better developer this year. I hope it inspires you somehow, and if it does, I'll appreciate you leaving a comment. Also, for some of you who are part of this journey, I want to thank you from the bottom of my heart ❤️.",
+      "thumbnail": "thumbnail-1708793859418-241650391.png",
+      "author": {
+        "id": "346d7a36b3c41f3fbfa2",
+        "firstName": "Tapas",
+        "lastName": "Adhikary",
+        "avatar": "avatar-1708764766479-243448656.png"
+      },
+      "tags": "programming, algorithm, prototype, javascript",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-02-24T16:57:39.425Z"
+    },
+    {
+      "id": "965584a7b281d9f99c14",
+      "title": "What do you need to know to become proficient in JavaScript?",
+      "content": "JavaScript is everywhere! It's the web browser's language and helps you create web, mobile, and desktop applications. Today, JavaScript is not limited to the client side alone; it is equally popular as the base of server-side frameworks like Node.js and Deno. If you are considering picking up and mastering a programming language, JavaScript is a safe bet.\n\nRecently I have focused on chalking out a path about how to learn JavaScript effectively using a learning model. Please check it out in the video below. I believe that it will help you to learn the language faster.\n\nThe video above talks about how learning JavaScript effectively, and in this article, we will focus on the what part. We will go over the topics that you must consider putting on your plate when you plan to learn JavaScript.\n\nWe will also get introduced to a community-driven JavaScript Roadmap Guide that you can make use of in learning the language and also can contribute to. We will mention the chapters from the guide occasionally, but if you are interested, please feel free to check out the entire guide early.",
+      "thumbnail": "thumbnail-1708793953356-660744456.png",
+      "author": {
+        "id": "346d7a36b3c41f3fbfa2",
+        "firstName": "Tapas",
+        "lastName": "Adhikary",
+        "avatar": "avatar-1708764766479-243448656.png"
+      },
+      "tags": "programming, algorithm, prototype, javascript",
+      "likes": [],
+      "comments": [
+        {
+          "id": "8d3121558063f3c2dd5f",
+          "content": "test comment",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710410212660-242720633.png"
+          }
+        }
+      ],
+      "createdAt": "2024-02-24T16:59:13.363Z"
+    },
+    {
+      "id": "dd6894de764865d726af",
+      "title": "Design Systems For Front End Development",
+      "content": "As Steve Jobs once said, “Design is not just what it looks like and feels like. Design is how it works.” Design is the backbone of every product, emphasizing functionality beyond aesthetics, and this article will explain the importance of design systems for your front end work.\r\nDesign systems have evolved from the early days of Twitter Bootstrap, transforming into comprehensive collections of reusable components with clear design standards. These systems play a crucial role in supporting application development, enabling businesses to set their mobile and web applications apart while maintaining a consistent visual identity.\r\nA design system is a collection of reusable components guided by clear standards and design patterns. It goes beyond a mere UI library, encompassing documentation of standards, guidelines, visual language, and accessibility support. Notable technology companies such as Salesforce, Stack Overflow, and Microsoft publicly share their design systems, setting a precedent for best practices.\r\nA design system in front end development comprises various crucial components that work together to ensure consistency, efficiency, and scalability across the user interface. These key constituents include:\r\nA warehouse of reusable components that form the core building blocks of an application. Responsive, customizable, and accessible component libraries can be implemented using various technologies such as React, Vue, Angular, or Vanilla Javascript.\r\nThe user manual for the design language and component library consolidates essential information for designers and developers. It serves as a single, accessible location for guidelines and installation protoc",
+      "thumbnail": "thumbnail-1710249212588-293515243.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "frontend, react, next.js",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-12T12:04:22.435Z"
+    },
+    {
+      "id": "b24ae335538ccb9e3c1e",
+      "title": "How to Become a Senior Software Engineer — 5 Must-Have Qualities",
+      "content": "Are you wondering how to become a senior software engineer and land high-paying jobs at top tech companies? What does it take to grow as a software engineer? How much does a senior software engineer make? There are so many questions that come to mind when you think about advancing your career path as a software developer. If you want to know how to become a senior software engineer at a FAANG+ company, this article is everything you’re looking for.\r\n\r\nIf you are preparing for a tech interview, check out our technical interview checklist, interview questions page, and salary negotiation e-book to get interview-ready!\r\n\r\nHaving trained over 13,500 software engineers, we know what it takes to crack the toughest tech interviews. Our alums consistently land offers from FAANG+ companies. The highest ever offer received by an IK alum is a whopping $1.267 Million!\r\nAt IK, you get the unique opportunity to learn from expert instructors who are hiring managers and tech leads at Google, Facebook, Apple, and other top Silicon Valley tech companies.\r\n\r\nWant to nail your next tech interview? Sign up for our FREE Webinar.\r\nA senior software engineer is someone who has 6+ years of experience in any field of software engineering. Different companies have different ways of classifying software developers as seniors based on their years of experience. For instance, to become a senior software engineer at Google, you must have at least 6 years of experience in software. As such, one of the first ingredients to become a senior software engineer is to be an excellent problem solver.\r\n\r\nBefore answering the question — how to become a senior software engineer — let us first look at some core characteristics and responsibilities of senior software engineers at FAANG+ companies:\r\n\r\nThey are extremely good at building the software architecture for software projects\r\nThey’re excellent in providing high-level scalable design solutions\r\nThey’re excellent at problem-solving and providing solutions to real-world problems\r\nThey’re good team players and are effective in communicating within and across teams\r\n‍",
+      "thumbnail": "thumbnail-1710249446346-109237205.png",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "react, next.js, software-engineer",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-12T12:04:54.833Z"
+    },
+    {
+      "id": "2d43608ef974ae45178b",
+      "title": "How to Use the useState & useEffect Hooks in Your Project",
+      "content": "Hooks allow function components to have access to state and other React features, such as lifecycle methods. These Hook features were introduced to React version 16.8.\r\n\r\nOne of the interesting things about the Hook features is that they let you use React without classes. This, in turn, helps simplify your codebase and helps you write cleaner and more intuitive code.\r\n\r\nIn this article, you will learn how to make use of the common Hooks in your project.\r\nLet's go over some of the reasons why you might want to use Hooks in your project:\r\n\r\nEasy to use and understand: With Hooks, you can write more straightforward code. These Hook commands can only be written inside a functional component.\r\nReusable code: Hooks allow you to reuse a particular logic used in one component across multiple other components.\r\nBetter optimization performance: Hooks offer a more efficient approach to utilizing React functionalities like state and lifecycle functions, resulting in improved performance as compared to class components in some situations.\r\nDifferent Types of React Hooks\r\nThe React Hook features are of different types, ranging from the useState, useEffect, useRef, useReducer, and so on.\r\n\r\nReact Hook Rules\r\nThere are a few important rules when it comes to the React Hook features that should be strictly followed. Let's go over them in the following sections.\r\n\r\nHooks should be called inside a React function\r\nHooks should not be used inside a class component – they can and should only be called inside the React function.\r\n\r\nThis first rule essentially specifies that a Hook component should not be found in a class component, but in a functional component.\r\n\r\nHere is the wrong way of implementing the Hook feature:\r\nHooks can only be called at the top level of a component\r\nYou can only implement/call a React Hook at the top level of a component before any other code.\r\n\r\nUsing the code from the previous section as an example, you can see that immediately after function App ().\r\n\r\nThe next thing that comes is the Hook command –  in that example we used the useState Hook. That is what the second rule is all about.",
+      "thumbnail": "thumbnail-1710249621929-992049870.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "react, next.js, ",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-12T12:05:16.585Z"
+    },
+    {
+      "id": "fbae10299cb90bfb1784",
+      "title": "React Compiler: Everything You Need to Know",
+      "content": "What if we could write React code without having to deal with memoization and issues with multiple re-renders. That’s what React 19, the upcoming major version of the widely used JavaScript library for creating user interfaces, promises to deliver. It aims to simplify the process of memoization and re-rendering by shifting to a compiler architecture. In this article, we will explore the reasons for having a compiler, and the challenges it addresses.\r\n\r\nIntroduction\r\nIn a recent blog post, the React team unveiled several exciting features expected to be released with React 19, including a React compiler alongside Actions, Directives, Document Metadata, and Asset Loading.\r\n\r\nThey have also mentioned that the new compiler is already powering instagram in production. And that they are working on releasing the first open source version of the compiler.\r\n\r\nLet's begin by understading the fundamental principles of React.\r\n\r\nReact's Mental Model\r\nReact operates on a core principle: re-rendering of UI triggered by changes in application state. This allows developers to describe the desired end state of the UI, rather than implicitly writing step-by-step instructions on how to manipulate the DOM.\r\n\r\nBehind the scenes, React employs a clever strategy called the virtual DOM. This in-memory representation of the UI then allows React to efficiently identify specific DOM elements requiring updates. Upon changes to the application state, React compares the virtual DOM with the actual DOM, pinpoints the minimal set of modifications needed, and precisely updates the real DOM.\r\n\r\nBut there is an issue here and that is React can re-render unnecessarily causing performance issues.\r\n\r\nUnnecessary re-renders\r\nWhile React's responsiveness is a strength, it can sometimes lead to excessive re-renders. This is because comparing complex data structures like objects and arrays in JavaScript can be computationally expensive. If a component creates a new object or array every time it renders, even if the content hasn't truly changed, it can trigger unnecessary re-renders in React.\r\n\r\nTo prevent this, developers need to intentionally optimize their components using memoization techniques, ensuring React only updates when the data truly differs.",
+      "thumbnail": "thumbnail-1710250034635-909134111.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "react, next.js, js",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-12T13:27:14.643Z"
+    },
+    {
+      "id": "64c1812c488cecb0281a",
+      "title": "How to Create an Inventory List with React useReducer, Axios, and JSON Server",
+      "content": "When it comes to web development, it's hard to ignore React.js. It has been one of the leading user interface libraries for a decade, and it supports a lot of popular frameworks like Next.js in the background.\r\n\r\nIf you are a React developer, you likely appreciate its component-based architecture, uni-directional data binding, huge community support, and the React team's passion for bringing features in front of developers.\r\n\r\nIf you are just getting started with React or a beginner at it, that's great – there's a complete React.js roadmap published here on the freeCodeCamp you can check out. And I think you'll find the library a lot easier to learn if you have a solid grip on basic JavaScript foundations.\r\n\r\nIrrespective of where you stand with React, the real fun is in building things with it, don't you agree? So I thought of building a simple inventory list to explain a few powerful concepts like complex state management with useReducer.\r\n\r\nAnd while we're doing that, we'll also create a mock API server using JSON Server, we'll use axios to call the API, and finally we'll use the useReducer hook to manage state.\r\n\r\nSounds interesting? Let's do it. If you would also like to check out the video version of this project, here it is: 😊\r\nProject Setup with React and TailwindCSS\r\nBefore we do anything else, let's get the project set up. Also, you can follow along with the source code as you read through.\r\n\r\nTo build this app, we will use React with Vite and TailwindCSS. You can set up these tools by following a few steps from the Vite and TailwindCSS documentation.\r\n\r\nBut, why not use something that provides everything built together? This will save you time for future React projects as you can use the same infrastructure to create a React projects every time.\r\n\r\nHead over to this repository and click on the Use this template button as indicated in the image below. It will help you create a brand new repository out of a template repository with Vite, React, and TailwindCSS configured.",
+      "thumbnail": "thumbnail-1710250309698-279116330.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "react, axios, json-server",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-12T13:31:49.707Z"
+    },
+    {
+      "id": "d26cbad75758fbe03ac3",
+      "title": "Test blog 1",
+      "content": "blog content...",
+      "thumbnail": "thumbnail-1710300551039-584603107.jpg",
+      "author": {
+        "id": "b5217704e41f619cb178",
+        "firstName": "Mahmud",
+        "lastName": "Hasan",
+        "avatar": "avatar-1710244623382-74006532.png"
+      },
+      "tags": "redux, redux toolkit, RTQ Query",
+      "likes": [],
+      "comments": [
+        {
+          "id": "cc6c6b4c3fc267f2e3da",
+          "content": "test comment",
+          "author": {
+            "id": "b5217704e41f619cb178",
+            "firstName": "Mahmud",
+            "lastName": "Hasan",
+            "avatar": "avatar-1710244623382-74006532.png"
+          }
+        }
+      ],
+      "createdAt": "2024-03-13T03:29:11.050Z"
+    },
+    {
+      "id": "43d1e5fbb922c7ab7a8a",
+      "title": "Test Account Blog 1",
+      "content": "content",
+      "thumbnail": "thumbnail-1710398251706-609819607.jpg",
+      "author": {
+        "id": "a99b874f9970bacf8c24",
+        "firstName": "Test ",
+        "lastName": "Account ",
+        "avatar": "avatar-1710398131868-469166915.jpg"
+      },
+      "tags": "react, next.js, js",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-14T06:37:31.715Z"
+    },
+    {
+      "id": "98a262aa1229648984cf",
+      "title": "Test Account Blog 2",
+      "content": "content",
+      "thumbnail": "thumbnail-1710398277971-307313951.jpg",
+      "author": {
+        "id": "a99b874f9970bacf8c24",
+        "firstName": "Test ",
+        "lastName": "Account ",
+        "avatar": "avatar-1710398131868-469166915.jpg"
+      },
+      "tags": "redux, redux toolkit, RTQ Query",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-03-14T06:37:57.982Z"
+    }
+  ]
+}
