@@ -1,0 +1,5 @@
+# The legacy on-disk uploads are only a one-time seed source (uploaded to
+# Cloudinary by scripts/seed.ts). They must not ship in the serverless bundle.
+public/
+database/
+README.md
