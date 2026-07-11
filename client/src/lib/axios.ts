@@ -5,9 +5,13 @@ import axios, {
 } from 'axios';
 import type { ApiErrorBody } from '@/types/api';
 
-/** Shared axios instance. Cookies (HTTP-only JWTs) travel automatically. */
+/**
+ * Shared axios instance. Cookies (HTTP-only JWTs) travel automatically.
+ * Defaults to the same-origin `/api/v1` path (dev = Vite proxy, prod = Vercel
+ * rewrite) so auth cookies stay first-party without any required env var.
+ */
 export const api: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL ?? '/api/v1',
   withCredentials: true,
 });
 

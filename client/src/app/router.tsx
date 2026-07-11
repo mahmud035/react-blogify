@@ -1,14 +1,17 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
 import NotFoundPage from '@/components/layout/NotFoundPage';
 import PrivateRoute from '@/features/auth/PrivateRoute';
-import HomePage from '@/features/blog/pages/HomePage';
-import BlogDetailsPage from '@/features/blog/pages/BlogDetailsPage';
-import CreateBlogPage from '@/features/blog/pages/CreateBlogPage';
-import EditBlogPage from '@/features/blog/pages/EditBlogPage';
-import LoginPage from '@/features/auth/pages/LoginPage';
-import RegistrationPage from '@/features/auth/pages/RegistrationPage';
-import ProfilePage from '@/features/profile/pages/ProfilePage';
+
+// Route-level code splitting: each page ships in its own chunk.
+const HomePage = lazy(() => import('@/features/blog/pages/HomePage'));
+const BlogDetailsPage = lazy(() => import('@/features/blog/pages/BlogDetailsPage'));
+const CreateBlogPage = lazy(() => import('@/features/blog/pages/CreateBlogPage'));
+const EditBlogPage = lazy(() => import('@/features/blog/pages/EditBlogPage'));
+const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'));
+const RegistrationPage = lazy(() => import('@/features/auth/pages/RegistrationPage'));
+const ProfilePage = lazy(() => import('@/features/profile/pages/ProfilePage'));
 
 export const router = createBrowserRouter([
   {
