@@ -1,6 +1,8 @@
 # React Blogify
 
-🔗 **Live:** [react-blogify-client.vercel.app](https://react-blogify-client.vercel.app/) · **API:** [react-blogify-server.vercel.app/api/v1](https://react-blogify-server.vercel.app/api/v1)
+🔗 **Live:** [react-blogify-client.vercel.app](https://react-blogify-client.vercel.app/)
+
+🔗 **API:** [react-blogify-server.vercel.app](https://react-blogify-server.vercel.app)
 
 A full-stack blogging platform: write, publish, and browse blogs with rich profiles,
 comments, likes, favourites, and search. Originally a 2024 React + `json-server`
@@ -29,10 +31,10 @@ Each side has its own detailed README: [`client/README.md`](./client/README.md) 
 
 ## Stack
 
-|             |                                                                                                              |
-| ----------- | ------------------------------------------------------------------------------------------------------------ |
+|             |                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------- |
 | **client/** | React 19 · TypeScript · Vite · Tailwind v4 · React Router v7 · TanStack Query v5 · React-Hook-Form + Zod · Axios |
-| **server/** | Express 5 · TypeScript · Mongoose · MongoDB Atlas · JWT (HTTP-only cookie) · Zod · Cloudinary · Multer         |
+| **server/** | Express 5 · TypeScript · Mongoose · MongoDB Atlas · JWT (HTTP-only cookie) · Zod · Cloudinary · Multer           |
 
 ## Architecture
 
