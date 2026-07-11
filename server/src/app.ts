@@ -10,17 +10,23 @@ import { sendResponse } from './utils/sendResponse';
 const app = express();
 
 // Requests may come from the deployed client, local dev, or tooling (no origin).
-const allowedOrigins = new Set([
-  config.clientUrl,
-  'http://localhost:5173',
-  'http://localhost:3000',
-]);
+// Browsers attach an Origin header to every same-origin POST/PATCH/DELETE too,
+// so the deployed client origin must be allowed even though the client proxies
+// `/api` to us (see client/vercel.json). CLIENT_URL may be a comma-separated list.
+const allowedOrigins = new Set(
+  [
+    ...config.clientUrl.split(',').map((o) => o.trim()),
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://react-blogify-client.vercel.app',
+  ].filter(Boolean),
+);
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.has(origin)) return callback(null, true);
-      callback(new Error(`Origin not allowed by CORS: ${origin}`));
+      // Reject unknown origins without CORS headers rather than throwing a 500.
+      callback(null, !origin || allowedOrigins.has(origin));
     },
     credentials: true,
   }),
