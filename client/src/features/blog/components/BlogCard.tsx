@@ -7,6 +7,8 @@ import {
   THUMBNAIL_FALLBACK,
 } from '@/utils/media';
 import { getFormattedDate } from '@/utils/format';
+import { useAuth } from '@/features/auth/context/AuthContext';
+import BlogCardMenu from './BlogCardMenu';
 
 interface BlogCardProps {
   blog: Blog;
@@ -29,7 +31,9 @@ function highlight(title: string, keyword: string) {
 
 export default function BlogCard({ blog, keyword = '' }: BlogCardProps) {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { id, title, content, thumbnail, author, likes, createdAt } = blog;
+  const isOwner = user?.id === author.id;
 
   return (
     <div
@@ -50,7 +54,12 @@ export default function BlogCard({ blog, keyword = '' }: BlogCardProps) {
       />
 
       <div className="relative mt-2">
-        <h3 className="text-xl text-slate-300 lg:text-2xl">
+        {isOwner && !keyword && (
+          <div className="absolute top-0 right-0">
+            <BlogCardMenu blog={blog} />
+          </div>
+        )}
+        <h3 className="pr-8 text-xl text-slate-300 lg:text-2xl">
           {highlight(title, keyword)}
         </h3>
         <p className="mt-1 mb-6 text-base text-slate-500">

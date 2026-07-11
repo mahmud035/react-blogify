@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.svg';
+import searchIcon from '@/assets/icons/search.svg';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import { useLogout } from '@/features/auth/hooks/useLogout';
+import SearchModal from '@/features/search/components/SearchModal';
 import { AVATAR_FALLBACK, getAvatarUrl } from '@/utils/media';
 
 export default function Header() {
   const { user } = useAuth();
   const { mutate: logout, isPending } = useLogout();
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     <header>
@@ -20,6 +24,18 @@ export default function Header() {
             <Link to="/create-blog" className="btn-primary">
               Write
             </Link>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              onClick={() => setShowSearch(true)}
+              className="flex items-center gap-2 transition-all hover:text-white/80"
+              aria-label="Search blogs"
+            >
+              <img src={searchIcon} alt="" />
+              <span>Search</span>
+            </button>
           </li>
 
           {user ? (
@@ -60,6 +76,8 @@ export default function Header() {
           )}
         </ul>
       </nav>
+
+      {showSearch && <SearchModal onClose={() => setShowSearch(false)} />}
     </header>
   );
 }
