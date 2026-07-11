@@ -1,5 +1,7 @@
 # React Blogify
 
+🔗 **Live:** [react-blogify-client.vercel.app](https://react-blogify-client.vercel.app/) · **API:** [react-blogify-server.vercel.app/api/v1](https://react-blogify-server.vercel.app/api/v1)
+
 A full-stack blogging platform: write, publish, and browse blogs with rich profiles,
 comments, likes, favourites, and search. Originally a 2024 React + `json-server`
 assignment, rebuilt into a typed **MERN** stack — React 19 on the front end, an

@@ -1,5 +1,7 @@
 # React Blogify — Client
 
+🔗 **Live:** [react-blogify-client.vercel.app](https://react-blogify-client.vercel.app/)
+
 React 19 + TypeScript + Vite front end for the [React Blogify](../README.md) platform.
 Feature-driven, with all server state through TanStack Query and forms via React-Hook-Form + Zod.
 
