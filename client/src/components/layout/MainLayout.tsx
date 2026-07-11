@@ -1,10 +1,15 @@
 import { Outlet } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
-// Header/Footer are added in Batch 2.
 export default function MainLayout() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Outlet />
+      <Header />
+      <div className="flex-1">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 }
