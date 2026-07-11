@@ -1,61 +1,55 @@
-# Assignment-5-React-Blogify
+# React Blogify — Client
 
-React-Blogify is a React-based blogging platform developed as part of an assignment. It provides a user-friendly interface for creating, viewing, and managing blog posts.
+React 19 + TypeScript + Vite front end for the [React Blogify](../README.md) platform.
+Feature-driven, with all server state through TanStack Query and forms via React-Hook-Form + Zod.
 
-## Live Website: <a href="https://assignment-5-react-blogify.vercel.app/" target="_blank">React Blogify</a>
+## Stack
 
-## Features
+- **React 19** · **TypeScript** · **Vite** · **Tailwind v4**
+- **React Router v7** — route-level code splitting (`lazy` per page)
+- **TanStack Query v5** — all server state (queries, mutations, cache invalidation)
+- **React-Hook-Form + Zod** — typed forms and validation
+- **Axios** — single instance, `baseURL` `/api/v1`, `withCredentials` for cookie auth
+- **react-toastify** — notifications
 
-- **Infinity Scrolling:** Instead of traditional pagination, Infinity Scrolling is implemented using the JavaScript Intersection Observer API, dynamically loading more blog posts as the user scrolls down the page.
-- **User Authentication:** JWT access tokens and refresh tokens are used for user authentication, providing a secure login mechanism.
-- **Create and Publish Blogs:** Users can create, edit, and publish their own blog posts, complete with rich text editing capabilities.
-- **View Blogs:** Visitors can browse through published blog posts, read their contents, and interact with them.
-- **Favorites:** Logged-in users can mark blogs as favorites, making it easier to find and access their preferred content.
-- **Search Functionality:** The platform includes a search feature, enabling users to find specific blog posts based on keywords or phrases.
-- **Error Handling:** The application includes robust error handling mechanisms to ensure smooth user interactions and provide helpful feedback in case of issues.
+## Architecture
 
-## Getting Started
-
-1. **Clone the Repository:**
-
-```bash
-git clone https://github.com/mahmud035/React-Blogify.git
+```
+src/
+  app/          main.tsx · providers (QueryClient, Auth) · router (lazy routes)
+  features/     auth · blog · profile · search   ← mirror backend modules 1:1
+    <feature>/  *.api.ts · *.schema.ts · components/ · hooks/ · pages/
+  components/
+    layout/     Header · Footer · MainLayout · NotFoundPage
+    ui/         Field · Loader · Skeleton · EmptyState · ErrorMessage
+  hooks/        useDebounce · useDocumentTitle
+  lib/          axios · queryKeys · cn · formClasses
+  types/  utils/  styles/
 ```
 
-2. **Install Dependencies:**
+No cross-feature imports — shared logic lives in `components/ui`, `hooks/`, or `lib/`.
+Every data view defines explicit loading (skeletons), empty, and error states.
+
+## Auth & same-origin cookies
+
+Auth uses HTTP-only JWT cookies, so the API must be **same-origin** with the app. The client
+only ever calls `/api/v1` on its own origin:
+
+- **Dev** — `vite.config.ts` proxies `/api` → the API (`VITE_PROXY_TARGET`, defaults to the deployed server).
+- **Prod** — `vercel.json` rewrites `/api/*` → the deployed API.
+
+No env var is required; `VITE_API_URL` defaults to `/api/v1`. See [`DEPLOYMENT.md`](./DEPLOYMENT.md).
+
+## Local development
 
 ```bash
-cd React-Blogify
-
 npm install
+cp .env.example .env      # optional — defaults work out of the box
+npm run dev               # http://localhost:5173
+npm run build             # tsc --noEmit && vite build
+npm run typecheck         # tsc --noEmit
+npm run lint              # eslint
 ```
 
-3. **Start the Development Server:**
-
-```bash
-npm run dev
-```
-
-Open your browser and visit http://localhost:5173 to view the application.
-
-4. **For Server and API visit this repository:**
-
-```bash
-https://github.com/mahmud035/React-Blogify-Server
-```
-
-## Technologies Used
-
-- React.js
-- React Router DOM (v6)
-- JWT (JSON Web Tokens)
-- Axios
-- JavaScript Intersection Observer API (for Infinity Scrolling)
-- Node.js
-- Express.js
-- json-server
-
-## Test Account
-
-Email: mhpcse@gmail.com <br/>
-Password: 11111111
+The backend API lives in [`../server`](../server). See the [root README](../README.md) to run
+the full stack.
